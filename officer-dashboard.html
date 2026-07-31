@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Stackly Officer Dashboard — Government officer portal for processing applications and managing citizen services." />
+  <title>Officer Dashboard — Stackly Portal</title>
+  <link rel="icon" type="image/webp" href="assets/Logo11.webp" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/dashboard.css?v=3" />
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    /* Officer-specific overrides for custom premium theme */
+    .dashboard-sidebar { background: #0c0d0f; }
+    .sidebar-link.active { border-left-color: var(--clr-primary); background: rgba(192, 57, 43, 0.12); }
+    .officer-badge { background: linear-gradient(135deg, #16181b, #0d0e10); border: 1px solid rgba(255,255,255,.08); border-radius: var(--radius-lg); padding: .75rem 1rem; margin: 1rem 1.5rem; }
+    .officer-dept  { font-size: .65rem; color: rgba(255,255,255,.4); text-transform: uppercase; letter-spacing: .1em; }
+    .officer-role  { font-size: var(--fs-sm); font-weight: 700; color: #fff; margin-top: .2rem; }
+    .officer-id    { font-size: .65rem; color: rgba(255,255,255,.3); margin-top: .15rem; font-family: monospace; }
+  </style>
+</head>
+<body>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<div class="dashboard-layout">
+  <!-- ── SIDEBAR ── -->
+  <aside class="dashboard-sidebar" id="dashSidebar">
+    <div class="sidebar-header">
+      <a href="officer-dashboard.html" class="sidebar-logo">
+        <img src="assets/Logo11.webp" alt="Stackly Logo" />
+      </a>
+      <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close sidebar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" class="sidebar-link active" data-target="dashboard"><i class="fa-solid fa-gauge-high"></i> Dashboard</a>
+      <a href="#" class="sidebar-link" data-target="requests"><i class="fa-solid fa-users"></i> Citizen Requests <span class="badge" style="background: var(--clr-primary);">28</span></a>
+      <a href="#" class="sidebar-link" data-target="departments"><i class="fa-solid fa-building"></i> Departments</a>
+      <a href="#" class="sidebar-link" data-target="approvals"><i class="fa-solid fa-file-circle-check"></i> Approvals <span class="badge">12</span></a>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="sidebar-logout" onclick="localStorage.removeItem('loggedInUser'); window.location.href='login.html'"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+    </div>
+  </aside>
+
+  <!-- ── MAIN CONTENT ── -->
+  <main class="dashboard-main">
+    <!-- Topbar -->
+    <div class="dashboard-topbar">
+      <div class="topbar-left">
+        <button class="dash-sidebar-toggle" id="sidebarToggle" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="topbar-title-wrap">
+          <div class="topbar-title" id="pageTitle">Dashboard</div>
+          <div class="topbar-sub" id="pageSubTitle">Tuesday, July 30, 2026 · Delhi NCR Administrative Region</div>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <div class="profile-container">
+          <button class="profile-trigger" id="profileTrigger" aria-label="User profile">
+            <div class="avatar-initial" id="profileAvatarInitial">R</div>
+          </button>
+          <div class="profile-dropdown" id="profileDropdown">
+            <div class="dropdown-header">
+              <div class="dropdown-avatar-initial" id="dropdownAvatarInitial">R</div>
+              <div class="dropdown-user-details">
+                <div class="dropdown-fullname" id="dropdownFullName">Rajesh Verma</div>
+                <div class="dropdown-email" id="dropdownEmail">rajesh.verma@gov.in</div>
+                <span class="role-badge officer">Officer</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-content">
+      <!-- ── 1. DASHBOARD VIEW ── -->
+      <div class="dashboard-view active" id="view-dashboard">
+        <!-- 1. Welcome Banner -->
+      <div class="dash-welcome-banner" style="background: linear-gradient(135deg, #111 0%, #2c0805 100%);">
+        <div class="banner-overlay"></div>
+        <div class="banner-text">
+          <h2>Welcome back, <span>Officer Rajesh Verma</span></h2>
+          <p>Senior Officer Review Deck. You have 28 pending applications in the review queue and 12 approvals scheduled for final sign-off today.</p>
+          <div class="banner-meta">
+            <span class="meta-item"><i class="fa-solid fa-clock-rotate-left"></i> Average processing time: 2.4 days</span>
+            <span class="meta-item"><i class="fa-solid fa-circle-check"></i> 98.4% Compliance Target Met</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Statistics Cards -->
+      <div class="dash-stats-grid">
+        <div class="dash-stat-card glass-card">
+          <div class="dash-stat-header">
+            <div class="dash-stat-icon primary"><i class="fa-solid fa-inbox"></i></div>
+            <span class="status-badge status-processing">Total Queue</span>
+          </div>
+          <div class="dash-stat-value">175</div>
+          <div class="dash-stat-label">Total Requests</div>
+        </div>
+        <div class="dash-stat-card glass-card">
+          <div class="dash-stat-header">
+            <div class="dash-stat-icon warning"><i class="fa-solid fa-clock"></i></div>
+            <span class="status-badge status-pending">Action Required</span>
+          </div>
+          <div class="dash-stat-value">28</div>
+          <div class="dash-stat-label">Pending Reviews</div>
+        </div>
+        <div class="dash-stat-card glass-card">
+          <div class="dash-stat-header">
+            <div class="dash-stat-icon success"><i class="fa-solid fa-circle-check"></i></div>
+            <span class="status-badge status-approved">Completed</span>
+          </div>
+          <div class="dash-stat-value">142</div>
+          <div class="dash-stat-label">Approved Requests</div>
+        </div>
+        <div class="dash-stat-card glass-card">
+          <div class="dash-stat-header">
+            <div class="dash-stat-icon danger"><i class="fa-solid fa-circle-xmark"></i></div>
+            <span class="status-badge status-rejected">Archived</span>
+          </div>
+          <div class="dash-stat-value">5</div>
+          <div class="dash-stat-label">Rejected Requests</div>
+        </div>
+      </div>
+
+      <!-- 3. Charts Grid (Department Performance + Request Distribution) -->
+      <div class="dash-charts-grid">
+        <div class="dash-card chart-container">
+          <div class="dash-card-header">
+            <span class="dash-card-title">Department Performance Metrics (Days)</span>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="deptPerformanceChart"></canvas>
+          </div>
+        </div>
+        <div class="dash-card chart-container">
+          <div class="dash-card-header">
+            <span class="dash-card-title">Request Category Distribution</span>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="requestDistChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Recent Citizen Requests Table -->
+      <div class="dash-card table-card">
+        <div class="dash-card-header">
+          <span class="dash-card-title">Recent Incoming Requests</span>
+          <a href="404.html" class="btn btn-outline btn-sm">Full Queue</a>
+        </div>
+        <div class="table-responsive">
+          <table class="dash-table">
+            <thead>
+              <tr>
+                <th>Applicant Name</th>
+                <th>Request ID</th>
+                <th>Category</th>
+                <th>Date Received</th>
+                <th>Priority</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="row-req-01">
+                <td><strong>Amrit Pal Singh</strong><br><small>Delhi Region</small></td>
+                <td class="id-cell">REQ-2026-904</td>
+                <td>Birth Certificate Issue</td>
+                <td>Today, 08:30 AM</td>
+                <td><span class="status-badge status-approved">Medium</span></td>
+                <td>
+                  <div style="display:flex;gap:0.5rem">
+                    <button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'">Approve</button>
+                    <button class="btn btn-outline btn-sm" onclick="window.location.href='404.html'">Reject</button>
+                  </div>
+                </td>
+              </tr>
+              <tr id="row-req-02">
+                <td><strong>Meenakshi Iyer</strong><br><small>Saket, New Delhi</small></td>
+                <td class="id-cell">REQ-2026-881</td>
+                <td>Property Title Deed</td>
+                <td>Yesterday</td>
+                <td><span class="status-badge status-rejected" style="background: rgba(192, 57, 43, 0.1); color: #c0392b;">High</span></td>
+                <td>
+                  <div style="display:flex;gap:0.5rem">
+                    <button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'">Approve</button>
+                    <button class="btn btn-outline btn-sm" onclick="window.location.href='404.html'">Reject</button>
+                  </div>
+                </td>
+              </tr>
+              <tr id="row-req-03">
+                <td><strong>Vikram Malhotra</strong><br><small>Dwarka Sector 12</small></td>
+                <td class="id-cell">REQ-2026-879</td>
+                <td>Trade License Setup</td>
+                <td>Jul 28, 2026</td>
+                <td><span class="status-badge status-approved">Medium</span></td>
+                <td>
+                  <div style="display:flex;gap:0.5rem">
+                    <button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'">Approve</button>
+                    <button class="btn btn-outline btn-sm" onclick="window.location.href='404.html'">Reject</button>
+                  </div>
+                </td>
+              </tr>
+              <tr id="row-req-04">
+                <td><strong>Sunita Chowdhury</strong><br><small>Civil Lines, Delhi</small></td>
+                <td class="id-cell">REQ-2026-860</td>
+                <td>Senior Citizen Pension</td>
+                <td>Jul 26, 2026</td>
+                <td><span class="status-badge status-pending">Low</span></td>
+                <td>
+                  <div style="display:flex;gap:0.5rem">
+                    <button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'">Approve</button>
+                    <button class="btn btn-outline btn-sm" onclick="window.location.href='404.html'">Reject</button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 5. District Performance Map & Pending Approvals Panel -->
+      <div class="dash-grid-secondary">
+        <!-- District Performance Map -->
+        <div class="dash-card map-card">
+          <div class="dash-card-header">
+            <span class="dash-card-title"><i class="fa-solid fa-map-location-dot"></i> Regional Workload Performance</span>
+          </div>
+          <div class="map-container-wrapper">
+            <!-- Clickable Vector Map representing DelhiNCR Districts -->
+            <svg class="interactive-svg-map" viewBox="0 0 500 300">
+              <rect width="500" height="300" rx="12" fill="var(--bg-soft)" />
+              
+              <!-- Map District Outlines -->
+              <path class="map-district" d="M120 40 L220 50 L190 120 L90 110 Z" fill="rgba(192, 57, 43, 0.15)" stroke="#fff" stroke-width="2" data-district="North Delhi" data-workload="28 Requests" data-status="Optimal" data-color="#27ae60" />
+              <path class="map-district" d="M220 50 L340 70 L300 160 L190 120 Z" fill="rgba(192, 57, 43, 0.45)" stroke="#fff" stroke-width="2" data-district="Central Delhi" data-workload="92 Requests" data-status="High Load" data-color="#c0392b" />
+              <path class="map-district" d="M340 70 L430 90 L400 200 L300 160 Z" fill="rgba(192, 57, 43, 0.25)" stroke="#fff" stroke-width="2" data-district="East Delhi" data-workload="45 Requests" data-status="Moderate" data-color="#f39c12" />
+              <path class="map-district" d="M190 120 L300 160 L260 250 L140 220 Z" fill="rgba(192, 57, 43, 0.35)" stroke="#fff" stroke-width="2" data-district="South Delhi" data-workload="68 Requests" data-status="Moderate" data-color="#f39c12" />
+              <path class="map-district" d="M90 110 L190 120 L140 220 L70 180 Z" fill="rgba(192, 57, 43, 0.1)" stroke="#fff" stroke-width="2" data-district="West Delhi" data-workload="12 Requests" data-status="Low Load" data-color="#27ae60" />
+            </svg>
+            <div id="districtTooltip" class="map-tooltip">
+              <h5 id="distTooltipName">Hover on a district to review workload</h5>
+              <p id="distTooltipInfo"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pending Approval / Checklist Panel -->
+        <div class="dash-card checklist-card">
+          <div class="dash-card-header">
+            <span class="dash-card-title"><i class="fa-solid fa-clipboard-check"></i> Pending Sign-Off Panel</span>
+            <span class="badge" style="background: var(--clr-primary); color: #fff;">3 Critical</span>
+          </div>
+          <div class="checklist-panel-body" style="padding:1.25rem; display:flex; flex-direction:column; gap:1rem;">
+            <div class="approval-item" id="appr-1">
+              <div class="approval-item-content">
+                <strong style="font-size:var(--fs-sm)">Sign Birth Cert. APP-041</strong>
+                <p style="font-size:var(--fs-xs); color:var(--txt-muted); margin-top:0.2rem">Aadhaar verified. Ready for digital signature stamp.</p>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'">Sign</button>
+            </div>
+            <div class="approval-item" id="appr-2">
+              <div class="approval-item-content">
+                <strong style="font-size:var(--fs-sm)">Approve Scholarship Disburse</strong>
+                <p style="font-size:var(--fs-xs); color:var(--txt-muted); margin-top:0.2rem">Rollout of ₹75,000 disbursement batch 04.</p>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'">Authorize</button>
+            </div>
+            <div class="approval-item" id="appr-3">
+              <div class="approval-item-content">
+                <strong style="font-size:var(--fs-sm)">Verify Land Title Deed APP-059</strong>
+                <p style="font-size:var(--fs-xs); color:var(--txt-muted); margin-top:0.2rem">Needs document stamp verification review.</p>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'">Verify</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Recent Announcements -->
+      <div class="dash-card" style="margin-top: 1.5rem;">
+        <div class="dash-card-header">
+          <span class="dash-card-title"><i class="fa-solid fa-bullhorn"></i> Recent Official Announcements</span>
+        </div>
+        <div class="announcements-grid">
+          <div class="announcement-item" style="border-left: 4px solid var(--clr-primary); padding:1rem; background:var(--bg-soft); border-radius:0 var(--radius-md) var(--radius-md) 0">
+            <h5 style="font-weight:700; margin-bottom:0.4rem;">Portal Maintenance Downtime Notice</h5>
+            <p style="font-size:var(--fs-xs); color:var(--txt-muted); line-height:1.6">The citizen application platform will undergo scheduled upgrades on Saturday, August 1st, from 02:00 AM to 06:00 AM. Please ensure active reviews are saved.</p>
+            <small style="font-size:.65rem; color:var(--txt-muted); display:block; margin-top:0.5rem">Posted: Yesterday · IT Infrastructure Bureau</small>
+          </div>
+          <div class="announcement-item" style="border-left: 4px solid #f39c12; padding:1rem; background:var(--bg-soft); border-radius:0 var(--radius-md) var(--radius-md) 0">
+            <h5 style="font-weight:700; margin-bottom:0.4rem;">Directives: Digital Stamp Mandatory</h5>
+            <p style="font-size:var(--fs-xs); color:var(--txt-muted); line-height:1.6">As per the Ministry of Home Affairs, all certificates issued from August 15th must carry the 256-bit automated digital signature seal to meet security targets.</p>
+            <small style="font-size:.65rem; color:var(--txt-muted); display:block; margin-top:0.5rem">Posted: Jul 27, 2026 · Administrative Council</small>
+          </div>
+        </div>
+      </div>
+      </div> <!-- Closes view-dashboard -->
+
+      <!-- ── 2. CITIZEN REQUESTS VIEW ── -->
+      <div class="dashboard-view" id="view-requests">
+        <div class="controls-row">
+          <div>
+            <h2 style="font-family: var(--font-heading); font-size: var(--fs-xl); font-weight: 800; margin-bottom: 0.25rem;">Citizen Requests Queue</h2>
+            <p style="font-size: var(--fs-xs); color: var(--txt-muted);">Review pending applications, inspect uploaded verification documents, and approve or reject submissions.</p>
+          </div>
+          <div class="search-wrapper">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchRequestsInput" placeholder="Search requests..." onkeyup="filterRequests()" />
+          </div>
+        </div>
+
+        <div class="filter-tabs">
+          <button class="filter-tab-btn active" onclick="filterRequestPriority('all', this)">All Priorities (4)</button>
+          <button class="filter-tab-btn" onclick="filterRequestPriority('high', this)">High Priority (1)</button>
+          <button class="filter-tab-btn" onclick="filterRequestPriority('medium', this)">Medium Priority (2)</button>
+          <button class="filter-tab-btn" onclick="filterRequestPriority('low', this)">Low Priority (1)</button>
+        </div>
+
+        <div class="dash-card table-card">
+          <div class="table-responsive">
+            <table class="dash-table" id="allRequestsTable">
+              <thead>
+                <tr>
+                  <th>Applicant Name</th>
+                  <th>Request ID</th>
+                  <th>Category</th>
+                  <th>Date Received</th>
+                  <th>Priority</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr id="req-row-1" data-priority="medium">
+                  <td><strong>Amrit Pal Singh</strong><br><small>Delhi Region</small></td>
+                  <td class="id-cell">REQ-2026-904</td>
+                  <td>Birth Certificate Issue</td>
+                  <td>Today, 08:30 AM</td>
+                  <td><span class="status-badge status-approved">Medium</span></td>
+                  <td>
+                    <div style="display:flex; gap:0.5rem;">
+                      <button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'">Verify</button>
+                      <button class="btn btn-outline btn-sm" onclick="window.location.href='404.html'">Reject</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr id="req-row-2" data-priority="high">
+                  <td><strong>Meenakshi Iyer</strong><br><small>Saket, New Delhi</small></td>
+                  <td class="id-cell">REQ-2026-881</td>
+                  <td>Property Title Deed</td>
+                  <td>Yesterday</td>
+                  <td><span class="status-badge status-rejected" style="background: rgba(192, 57, 43, 0.1); color: #c0392b;">High</span></td>
+                  <td>
+                    <div style="display:flex; gap:0.5rem;">
+                      <button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'">Verify</button>
+                      <button class="btn btn-outline btn-sm" onclick="window.location.href='404.html'">Reject</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr id="req-row-3" data-priority="medium">
+                  <td><strong>Vikram Malhotra</strong><br><small>Dwarka Sector 12</small></td>
+                  <td class="id-cell">REQ-2026-879</td>
+                  <td>Trade License Setup</td>
+                  <td>Jul 28, 2026</td>
+                  <td><span class="status-badge status-approved">Medium</span></td>
+                  <td>
+                    <div style="display:flex; gap:0.5rem;">
+                      <button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'">Verify</button>
+                      <button class="btn btn-outline btn-sm" onclick="window.location.href='404.html'">Reject</button>
+                    </div>
+                  </td>
+                </tr>
+                <tr id="req-row-4" data-priority="low">
+                  <td><strong>Sunita Chowdhury</strong><br><small>Civil Lines, Delhi</small></td>
+                  <td class="id-cell">REQ-2026-860</td>
+                  <td>Senior Citizen Pension</td>
+                  <td>Jul 26, 2026</td>
+                  <td><span class="status-badge status-pending">Low</span></td>
+                  <td>
+                    <div style="display:flex; gap:0.5rem;">
+                      <button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'">Verify</button>
+                      <button class="btn btn-outline btn-sm" onclick="window.location.href='404.html'">Reject</button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <div id="noRequestsState" class="empty-state" style="display: none;">
+              <i class="fa-solid fa-users-slash"></i>
+              <h4>No Requests Found</h4>
+              <p>Try resetting the search terms or filters.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 3. DEPARTMENTS VIEW ── -->
+      <div class="dashboard-view" id="view-departments">
+        <div class="controls-row">
+          <div>
+            <h2 style="font-family: var(--font-heading); font-size: var(--fs-xl); font-weight: 800; margin-bottom: 0.25rem;">Administrative Departments</h2>
+            <p style="font-size: var(--fs-xs); color: var(--txt-muted);">Monitor caseload sizes, operational performance, and compliance rates across all departments.</p>
+          </div>
+        </div>
+
+        <div class="dept-grid">
+          <div class="dept-card">
+            <div class="dept-card-header">
+              <div class="dept-icon"><i class="fa-solid fa-city"></i></div>
+              <h4>Municipal Administration</h4>
+            </div>
+            <div class="dept-metric-row">
+              <span class="dept-metric-label">Active Queue</span>
+              <span class="dept-metric-val">28 Applications</span>
+            </div>
+            <div class="dept-metric-row">
+              <span class="dept-metric-label">Avg. Review Time</span>
+              <span class="dept-metric-val">1.8 Days</span>
+            </div>
+            <div class="dept-metric-row">
+              <span class="dept-metric-label">Compliance rate</span>
+              <span class="dept-metric-val" style="color: #27ae60;">99.2%</span>
+            </div>
+          </div>
+
+          <div class="dept-card">
+            <div class="dept-card-header">
+              <div class="dept-icon"><i class="fa-solid fa-building-columns"></i></div>
+              <h4>Revenue Department</h4>
+            </div>
+            <div class="dept-metric-row">
+              <span class="dept-metric-label">Active Queue</span>
+              <span class="dept-metric-val">92 Applications</span>
+            </div>
+            <div class="dept-metric-row">
+              <span class="dept-metric-label">Avg. Review Time</span>
+              <span class="dept-metric-val">3.2 Days</span>
+            </div>
+            <div class="dept-metric-row">
+              <span class="dept-metric-label">Compliance rate</span>
+              <span class="dept-metric-val" style="color: #27ae60;">96.8%</span>
+            </div>
+          </div>
+
+          <div class="dept-card">
+            <div class="dept-card-header">
+              <div class="dept-icon"><i class="fa-solid fa-truck-moving"></i></div>
+              <h4>Transport Department</h4>
+            </div>
+            <div class="dept-metric-row">
+              <span class="dept-metric-label">Active Queue</span>
+              <span class="dept-metric-val">45 Applications</span>
+            </div>
+            <div class="dept-metric-row">
+              <span class="dept-metric-label">Avg. Review Time</span>
+              <span class="dept-metric-val">2.5 Days</span>
+            </div>
+            <div class="dept-metric-row">
+              <span class="dept-metric-label">Compliance rate</span>
+              <span class="dept-metric-val" style="color: #27ae60;">98.5%</span>
+            </div>
+          </div>
+
+          <div class="dept-card">
+            <div class="dept-card-header">
+              <div class="dept-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+              <h4>Education & Welfare</h4>
+            </div>
+            <div class="dept-metric-row">
+              <span class="dept-metric-label">Active Queue</span>
+              <span class="dept-metric-val">10 Applications</span>
+            </div>
+            <div class="dept-metric-row">
+              <span class="dept-metric-label">Avg. Review Time</span>
+              <span class="dept-metric-val">1.5 Days</span>
+            </div>
+            <div class="dept-metric-row">
+              <span class="dept-metric-label">Compliance rate</span>
+              <span class="dept-metric-val" style="color: #27ae60;">100%</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="dash-charts-grid" style="grid-template-columns: 1fr;">
+          <div class="dash-card chart-container" style="min-height: 350px;">
+            <div class="dash-card-header">
+              <span class="dash-card-title"><i class="fa-solid fa-chart-column"></i> Average Processing Days By Department</span>
+            </div>
+            <div class="chart-wrapper" style="min-height: 260px;">
+              <canvas id="deptProcessingDaysChart"></canvas>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 4. APPROVALS VIEW ── -->
+      <div class="dashboard-view" id="view-approvals">
+        <div class="controls-row">
+          <div>
+            <h2 style="font-family: var(--font-heading); font-size: var(--fs-xl); font-weight: 800; margin-bottom: 0.25rem;">Approvals Desk</h2>
+            <p style="font-size: var(--fs-xs); color: var(--txt-muted);">Digitally sign off on verified requests to push certificates directly to citizen DigiLockers.</p>
+          </div>
+        </div>
+
+        <div class="dash-stats-grid" style="margin-bottom: 1.5rem;">
+          <div class="dash-stat-card glass-card">
+            <div class="dash-stat-header">
+              <div class="dash-stat-icon warning"><i class="fa-solid fa-file-signature"></i></div>
+            </div>
+            <div class="dash-stat-value" id="pendingApprovalsCount">3</div>
+            <div class="dash-stat-label">Pending Sign-Offs</div>
+          </div>
+          <div class="dash-stat-card glass-card">
+            <div class="dash-stat-header">
+              <div class="dash-stat-icon success"><i class="fa-solid fa-stamp"></i></div>
+            </div>
+            <div class="dash-stat-value" id="signedApprovalsCount">142</div>
+            <div class="dash-stat-label">Completed Today</div>
+          </div>
+          <div class="dash-stat-card glass-card">
+            <div class="dash-stat-header">
+              <div class="dash-stat-icon primary"><i class="fa-solid fa-bolt"></i></div>
+            </div>
+            <div class="dash-stat-value">1.8 hrs</div>
+            <div class="dash-stat-label">Avg. Sign-Off Speed</div>
+          </div>
+          <div class="dash-stat-card glass-card">
+            <div class="dash-stat-header">
+              <div class="dash-stat-icon info"><i class="fa-solid fa-shield-halved"></i></div>
+            </div>
+            <div class="dash-stat-value">99.2%</div>
+            <div class="dash-stat-label">Verification Rate</div>
+          </div>
+        </div>
+
+        <div class="dash-card checklist-card" style="padding: 1.5rem;">
+          <div class="checklist-panel-body" style="display:flex; flex-direction:column; gap:1rem;">
+            <div class="approval-item" id="appr-list-1">
+              <div class="approval-item-content">
+                <strong style="font-size:var(--fs-sm)">Sign Birth Certificate APP-041 (Amrit Pal Singh)</strong>
+                <p style="font-size:var(--fs-xs); color:var(--txt-muted); margin-top:0.25rem">Aadhaar linked hospital record verification successfully completed.</p>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'">Sign Certificate</button>
+            </div>
+            <div class="approval-item" id="appr-list-2">
+              <div class="approval-item-content">
+                <strong style="font-size:var(--fs-sm)">Authorize Scholarship Disburse APP-059 (Meenakshi Iyer)</strong>
+                <p style="font-size:var(--fs-xs); color:var(--txt-muted); margin-top:0.25rem">Education board merit matches Aadhaar income credentials.</p>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'">Authorize Funds</button>
+            </div>
+            <div class="approval-item" id="appr-list-3">
+              <div class="approval-item-content">
+                <strong style="font-size:var(--fs-sm)">Verify Land Title Deed APP-092 (Vikram Malhotra)</strong>
+                <p style="font-size:var(--fs-xs); color:var(--txt-muted); margin-top:0.25rem">Revenue department stamp verification matches registry papers.</p>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'">Verify Registry</button>
+            </div>
+          </div>
+          <div id="noApprovalsDeskState" class="empty-state" style="display: none;">
+            <i class="fa-solid fa-stamp"></i>
+            <h4>All Approvals Completed</h4>
+            <p>You have signed off all verified documents for the day.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ── DOCUMENT VERIFICATION MODAL OVERLAY ── -->
+<div class="modal-overlay" id="verificationModalOverlay">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modalTitle">Verify Documents</h4>
+      <button class="modal-close-btn" onclick="closeVerificationModal()"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="modal-body">
+      <div style="margin-bottom:1.25rem;">
+        <span style="font-size:.65rem; color:var(--txt-muted); text-transform:uppercase; font-weight:700;">Applicant Name</span>
+        <h3 id="modalApplicantName" style="font-size:var(--fs-base); font-weight:800; margin-top:0.15rem; color:var(--txt-heading);">Rahul Sharma</h3>
+      </div>
+      <div class="modal-info-grid">
+        <div>
+          <span style="font-size:.65rem; color:var(--txt-muted); text-transform:uppercase; font-weight:700;">Request ID</span>
+          <div id="modalRequestId" class="id-cell" style="margin-top:0.15rem; font-size:var(--fs-sm);">REQ-2026-904</div>
+        </div>
+        <div>
+          <span style="font-size:.65rem; color:var(--txt-muted); text-transform:uppercase; font-weight:700;">Service Category</span>
+          <div id="modalCategory" style="margin-top:0.15rem; font-size:var(--fs-sm); font-weight:700; color:var(--txt-heading);">Birth Certificate</div>
+        </div>
+      </div>
+      <div style="margin-bottom:1rem;">
+        <span style="font-size:.65rem; color:var(--txt-muted); text-transform:uppercase; font-weight:700; display:block; margin-bottom:0.4rem;">Uploaded Verification Documents</span>
+        <div id="modalDocumentsList" style="padding:1rem; border-radius:var(--radius-md); background:var(--bg-soft); border:1px solid var(--border-light); font-size:var(--fs-xs); display:flex; flex-direction:column; gap:0.5rem; color:var(--txt-body);">
+        </div>
+      </div>
+      <div style="border-left: 4px solid var(--clr-primary); padding:0.75rem; background:rgba(192, 57, 43, 0.04); border-radius:0 var(--radius-md) var(--radius-md) 0; font-size:var(--fs-xs);">
+        <strong>Compliance Notice:</strong> Signing this document commits a digital seal on public ledgers. Ensure credentials match Aadhaar data.
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline btn-sm" onclick="closeVerificationModal()">Close</button>
+      <button class="btn btn-primary btn-sm" id="modalApproveBtn"><i class="fa-solid fa-circle-check"></i> Approve Application</button>
+    </div>
+  </div>
+</div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Animations on Load (Only animate sidebar on desktop to preserve mobile drawer CSS)
+  if (window.innerWidth > 992) {
+    gsap.from('.dash-sidebar', { x: -280, duration: 0.8, ease: 'power3.out' });
+  }
+  gsap.from('.dashboard-topbar', { opacity: 0, duration: 0.8, ease: 'power3.out', delay: 0.1 });
+  gsap.from('.dash-welcome-banner', { opacity: 0, scale: 0.95, duration: 0.8, ease: 'power3.out', delay: 0.2 });
+
+  // ── Mobile Sidebar Drawer Toggle ──
+  const sidebarToggle = document.getElementById('sidebarToggle');
+  const dashSidebar = document.getElementById('dashSidebar');
+  const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+  function closeMobileSidebar() {
+    if (dashSidebar) dashSidebar.classList.remove('mobile-open');
+    if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+  }
+
+  const sidebarCloseBtn = document.getElementById('sidebarCloseBtn');
+
+  if (sidebarToggle) {
+    sidebarToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (dashSidebar) dashSidebar.classList.toggle('mobile-open');
+      if (sidebarOverlay) sidebarOverlay.classList.toggle('active');
+    });
+  }
+
+  if (sidebarCloseBtn) {
+    sidebarCloseBtn.addEventListener('click', closeMobileSidebar);
+  }
+
+  if (sidebarOverlay) {
+    sidebarOverlay.addEventListener('click', closeMobileSidebar);
+  }
+
+  // ── Profile Dropdown and Initial Logic ──
+  const loggedInUser = localStorage.getItem('loggedInUser') || 'Rajesh Verma';
+  let displayName = loggedInUser;
+  let displayEmail = loggedInUser;
+  
+  if (loggedInUser.includes('@')) {
+    displayName = loggedInUser.split('@')[0];
+  } else {
+    displayEmail = loggedInUser + '@gov.in';
+  }
+
+  // Capitalize name
+  displayName = displayName.split(/[._-]/).map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+
+  // Update DOM elements
+  const dropdownFullNameEl = document.getElementById('dropdownFullName');
+  if (dropdownFullNameEl) dropdownFullNameEl.textContent = displayName;
+
+  const dropdownEmailEl = document.getElementById('dropdownEmail');
+  if (dropdownEmailEl) dropdownEmailEl.textContent = displayEmail;
+
+  const welcomeNameSpan = document.querySelector('.dash-welcome-banner h2 span');
+  if (welcomeNameSpan) {
+    welcomeNameSpan.textContent = displayName.toLowerCase().startsWith('officer') ? displayName : 'Officer ' + displayName;
+  }
+
+  const initial = displayName.trim().charAt(0).toUpperCase();
+  const profileAvatarEl = document.getElementById('profileAvatarInitial');
+  if (profileAvatarEl) profileAvatarEl.textContent = initial;
+  const dropdownAvatarEl = document.getElementById('dropdownAvatarInitial');
+  if (dropdownAvatarEl) dropdownAvatarEl.textContent = initial;
+
+  const profileTrigger = document.getElementById('profileTrigger');
+  const profileDropdown = document.getElementById('profileDropdown');
+  const profileContainer = document.querySelector('.profile-container');
+
+  if (profileTrigger && profileDropdown) {
+    profileTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      profileDropdown.classList.toggle('show');
+      if (profileContainer) profileContainer.classList.toggle('active');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (profileContainer && !profileContainer.contains(e.target)) {
+        profileDropdown.classList.remove('show');
+        profileContainer.classList.remove('active');
+      }
+    });
+  }
+
+  // ── View Toggling & Dynamic Page Title Logic ──
+  const sidebarLinks = document.querySelectorAll('.sidebar-link');
+  const pageTitle = document.getElementById('pageTitle');
+  const views = document.querySelectorAll('.dashboard-view');
+
+  window.switchView = function(targetId) {
+    views.forEach(view => {
+      view.classList.remove('active');
+    });
+    const targetView = document.getElementById(`view-${targetId}`);
+    if (targetView) {
+      targetView.classList.add('active');
+      gsap.fromTo(targetView, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' });
+    }
+
+    // Update active sidebar item and get title text dynamically
+    let activeTitle = '';
+    sidebarLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('data-target') === targetId) {
+        link.classList.add('active');
+        const clone = link.cloneNode(true);
+        const badge = clone.querySelector('.badge');
+        if (badge) badge.remove();
+        activeTitle = clone.textContent.trim();
+      }
+    });
+
+    // Dynamically update Header Page Title
+    if (pageTitle && activeTitle) {
+      pageTitle.textContent = activeTitle;
+    }
+
+    // Close mobile sidebar drawer after selection
+    closeMobileSidebar();
+  };
+
+  sidebarLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const target = link.getAttribute('data-target');
+      if (target) {
+        e.preventDefault();
+        window.switchView(target);
+      }
+    });
+  });
+
+  // ── Chart.js Configurations ──
+  const ctxBar = document.getElementById('deptPerformanceChart').getContext('2d');
+  new Chart(ctxBar, {
+    type: 'bar',
+    data: {
+      labels: ['Municipal', 'Revenue', 'Urban Dev', 'Education', 'Health'],
+      datasets: [{
+        label: 'Avg Processing Days',
+        data: [1.8, 3.2, 4.0, 1.5, 2.1],
+        backgroundColor: 'rgba(192, 57, 43, 0.85)',
+        hoverBackgroundColor: '#8b0000',
+        borderRadius: 4
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true,
+          grid: { color: 'rgba(0, 0, 0, 0.05)' }
+        },
+        x: {
+          grid: { display: false }
+        }
+      },
+      plugins: {
+        legend: { display: false }
+      }
+    }
+  });
+
+  const ctxPie = document.getElementById('requestDistChart').getContext('2d');
+  new Chart(ctxPie, {
+    type: 'pie',
+    data: {
+      labels: ['Certificates', 'Revenue & Deeds', 'Licenses', 'Social Welfare'],
+      datasets: [{
+        data: [65, 45, 38, 27],
+        backgroundColor: [
+          '#c0392b', // Red
+          '#f39c12', // Orange
+          '#d4af37', // Gold
+          '#2c3e50'  // Dark slate
+        ],
+        borderWidth: 1,
+        borderColor: 'rgba(255, 255, 255, 0.4)'
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'right',
+          labels: {
+            boxWidth: 12,
+            font: { family: 'Outfit, sans-serif', size: 12 }
+          }
+        }
+      }
+    }
+  });
+
+  const ctxDeptProc = document.getElementById('deptProcessingDaysChart');
+  if (ctxDeptProc) {
+    new Chart(ctxDeptProc.getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: ['Revenue & Tax', 'Civil Defence', 'Education', 'Public Health', 'Infrastructure', 'Transport'],
+        datasets: [{
+          label: 'Avg Days to Complete',
+          data: [2.4, 1.8, 3.1, 1.5, 4.2, 2.0],
+          backgroundColor: [
+            'rgba(192, 57, 43, 0.85)',
+            'rgba(41, 128, 185, 0.85)',
+            'rgba(39, 174, 96, 0.85)',
+            'rgba(243, 156, 18, 0.85)',
+            'rgba(142, 68, 173, 0.85)',
+            'rgba(44, 62, 80, 0.85)'
+          ],
+          borderRadius: 6
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          y: {
+            beginAtZero: true,
+            grid: { color: 'rgba(0, 0, 0, 0.05)' },
+            title: { display: true, text: 'Average Days' }
+          },
+          x: {
+            grid: { display: false }
+          }
+        },
+        plugins: {
+          legend: { display: false }
+        }
+      }
+    });
+  }
+
+  // ── SVG Interactive District Workload Map Logic ──
+  const districts = document.querySelectorAll('.map-district');
+  const tooltip = document.getElementById('districtTooltip');
+  const tName = document.getElementById('distTooltipName');
+  const tInfo = document.getElementById('distTooltipInfo');
+
+  districts.forEach(dist => {
+    dist.addEventListener('mouseenter', () => {
+      const name = dist.getAttribute('data-district');
+      const workload = dist.getAttribute('data-workload');
+      const status = dist.getAttribute('data-status');
+      const color = dist.getAttribute('data-color');
+
+      tName.innerHTML = `<i class="fa-solid fa-location-crosshairs"></i> ${name}`;
+      tInfo.innerHTML = `
+        <div>Queue Load: <strong>${workload}</strong></div>
+        <div>Operational Status: <strong style="color: ${color}">${status}</strong></div>
+      `;
+
+      dist.style.stroke = '#fff';
+      dist.style.strokeWidth = '3px';
+
+      gsap.fromTo(tooltip, 
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.25 }
+      );
+    });
+
+    dist.addEventListener('mouseleave', () => {
+      dist.style.stroke = '#fff';
+      dist.style.strokeWidth = '2px';
+    });
+  });
+});
+
+// ── Document Verification Modal Logic ──
+let activeVerificationRowId = null;
+
+function openVerificationModal(applicant, reqId, category, docsStr, rowId) {
+  activeVerificationRowId = rowId;
+  document.getElementById('modalApplicantName').textContent = applicant;
+  document.getElementById('modalRequestId').textContent = reqId;
+  document.getElementById('modalCategory').textContent = category;
+
+  const docsList = document.getElementById('modalDocumentsList');
+  docsList.innerHTML = '';
+  const docsArr = docsStr.split(', ');
+  docsArr.forEach(doc => {
+    docsList.innerHTML += `
+      <div style="display:flex; align-items:center; gap:0.5rem;">
+        <i class="fa-solid fa-file-pdf" style="color:var(--clr-primary); font-size: 1rem;"></i>
+        <span>${doc}.pdf</span>
+        <span style="margin-left:auto; color:#27ae60; font-weight:700;"><i class="fa-solid fa-circle-check"></i> Verified</span>
+      </div>
+    `;
+  });
+
+  const approveBtn = document.getElementById('modalApproveBtn');
+  approveBtn.onclick = () => {
+    handleAction(activeVerificationRowId, 'Approved');
+    closeVerificationModal();
+  };
+
+  document.getElementById('verificationModalOverlay').classList.add('active');
+}
+
+function closeVerificationModal() {
+  document.getElementById('verificationModalOverlay').classList.remove('active');
+}
+
+// Approve/Reject actions simulation
+function handleAction(rowId, status) {
+  const row = document.getElementById(rowId);
+  if (!row) return;
+
+  const btnContainer = row.cells[5];
+  if (status === 'Approved') {
+    btnContainer.innerHTML = `<span class="status-badge status-approved"><i class="fa-solid fa-circle-check"></i> Approved</span>`;
+  } else {
+    btnContainer.innerHTML = `<span class="status-badge status-rejected"><i class="fa-solid fa-circle-xmark"></i> Rejected</span>`;
+  }
+  
+  alert(`Request ${row.cells[1].textContent} successfully ${status}.`);
+}
+
+// Signoff action simulation
+function signItem(itemId) {
+  const item = document.getElementById(itemId);
+  if (!item) return;
+
+  gsap.to(item, {
+    opacity: 0,
+    x: 50,
+    duration: 0.5,
+    onComplete: () => {
+      item.remove();
+      alert('Task signed off successfully and recorded on ledgers.');
+
+      // Update badge count
+      const countEl = document.getElementById('pendingApprovalsCount');
+      let currentVal = parseInt(countEl.textContent);
+      if (currentVal > 0) {
+        countEl.textContent = currentVal - 1;
+        document.getElementById('signedApprovalsCount').textContent = parseInt(document.getElementById('signedApprovalsCount').textContent) + 1;
+      }
+
+      // Check if approvals view is empty
+      const remaining = document.querySelectorAll('.checklist-panel-body .approval-item');
+      if (remaining.length === 0) {
+        document.getElementById('noApprovalsDeskState').style.display = 'flex';
+      }
+    }
+  });
+}
+
+// ── Requests Filter ──
+function filterRequestPriority(priority, btn) {
+  const tabs = document.querySelectorAll('.filter-tab-btn');
+  tabs.forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+
+  const rows = document.querySelectorAll('#allRequestsTable tbody tr');
+  let visibleCount = 0;
+
+  rows.forEach(row => {
+    const rowPriority = row.getAttribute('data-priority');
+    if (priority === 'all' || rowPriority === priority) {
+      row.style.display = '';
+      visibleCount++;
+    } else {
+      row.style.display = 'none';
+    }
+  });
+
+  const noRequestsState = document.getElementById('noRequestsState');
+  if (visibleCount === 0) {
+    noRequestsState.style.display = 'flex';
+  } else {
+    noRequestsState.style.display = 'none';
+  }
+}
+
+function filterRequests() {
+  const query = document.getElementById('searchRequestsInput').value.toLowerCase();
+  const rows = document.querySelectorAll('#allRequestsTable tbody tr');
+  let visibleCount = 0;
+
+  rows.forEach(row => {
+    const text = row.innerText.toLowerCase();
+    if (text.includes(query)) {
+      row.style.display = '';
+      visibleCount++;
+    } else {
+      row.style.display = 'none';
+    }
+  });
+
+  const noRequestsState = document.getElementById('noRequestsState');
+  if (visibleCount === 0) {
+    noRequestsState.style.display = 'flex';
+  } else {
+    noRequestsState.style.display = 'none';
+  }
+}
+</script>
+</body>
+</html>

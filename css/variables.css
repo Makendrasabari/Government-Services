@@ -1,0 +1,119 @@
+/* ============================================================
+   variables.css — Design Tokens & CSS Custom Properties
+   Government Services Portal
+   ============================================================ */
+
+:root {
+  /* ── Primary Colors ─────────────────────────────────────── */
+  --clr-primary:        #c0392b;
+  --clr-primary-dark:   #922b21;
+  --clr-primary-light:  #e74c3c;
+  --clr-accent:         #f39c12;
+  --clr-accent-light:   #f8c471;
+
+  /* ── Gradients ──────────────────────────────────────────── */
+  --grad-primary:       linear-gradient(135deg, #c0392b 0%, #e74c3c 100%);
+  --grad-hero:          linear-gradient(135deg, #8b0000 0%, #c0392b 50%, #e74c3c 100%);
+  --grad-soft:          linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
+  --grad-card:          linear-gradient(145deg, #ffffff 0%, #fff5f5 100%);
+  --grad-dark:          linear-gradient(135deg, #1a0a0a 0%, #3d1010 60%, #6b1515 100%);
+
+  /* ── Backgrounds ────────────────────────────────────────── */
+  --bg-white:           #ffffff;
+  --bg-light:           #fafafa;
+  --bg-soft:            #fff5f5;
+  --bg-dark:            #1a0a0a;
+  --bg-glass:           rgba(255, 255, 255, 0.85);
+  --bg-glass-dark:      rgba(26, 10, 10, 0.75);
+  --bg-overlay:         rgba(192, 57, 43, 0.85);
+
+  /* ── Text ───────────────────────────────────────────────── */
+  --txt-dark:           #1a0a0a;
+  --txt-heading:        #1a0808;
+  --txt-body:           #4a3030;
+  --txt-muted:          #8a6a6a;
+  --txt-white:          #ffffff;
+  --txt-light:          #f5f5f5;
+
+  /* ── Borders ────────────────────────────────────────────── */
+  --border-light:       rgba(192, 57, 43, 0.12);
+  --border-medium:      rgba(192, 57, 43, 0.25);
+  --border-strong:      rgba(192, 57, 43, 0.5);
+
+  /* ── Shadows ────────────────────────────────────────────── */
+  --shadow-xs:          0 2px 8px rgba(192, 57, 43, 0.08);
+  --shadow-sm:          0 4px 16px rgba(192, 57, 43, 0.12);
+  --shadow-md:          0 8px 32px rgba(192, 57, 43, 0.18);
+  --shadow-lg:          0 16px 48px rgba(192, 57, 43, 0.22);
+  --shadow-xl:          0 24px 64px rgba(192, 57, 43, 0.28);
+  --shadow-card:        0 4px 24px rgba(26, 8, 8, 0.10);
+  --shadow-hover:       0 12px 40px rgba(192, 57, 43, 0.25);
+
+  /* ── Typography ─────────────────────────────────────────── */
+  --font-heading:       'Poppins', sans-serif;
+  --font-body:          'Inter', sans-serif;
+  --font-accent:        'Manrope', sans-serif;
+
+  /* Font Sizes — fluid clamp */
+  --fs-xs:              0.75rem;     /* 12px */
+  --fs-sm:              0.875rem;    /* 14px */
+  --fs-base:            1rem;        /* 16px */
+  --fs-md:              1.125rem;    /* 18px */
+  --fs-lg:              1.25rem;     /* 20px */
+  --fs-xl:              1.5rem;      /* 24px */
+  --fs-2xl:             2rem;        /* 32px */
+  --fs-3xl:             clamp(2rem, 4vw, 2.75rem);
+  --fs-4xl:             clamp(2.5rem, 5vw, 3.5rem);
+  --fs-5xl:             clamp(3rem, 6vw, 4.5rem);
+  --fs-hero:            clamp(3.5rem, 8vw, 6rem);
+
+  /* ── Spacing ────────────────────────────────────────────── */
+  --space-xs:           0.5rem;
+  --space-sm:           1rem;
+  --space-md:           1.5rem;
+  --space-lg:           2.5rem;
+  --space-xl:           4rem;
+  --space-2xl:          6rem;
+  --space-3xl:          8rem;
+  --section-padding:    clamp(4rem, 8vw, 7rem) 0;
+
+  /* ── Border Radius ──────────────────────────────────────── */
+  --radius-sm:          0.5rem;
+  --radius-md:          1rem;
+  --radius-lg:          1.5rem;
+  --radius-xl:          2rem;
+  --radius-full:        9999px;
+
+  /* ── Transitions ────────────────────────────────────────── */
+  --trans-fast:         0.2s ease;
+  --trans-base:         0.3s ease;
+  --trans-slow:         0.5s ease;
+  --trans-spring:       0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── Z-Index ────────────────────────────────────────────── */
+  --z-back:             -1;
+  --z-base:             1;
+  --z-raised:           10;
+  --z-dropdown:         100;
+  --z-sticky:           200;
+  --z-modal:            300;
+  --z-overlay:          400;
+  --z-cursor:           9999;
+
+  /* ── Layout ─────────────────────────────────────────────── */
+  --container-max:      1320px;
+  --container-wide:     1440px;
+  --navbar-height:      135px;
+}
+
+/* ── Dark Mode Override (dashboard use) ─────────────────── */
+[data-theme="dark"] {
+  --bg-white:       #0f0505;
+  --bg-light:       #1a0808;
+  --bg-soft:        #220d0d;
+  --txt-dark:       #f5e8e8;
+  --txt-body:       #d4a8a8;
+  --txt-muted:      #9a7070;
+  --border-light:   rgba(192, 57, 43, 0.2);
+  --shadow-card:    0 4px 24px rgba(0, 0, 0, 0.4);
+}

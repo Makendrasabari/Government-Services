@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Login to Stackly — Access Citizen Portal or Government Officer Dashboard securely." />
+  <title>Login — Stackly Government Services Portal</title>
+  <link rel="icon" type="image/webp" href="assets/Logo11.webp" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/login.css" />
+</head>
+<body>
+
+<div id="preloader" role="status" aria-live="polite" aria-label="Loading Stackly Portal">
+  <div class="preloader-content">
+    <div class="preloader-logo-wrap">
+      <div class="preloader-logo-ring"></div>
+      <img src="assets/Logo11.webp" alt="Stackly Logo" class="preloader-logo" />
+    </div>
+    <div class="preloader-bar-wrap">
+      <div class="preloader-bar"><div class="preloader-bar-inner"></div></div>
+      <span class="preloader-text">Loading Stackly...</span>
+    </div>
+  </div>
+</div>
+
+<main class="login-page">
+  <!-- ── LEFT VISUAL PANEL ─────────────────────────────── -->
+  <div class="login-visual">
+    <div class="login-visual-bg">
+      <img src="assets/images/gov_portal.webp" alt="Government Portal" loading="lazy" />
+      <div class="login-visual-overlay"></div>
+    </div>
+    <div class="login-visual-grid" aria-hidden="true"></div>
+    <div class="login-visual-particles" aria-hidden="true">
+      <div class="login-particle login-particle-1"></div>
+      <div class="login-particle login-particle-2"></div>
+      <div class="login-particle login-particle-3"></div>
+    </div>
+
+    <div class="login-visual-content">
+      <a href="index.html" class="login-visual-logo">
+        <img src="assets/Logo11.webp" alt="Stackly Logo" />
+      </a>
+
+      <h1 class="login-visual-title">Your Gateway to<br />Digital Governance</h1>
+      <p class="login-visual-desc">Access 200+ government services, track your applications, and manage documents — all from one secure, unified platform.</p>
+
+      <div class="login-visual-stats">
+        <div class="login-stat">
+          <span class="login-stat-number">2.4Cr+</span>
+          <span class="login-stat-label">Citizens Registered</span>
+        </div>
+        <div class="login-stat">
+          <span class="login-stat-number">200+</span>
+          <span class="login-stat-label">Services Online</span>
+        </div>
+        <div class="login-stat">
+          <span class="login-stat-number">4.8/5</span>
+          <span class="login-stat-label">User Rating</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── RIGHT FORM PANEL ──────────────────────────────── -->
+  <div class="login-form-side">
+    <div class="login-form-wrapper">
+      <!-- Back Link -->
+      <a href="index.html" style="display:inline-flex;align-items:center;gap:0.4rem;font-size:var(--fs-sm);color:var(--txt-muted);text-decoration:none;margin-bottom:2rem;transition:color 0.2s" onmouseover="this.style.color='var(--clr-primary)'" onmouseout="this.style.color='var(--txt-muted)'">
+        <i class="fa-solid fa-arrow-left"></i> Back to Home
+      </a>
+
+      <div class="login-form-header">
+        <h1>Welcome <span>Back</span></h1>
+        <p>Sign in to your account to access government services</p>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" novalidate>
+        <!-- Email -->
+        <div class="form-group">
+          <label class="form-label" for="loginEmail">Email Address</label>
+          <div class="form-input-wrap">
+            <i class="fa-solid fa-envelope form-icon"></i>
+            <input
+              type="email"
+              id="loginEmail"
+              class="form-control"
+              placeholder="Enter your email"
+              autocomplete="email"
+              required
+            />
+          </div>
+          <span class="form-error" id="emailError"><i class="fa-solid fa-circle-exclamation"></i> Please enter a valid email</span>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label class="form-label" for="loginPassword">Password</label>
+          <div class="form-password-wrap">
+            <i class="fa-solid fa-lock form-icon"></i>
+            <input
+              type="password"
+              id="loginPassword"
+              class="form-control"
+              placeholder="Enter your password"
+              autocomplete="current-password"
+              required
+            />
+            <button type="button" class="toggle-password" id="togglePwd" aria-label="Toggle password visibility">
+              <i class="fa-solid fa-eye" id="togglePwdIcon"></i>
+            </button>
+          </div>
+          <span class="form-error" id="passwordError"><i class="fa-solid fa-circle-exclamation"></i> Password must be at least 2 characters</span>
+        </div>
+
+        <!-- Options -->
+        <div class="form-options">
+          <label class="remember-me">
+            <input type="checkbox" id="rememberMe" />
+            <span>Remember me</span>
+          </label>
+          <a href="404.html" class="forgot-link">Forgot Password?</a>
+        </div>
+
+        <!-- Role Selector -->
+        <div class="role-selector" id="roleSelector">
+          <label class="role-option">
+            <input type="radio" name="role" value="citizen" id="roleCitizen" checked />
+            <span class="role-label">
+              <i class="fa-solid fa-user"></i>
+              <span>Citizen Portal</span>
+            </span>
+          </label>
+          <label class="role-option">
+            <input type="radio" name="role" value="officer" id="roleOfficer" />
+            <span class="role-label">
+              <i class="fa-solid fa-user-tie"></i>
+              <span>Govt. Officer</span>
+            </span>
+          </label>
+        </div>
+
+        <!-- Submit -->
+        <button type="submit" class="btn-submit" id="loginBtn">
+          <i class="fa-solid fa-right-to-bracket"></i>
+          Sign In to Portal
+        </button>
+      </form>
+
+      <!-- Register Link -->
+      <p class="form-register-link">
+        Don't have an account? <a href="signup.html">Create an Account</a>
+      </p>
+    </div>
+  </div>
+  </div>
+</main>
+
+<!-- Scripts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

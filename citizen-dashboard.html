@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Stackly Citizen Dashboard — Track your applications, manage documents, and access government services." />
+  <title>Citizen Dashboard — Stackly Portal</title>
+  <link rel="icon" type="image/webp" href="assets/Logo11.webp" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/dashboard.css?v=3" />
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<div class="dashboard-layout">
+  <!-- ── SIDEBAR ── -->
+  <aside class="dashboard-sidebar" id="dashSidebar">
+    <div class="sidebar-header">
+      <a href="citizen-dashboard.html" class="sidebar-logo">
+        <img src="assets/Logo11.webp" alt="Stackly Logo" />
+      </a>
+      <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close sidebar">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+    <nav class="sidebar-nav">
+      <a href="#" class="sidebar-link active" data-target="dashboard"><i class="fa-solid fa-house"></i> Dashboard</a>
+      <a href="#" class="sidebar-link" data-target="applications"><i class="fa-solid fa-file-alt"></i> My Applications <span class="badge">3</span></a>
+      <a href="#" class="sidebar-link" data-target="services"><i class="fa-solid fa-layer-group"></i> Government Services</a>
+      <a href="#" class="sidebar-link" data-target="schemes"><i class="fa-solid fa-hand-holding-heart"></i> Schemes & Benefits</a>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="sidebar-logout" onclick="localStorage.removeItem('loggedInUser'); window.location.href='login.html'"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+    </div>
+  </aside>
+
+  <!-- ── MAIN CONTENT ── -->
+  <main class="dashboard-main">
+    <!-- Topbar -->
+    <div class="dashboard-topbar">
+      <div class="topbar-left">
+        <button class="dash-sidebar-toggle" id="sidebarToggle" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="topbar-title-wrap">
+          <div class="topbar-title" id="pageTitle">Dashboard</div>
+          <div class="topbar-sub" id="pageSubTitle">Digital Governance Portal · ID: CIT-2026-78542</div>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <div class="profile-container">
+          <button class="profile-trigger" id="profileTrigger" aria-label="User profile">
+            <div class="avatar-initial" id="profileAvatarInitial">R</div>
+          </button>
+          <div class="profile-dropdown" id="profileDropdown">
+            <div class="dropdown-header">
+              <div class="dropdown-avatar-initial" id="dropdownAvatarInitial">R</div>
+              <div class="dropdown-user-details">
+                <div class="dropdown-fullname" id="dropdownFullName">Rahul Sharma</div>
+                <div class="dropdown-email" id="dropdownEmail">rahul.sharma@example.com</div>
+                <span class="role-badge citizen">Citizen</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dashboard-content">
+      <!-- ── 1. DASHBOARD VIEW ── -->
+      <div class="dashboard-view active" id="view-dashboard">
+        <!-- 1. Welcome Banner -->
+      <div class="dash-welcome-banner">
+        <div class="banner-overlay"></div>
+        <div class="banner-text">
+          <h2>Welcome back, <span>Rahul Sharma</span></h2>
+          <p>Your digital identity is secure. You have 3 active applications requiring track updates and 2 pending approval actions.</p>
+          <div class="banner-meta">
+            <span class="meta-item"><i class="fa-solid fa-calendar-days"></i> <span id="currentDate">Friday, July 31, 2026</span></span>
+            <span class="meta-item"><i class="fa-solid fa-shield-halved"></i> Verified Level 2 (Aadhaar Linked)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Quick Action Cards -->
+      <div class="quick-actions-grid">
+        <a href="404.html" class="action-card">
+          <div class="action-card-icon red"><i class="fa-solid fa-file-invoice"></i></div>
+          <div class="action-card-text">
+            <h4>Apply Service</h4>
+            <p>Access certificates, tax portals, and licenses</p>
+          </div>
+        </a>
+        <a href="404.html" class="action-card">
+          <div class="action-card-icon orange"><i class="fa-solid fa-file-arrow-down"></i></div>
+          <div class="action-card-text">
+            <h4>Download Certificate</h4>
+            <p>Fetch approved certificates directly to device</p>
+          </div>
+        </a>
+        <a href="404.html" class="action-card">
+          <div class="action-card-icon gold"><i class="fa-solid fa-magnifying-glass-location"></i></div>
+          <div class="action-card-text">
+            <h4>Track Application</h4>
+            <p>Follow status milestones and process stages</p>
+          </div>
+        </a>
+        <a href="404.html" class="action-card">
+          <div class="action-card-icon dark-red"><i class="fa-solid fa-credit-card"></i></div>
+          <div class="action-card-text">
+            <h4>Pay Bills</h4>
+            <p>Pay utilities, property taxes, and processing fees</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- 3. Statistics Cards -->
+      <div class="dash-stats-grid">
+        <div class="dash-stat-card glass-card">
+          <div class="dash-stat-header">
+            <div class="dash-stat-icon primary"><i class="fa-solid fa-folder-open"></i></div>
+            <span class="status-badge status-processing">Active</span>
+          </div>
+          <div class="dash-stat-value">12</div>
+          <div class="dash-stat-label">Total Applications</div>
+        </div>
+        <div class="dash-stat-card glass-card">
+          <div class="dash-stat-header">
+            <div class="dash-stat-icon success"><i class="fa-solid fa-circle-check"></i></div>
+            <span class="status-badge status-approved">Approved</span>
+          </div>
+          <div class="dash-stat-value">7</div>
+          <div class="dash-stat-label">Approved Services</div>
+        </div>
+        <div class="dash-stat-card glass-card">
+          <div class="dash-stat-header">
+            <div class="dash-stat-icon warning"><i class="fa-solid fa-hourglass-half"></i></div>
+            <span class="status-badge status-pending">Pending</span>
+          </div>
+          <div class="dash-stat-value">3</div>
+          <div class="dash-stat-label">Pending Verification</div>
+        </div>
+        <div class="dash-stat-card glass-card">
+          <div class="dash-stat-header">
+            <div class="dash-stat-icon danger"><i class="fa-solid fa-circle-xmark"></i></div>
+            <span class="status-badge status-rejected">Rejected</span>
+          </div>
+          <div class="dash-stat-value">2</div>
+          <div class="dash-stat-label">Rejected Requests</div>
+        </div>
+      </div>
+
+      <!-- 4. Charts Grid (Pie Chart + Bar Chart) -->
+      <div class="dash-charts-grid">
+        <div class="dash-card chart-container">
+          <div class="dash-card-header">
+            <span class="dash-card-title">Application Status Distribution</span>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="pieChart"></canvas>
+          </div>
+        </div>
+        <div class="dash-card chart-container">
+          <div class="dash-card-header">
+            <span class="dash-card-title">Monthly Applications Trend (2026)</span>
+          </div>
+          <div class="chart-wrapper">
+            <canvas id="barChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Recent Applications Table -->
+      <div class="dash-card table-card">
+        <div class="dash-card-header">
+          <span class="dash-card-title">Recent Applications</span>
+          <a href="404.html" class="btn btn-outline btn-sm">View All</a>
+        </div>
+        <div class="table-responsive">
+          <table class="dash-table">
+            <thead>
+              <tr>
+                <th>Service Name</th>
+                <th>Application ID</th>
+                <th>Department</th>
+                <th>Submission Date</th>
+                <th>Status</th>
+                <th>Completion Progress</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Birth Certificate</strong><br><small>Self · Delhi Region</small></td>
+                <td class="id-cell">APP-2026-041</td>
+                <td>Municipal Administration</td>
+                <td>Jul 28, 2026</td>
+                <td><span class="status-badge status-approved"><span class="status-dot"></span>Approved</span></td>
+                <td>
+                  <div class="progress-container">
+                    <span class="progress-val">100%</span>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 100%; background: #27ae60;"></div></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Property Registration</strong><br><small>Flat 4B, Saket</small></td>
+                <td class="id-cell">APP-2026-059</td>
+                <td>Revenue Department</td>
+                <td>Jul 22, 2026</td>
+                <td><span class="status-badge status-processing"><span class="status-dot"></span>Processing</span></td>
+                <td>
+                  <div class="progress-container">
+                    <span class="progress-val">65%</span>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 65%; background: var(--clr-primary);"></div></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Trade License</strong><br><small>Sharma Electronics</small></td>
+                <td class="id-cell">APP-2026-088</td>
+                <td>Urban Development</td>
+                <td>Jul 18, 2026</td>
+                <td><span class="status-badge status-pending"><span class="status-dot"></span>Pending</span></td>
+                <td>
+                  <div class="progress-container">
+                    <span class="progress-val">25%</span>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 25%; background: #f39c12;"></div></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Income Certificate</strong><br><small>Annual Renewal</small></td>
+                <td class="id-cell">APP-2026-092</td>
+                <td>Revenue Department</td>
+                <td>Jul 10, 2026</td>
+                <td><span class="status-badge status-approved"><span class="status-dot"></span>Approved</span></td>
+                <td>
+                  <div class="progress-container">
+                    <span class="progress-val">100%</span>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 100%; background: #27ae60;"></div></div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Health Card</strong><br><small>Ayushman Enrollment</small></td>
+                <td class="id-cell">APP-2026-112</td>
+                <td>Health & Family Welfare</td>
+                <td>Jul 05, 2026</td>
+                <td><span class="status-badge status-rejected"><span class="status-dot"></span>Rejected</span></td>
+                <td>
+                  <div class="progress-container">
+                    <span class="progress-val">10%</span>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 10%; background: #c0392b;"></div></div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- 6. Interactive Government Office Map & Latest Notifications -->
+      <div class="dash-grid-secondary">
+        <!-- Interactive Government Office Map -->
+        <div class="dash-card map-card">
+          <div class="dash-card-header">
+            <span class="dash-card-title"><i class="fa-solid fa-map-location-dot"></i> Interactive Office Directory</span>
+          </div>
+          <div class="map-container-wrapper">
+            <!-- SVG Map visual of administrative zones with clickable pins -->
+            <svg class="interactive-svg-map" viewBox="0 0 500 300">
+              <rect width="500" height="300" rx="12" fill="var(--bg-soft)" />
+              <path d="M50 150 C 100 80, 200 120, 250 80 C 300 40, 400 100, 450 150 C 400 200, 300 180, 250 220 C 200 260, 100 220, 50 150 Z" fill="none" stroke="rgba(192, 57, 43, 0.15)" stroke-width="3" stroke-dasharray="6,4" />
+              
+              <!-- Administrative Regions -->
+              <path d="M80 60 L180 80 L160 160 L60 130 Z" fill="rgba(192, 57, 43, 0.03)" stroke="rgba(192, 57, 43, 0.08)" stroke-width="1.5" />
+              <path d="M180 80 L320 60 L340 180 L160 160 Z" fill="rgba(243, 156, 18, 0.03)" stroke="rgba(243, 156, 18, 0.08)" stroke-width="1.5" />
+              <path d="M320 60 L440 90 L420 220 L340 180 Z" fill="rgba(139, 0, 0, 0.03)" stroke="rgba(139, 0, 0, 0.08)" stroke-width="1.5" />
+              <path d="M160 160 L340 180 L300 270 L120 240 Z" fill="rgba(212, 175, 55, 0.03)" stroke="rgba(212, 175, 55, 0.08)" stroke-width="1.5" />
+
+              <!-- Interactive Pins -->
+              <g class="map-pin" data-name="Central Secretariat" data-address="CGO Complex, New Delhi" data-hours="9:00 AM - 5:30 PM" data-phone="011-2436-XXXX">
+                <circle cx="120" cy="110" r="14" class="pin-pulse" />
+                <circle cx="120" cy="110" r="6" fill="#c0392b" />
+              </g>
+              <g class="map-pin" data-name="Revenue & Passport Office" data-address="Saket District Center, Delhi" data-hours="9:30 AM - 4:00 PM" data-phone="011-2651-XXXX">
+                <circle cx="280" cy="120" r="14" class="pin-pulse" />
+                <circle cx="280" cy="120" r="6" fill="#f39c12" />
+              </g>
+              <g class="map-pin" data-name="Municipal Center" data-address="Rajpur Road, Civil Lines, Delhi" data-hours="10:00 AM - 5:00 PM" data-phone="011-2391-XXXX">
+                <circle cx="380" cy="160" r="14" class="pin-pulse" />
+                <circle cx="380" cy="160" r="6" fill="#8b0000" />
+              </g>
+              <g class="map-pin" data-name="District Facilitation Center" data-address="Dwarka Sector 10, New Delhi" data-hours="9:00 AM - 6:00 PM" data-phone="011-2808-XXXX">
+                <circle cx="210" cy="200" r="14" class="pin-pulse" />
+                <circle cx="210" cy="200" r="6" fill="#d4af37" />
+              </g>
+            </svg>
+            <div id="mapTooltip" class="map-tooltip">
+              <h5 id="tooltipName">Click a pin to view details</h5>
+              <p id="tooltipAddress"></p>
+              <div id="tooltipMeta"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Latest Notifications -->
+        <div class="dash-card notif-card">
+          <div class="dash-card-header">
+            <span class="dash-card-title"><i class="fa-solid fa-bell"></i> Latest Notifications</span>
+            <span class="badge" style="background: var(--clr-primary); color: #fff;">4 New</span>
+          </div>
+          <div class="notif-feed">
+            <div class="notif-feed-item status-approved">
+              <div class="feed-item-icon"><i class="fa-solid fa-circle-check"></i></div>
+              <div class="feed-item-content">
+                <h5>Birth Certificate Approved</h5>
+                <p>Your digital certificate has been issued and linked to your DigiLocker.</p>
+                <small>2 hours ago · System Notification</small>
+              </div>
+            </div>
+            <div class="notif-feed-item status-pending">
+              <div class="feed-item-icon"><i class="fa-solid fa-circle-exclamation"></i></div>
+              <div class="feed-item-content">
+                <h5>Documents Required</h5>
+                <p>Additional verification document required for Trade License application.</p>
+                <small>Yesterday · Verification Bureau</small>
+              </div>
+            </div>
+            <div class="notif-feed-item status-processing">
+              <div class="feed-item-icon"><i class="fa-solid fa-arrows-spin"></i></div>
+              <div class="feed-item-content">
+                <h5>Inspector Scheduled</h5>
+                <p>Site inspection scheduled for Property Registration on August 2, 2026.</p>
+                <small>Jul 28, 2026 · Revenue Dept</small>
+              </div>
+            </div>
+            <div class="notif-feed-item status-info">
+              <div class="feed-item-icon"><i class="fa-solid fa-gift"></i></div>
+              <div class="feed-item-content">
+                <h5>Benefit Disbursed</h5>
+                <p>₹75,000 National Merit Scholarship funds disbursed to your bank account.</p>
+                <small>Jul 25, 2026 · Education Board</small>
+              </div>
+            </div>
+          </div>
+        </div>
+          </div>
+        </div>
+      </div> <!-- Closes view-dashboard -->
+
+      <!-- ── 2. MY APPLICATIONS VIEW ── -->
+      <div class="dashboard-view" id="view-applications">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+          <h2 style="font-family: var(--font-heading); font-size: var(--fs-xl); font-weight: 800; margin-bottom: 0.25rem;">My Applications</h2>
+          <p style="font-size: var(--fs-xs); color: var(--txt-muted);">Track your filed requests, check status updates, and download certificates.</p>
+        </div>
+
+        <div class="controls-row" style="justify-content: center; margin-bottom: 1.5rem;">
+          <div class="search-wrapper" style="max-width: 500px; width: 100%;">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchAppsInput" placeholder="Search applications..." onkeyup="filterApplications()" />
+          </div>
+        </div>
+
+        <div class="filter-tabs">
+          <button class="filter-tab-btn active" onclick="filterAppStatus('all', this)">All (7)</button>
+          <button class="filter-tab-btn" onclick="filterAppStatus('approved', this)">Approved (4)</button>
+          <button class="filter-tab-btn" onclick="filterAppStatus('processing', this)">Processing (1)</button>
+          <button class="filter-tab-btn" onclick="filterAppStatus('pending', this)">Pending (1)</button>
+          <button class="filter-tab-btn" onclick="filterAppStatus('rejected', this)">Rejected (1)</button>
+        </div>
+
+        <div class="dash-grid-secondary" style="margin-top: 1rem; align-items: start;">
+          <!-- Left Column: Applications Table -->
+          <div class="dash-card table-card" style="margin: 0; width: 100%;">
+            <div class="table-responsive">
+              <table class="dash-table" id="allAppsTable">
+                <thead>
+                  <tr>
+                    <th>Service Name</th>
+                    <th>Application ID</th>
+                    <th>Department</th>
+                    <th>Submission Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr data-status="approved">
+                    <td><strong>Birth Certificate</strong><br><small>Self · Delhi Region</small></td>
+                    <td class="id-cell">APP-2026-041</td>
+                    <td>Municipal Administration</td>
+                    <td>Jul 28, 2026</td>
+                    <td><span class="status-badge status-approved"><span class="status-dot"></span>Approved</span></td>
+                    <td>
+                      <div style="display:flex; gap:0.4rem;">
+                        <button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'"><i class="fa-solid fa-location-crosshairs"></i> Track</button>
+                        <button class="btn btn-outline btn-sm" style="padding: 0.35rem 0.5rem;" onclick="window.location.href='404.html'"><i class="fa-solid fa-download"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-status="processing">
+                    <td><strong>Property Registration</strong><br><small>Flat 4B, Saket</small></td>
+                    <td class="id-cell">APP-2026-059</td>
+                    <td>Revenue Department</td>
+                    <td>Jul 22, 2026</td>
+                    <td><span class="status-badge status-processing"><span class="status-dot"></span>Processing</span></td>
+                    <td>
+                      <button class="btn btn-primary btn-sm" style="width:100%; text-align:center;" onclick="window.location.href='404.html'"><i class="fa-solid fa-location-crosshairs"></i> Track</button>
+                    </td>
+                  </tr>
+                  <tr data-status="pending">
+                    <td><strong>Trade License</strong><br><small>Sharma Electronics</small></td>
+                    <td class="id-cell">APP-2026-088</td>
+                    <td>Urban Development</td>
+                    <td>Jul 18, 2026</td>
+                    <td><span class="status-badge status-pending"><span class="status-dot"></span>Pending</span></td>
+                    <td>
+                      <div style="display:flex; gap:0.4rem;">
+                        <button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'"><i class="fa-solid fa-location-crosshairs"></i> Track</button>
+                        <button class="btn btn-outline btn-sm" style="padding: 0.35rem 0.5rem;" onclick="window.location.href='404.html'"><i class="fa-solid fa-upload"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-status="approved">
+                    <td><strong>Income Certificate</strong><br><small>Annual Renewal</small></td>
+                    <td class="id-cell">APP-2026-092</td>
+                    <td>Revenue Department</td>
+                    <td>Jul 10, 2026</td>
+                    <td><span class="status-badge status-approved"><span class="status-dot"></span>Approved</span></td>
+                    <td>
+                      <div style="display:flex; gap:0.4rem;">
+                        <button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'"><i class="fa-solid fa-location-crosshairs"></i> Track</button>
+                        <button class="btn btn-outline btn-sm" style="padding: 0.35rem 0.5rem;" onclick="window.location.href='404.html'"><i class="fa-solid fa-download"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-status="rejected">
+                    <td><strong>Health Card</strong><br><small>Ayushman Enrollment</small></td>
+                    <td class="id-cell">APP-2026-112</td>
+                    <td>Health & Family Welfare</td>
+                    <td>Jul 05, 2026</td>
+                    <td><span class="status-badge status-rejected"><span class="status-dot"></span>Rejected</span></td>
+                    <td>
+                      <div style="display:flex; gap:0.4rem;">
+                        <button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'"><i class="fa-solid fa-location-crosshairs"></i> Track</button>
+                        <button class="btn btn-outline btn-sm" style="padding: 0.35rem 0.5rem;" onclick="window.location.href='404.html'"><i class="fa-solid fa-circle-info"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-status="approved">
+                    <td><strong>Driving License</strong><br><small>LVM renewal</small></td>
+                    <td class="id-cell">APP-2026-003</td>
+                    <td>Transport Department</td>
+                    <td>Jun 12, 2026</td>
+                    <td><span class="status-badge status-approved"><span class="status-dot"></span>Approved</span></td>
+                    <td>
+                      <div style="display:flex; gap:0.4rem;">
+                        <button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'"><i class="fa-solid fa-location-crosshairs"></i> Track</button>
+                        <button class="btn btn-outline btn-sm" style="padding: 0.35rem 0.5rem;" onclick="window.location.href='404.html'"><i class="fa-solid fa-download"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr data-status="approved">
+                    <td><strong>Senior Citizen Pension</strong><br><small>Mother's enrollment</small></td>
+                    <td class="id-cell">APP-2026-015</td>
+                    <td>Social Welfare Bureau</td>
+                    <td>Jun 25, 2026</td>
+                    <td><span class="status-badge status-approved"><span class="status-dot"></span>Approved</span></td>
+                    <td>
+                      <div style="display:flex; gap:0.4rem;">
+                        <button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'"><i class="fa-solid fa-location-crosshairs"></i> Track</button>
+                        <button class="btn btn-outline btn-sm" style="padding: 0.35rem 0.5rem;" onclick="window.location.href='404.html'"><i class="fa-solid fa-download"></i></button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div id="noAppsState" class="empty-state" style="display: none;">
+                <i class="fa-solid fa-folder-open"></i>
+                <h4>No Applications Found</h4>
+                <p>Try resetting the search terms or filters.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Live Tracker Panel -->
+          <div style="display: flex; flex-direction: column; gap: 1.5rem; width: 100%;">
+            <div class="dash-card" style="padding: 1.5rem; margin: 0; min-height: 330px; display: flex; flex-direction: column;">
+              <h3 id="trackerHeaderTitle" style="font-family: var(--font-heading); font-size: var(--fs-base); font-weight: 800; margin-bottom: 1.25rem; border-bottom: 1px solid var(--border-light); padding-bottom: 0.5rem; color: var(--txt-heading);"><i class="fa-solid fa-location-crosshairs" style="color:var(--clr-primary);"></i> Application Tracker</h3>
+              
+              <div id="trackerEmptyState" style="text-align: center; padding: 2.5rem 1rem; color: var(--txt-muted); flex-grow: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <i class="fa-solid fa-compass" style="font-size: 2rem; margin-bottom: 0.75rem; color: var(--clr-primary); opacity: 0.85;"></i>
+                <p style="font-size: var(--fs-xs); line-height: 1.6; max-width: 220px; margin: 0;">Click the <strong>Track</strong> button on any application to view its live status timeline here.</p>
+              </div>
+
+              <div id="trackerTimeline" style="display: none; position: relative; padding-left: 2rem; margin-top: 0.5rem; flex-grow: 1;">
+                <div style="position: absolute; left: 7px; top: 5px; bottom: 5px; width: 2px; background: var(--border-light);"></div>
+                
+                <!-- Step 1 -->
+                <div class="timeline-step" style="margin-bottom: 1.5rem; position: relative;">
+                  <div style="position: absolute; left: -25px; top: 2px; width: 12px; height: 12px; border-radius: 50%; background: #27ae60; border: 3px solid var(--bg-white);"></div>
+                  <strong style="font-size: var(--fs-xs); display: block; color: var(--txt-heading);">Application Submitted</strong>
+                  <span style="font-size: .65rem; color: var(--txt-muted); display: block; margin-top: 0.1rem;" id="trackStep1Date">Jul 28, 2026</span>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="timeline-step" style="margin-bottom: 1.5rem; position: relative;">
+                  <div style="position: absolute; left: -25px; top: 2px; width: 12px; height: 12px; border-radius: 50%; background: var(--border-medium); border: 3px solid var(--bg-white);" id="trackStep2Dot"></div>
+                  <strong style="font-size: var(--fs-xs); display: block; color: var(--txt-heading);">Document Verification</strong>
+                  <span style="font-size: .65rem; color: var(--txt-muted); display: block; margin-top: 0.1rem;" id="trackStep2Desc">Awaiting verification in queue.</span>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="timeline-step" style="margin-bottom: 1.5rem; position: relative;">
+                  <div style="position: absolute; left: -25px; top: 2px; width: 12px; height: 12px; border-radius: 50%; background: var(--border-medium); border: 3px solid var(--bg-white);" id="trackStep3Dot"></div>
+                  <strong style="font-size: var(--fs-xs); display: block; color: var(--txt-heading);">Department Approval</strong>
+                  <span style="font-size: .65rem; color: var(--txt-muted); display: block; margin-top: 0.1rem;" id="trackStep3Desc">Awaiting officer assignment.</span>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="timeline-step" style="position: relative;">
+                  <div style="position: absolute; left: -25px; top: 2px; width: 12px; height: 12px; border-radius: 50%; background: var(--border-medium); border: 3px solid var(--bg-white);" id="trackStep4Dot"></div>
+                  <strong style="font-size: var(--fs-xs); display: block; color: var(--txt-heading);">Certificate Issued</strong>
+                  <span style="font-size: .65rem; color: var(--txt-muted); display: block; margin-top: 0.1rem;" id="trackStep4Desc">Pending final stamp seal.</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Help Desk Card -->
+            <div class="dash-card" style="padding: 1.5rem; margin: 0; background: linear-gradient(135deg, rgba(192, 57, 43, 0.02) 0%, rgba(243, 156, 18, 0.02) 100%);">
+              <h3 style="font-family: var(--font-heading); font-size: var(--fs-base); font-weight: 800; margin-bottom: 0.75rem; color: var(--txt-heading);"><i class="fa-solid fa-circle-question" style="color:var(--clr-primary);"></i> Need Assistance?</h3>
+              <p style="font-size: var(--fs-xs); color: var(--txt-body); line-height: 1.6; margin-bottom: 1.25rem; margin-top: 0;">If you encounter issues or rejection with your application credentials, please raise a support ticket or speak to our live representative.</p>
+              <div style="display:flex; flex-direction:column; gap:0.5rem;">
+                <button onclick="window.location.href='404.html'" class="btn btn-primary btn-sm" style="width: 100%; text-align: center;"><i class="fa-solid fa-ticket"></i> Raise Support Ticket</button>
+                <button onclick="window.location.href='404.html'" class="btn btn-outline btn-sm" style="width: 100%; text-align: center;"><i class="fa-solid fa-headset"></i> Live Chat Support</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── 3. GOVERNMENT SERVICES VIEW ── -->
+      <div class="dashboard-view" id="view-services">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+          <h2 style="font-family: var(--font-heading); font-size: var(--fs-xl); font-weight: 800; margin-bottom: 0.25rem;">Government Services</h2>
+          <p style="font-size: var(--fs-xs); color: var(--txt-muted);">Apply online for certifications, licenses, utility updates, and permits.</p>
+        </div>
+
+        <div class="controls-row" style="justify-content: center; margin-bottom: 1.5rem;">
+          <div class="search-wrapper" style="max-width: 500px; width: 100%;">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchServicesInput" placeholder="Search services..." onkeyup="filterServices()" />
+          </div>
+        </div>
+
+        <div class="services-category-grid">
+          <div class="category-card">
+            <div class="category-card-header">
+              <div class="category-icon blue"><i class="fa-solid fa-id-card"></i></div>
+              <h3>Certificates & ID</h3>
+            </div>
+            <div class="services-list">
+              <a href="404.html" class="service-item-link"><span>Birth Certificate</span> <i class="fa-solid fa-chevron-right"></i></a>
+              <a href="404.html" class="service-item-link"><span>Income Certificate</span> <i class="fa-solid fa-chevron-right"></i></a>
+              <a href="404.html" class="service-item-link"><span>Caste Certificate</span> <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+          </div>
+
+          <div class="category-card">
+            <div class="category-card-header">
+              <div class="category-icon green"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+              <h3>Land & Revenue</h3>
+            </div>
+            <div class="services-list">
+              <a href="404.html" class="service-item-link"><span>Land Record Search</span> <i class="fa-solid fa-chevron-right"></i></a>
+              <a href="404.html" class="service-item-link"><span>Property Title Deed</span> <i class="fa-solid fa-chevron-right"></i></a>
+              <a href="404.html" class="service-item-link"><span>E-Stamp Verification</span> <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+          </div>
+
+          <div class="category-card">
+            <div class="category-card-header">
+              <div class="category-icon purple"><i class="fa-solid fa-car"></i></div>
+              <h3>Transport Bureau</h3>
+            </div>
+            <div class="services-list">
+              <a href="404.html" class="service-item-link"><span>Driving License Apply</span> <i class="fa-solid fa-chevron-right"></i></a>
+              <a href="404.html" class="service-item-link"><span>Vehicle Registration</span> <i class="fa-solid fa-chevron-right"></i></a>
+              <a href="404.html" class="service-item-link"><span>Road Tax Payment</span> <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+          </div>
+
+          <div class="category-card">
+            <div class="category-card-header">
+              <div class="category-icon orange"><i class="fa-solid fa-user-graduate"></i></div>
+              <h3>Welfare & Education</h3>
+            </div>
+            <div class="services-list">
+              <a href="404.html" class="service-item-link"><span>Student Scholarships</span> <i class="fa-solid fa-chevron-right"></i></a>
+              <a href="404.html" class="service-item-link"><span>Health Card Enrollment</span> <i class="fa-solid fa-chevron-right"></i></a>
+              <a href="404.html" class="service-item-link"><span>Old Age Pension Apply</span> <i class="fa-solid fa-chevron-right"></i></a>
+            </div>
+          </div>
+        </div>
+        
+        <div id="noServicesState" class="empty-state" style="display: none;">
+          <i class="fa-solid fa-circle-question"></i>
+          <h4>No Services Match Your Search</h4>
+          <p>Try searching for core terms like "birth", "land", "license", or "pension".</p>
+        </div>
+      </div>
+
+      <!-- ── 4. SCHEMES & BENEFITS VIEW ── -->
+      <div class="dashboard-view" id="view-schemes">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+          <h2 style="font-family: var(--font-heading); font-size: var(--fs-xl); font-weight: 800; margin-bottom: 0.25rem;">Schemes & Benefits</h2>
+          <p style="font-size: var(--fs-xs); color: var(--txt-muted);">Check your eligibility and register for direct benefit transfer (DBT) programs.</p>
+        </div>
+
+        <div class="dash-stats-grid" style="margin-bottom: 1.5rem;">
+          <div class="dash-stat-card glass-card">
+            <div class="dash-stat-header">
+              <div class="dash-stat-icon success"><i class="fa-solid fa-indian-rupee-sign"></i></div>
+            </div>
+            <div class="dash-stat-value">₹75,000</div>
+            <div class="dash-stat-label">Total Cash Disbursed</div>
+          </div>
+          <div class="dash-stat-card glass-card">
+            <div class="dash-stat-header">
+              <div class="dash-stat-icon primary"><i class="fa-solid fa-heart-circle-check"></i></div>
+            </div>
+            <div class="dash-stat-value">2 Active</div>
+            <div class="dash-stat-label">Subsidies Enrolled</div>
+          </div>
+        </div>
+
+        <div class="dash-grid-main">
+          <!-- Schemes List -->
+          <div class="schemes-list-container">
+            <div class="scheme-card" data-eligibility="eligible">
+              <div class="scheme-info">
+                <h3 class="scheme-title">National Merit Scholarship Scheme</h3>
+                <p class="scheme-description">Financial assistance of ₹75,000 for verified Aadhaar-linked citizen students with family income under 4.5L.</p>
+                <div class="scheme-tags">
+                  <span class="scheme-tag highlight"><i class="fa-solid fa-circle-check"></i> Eligible</span>
+                  <span class="scheme-tag">Education</span>
+                  <span class="scheme-tag">Annual</span>
+                </div>
+              </div>
+              <button class="btn btn-primary btn-sm" onclick="window.location.href='404.html'">Apply Now</button>
+            </div>
+
+            <div class="scheme-card" data-eligibility="enrolled">
+              <div class="scheme-info">
+                <h3 class="scheme-title">Pradhan Mantri Solar Roof Subsidy</h3>
+                <p class="scheme-description">Get up to 40% government subsidy on solar panel installation in domestic residential buildings.</p>
+                <div class="scheme-tags">
+                  <span class="scheme-tag" style="background:rgba(52, 152, 219, 0.08); color:#3498db;"><i class="fa-solid fa-spinner fa-spin"></i> Enrolled (Under Review)</span>
+                  <span class="scheme-tag">Green Energy</span>
+                  <span class="scheme-tag">Urban</span>
+                </div>
+              </div>
+              <button class="btn btn-outline btn-sm" onclick="window.location.href='404.html'">Under Review</button>
+            </div>
+
+            <div class="scheme-card" data-eligibility="ineligible" style="opacity: 0.8;">
+              <div class="scheme-info">
+                <h3 class="scheme-title">Senior Citizen Welfare Pension</h3>
+                <p class="scheme-description">Monthly pension stipend of ₹2,500 for senior citizens above the age of 60 years residing in state borders.</p>
+                <div class="scheme-tags">
+                  <span class="scheme-tag" style="background:rgba(231, 76, 60, 0.08); color:#e74c3c;"><i class="fa-solid fa-circle-xmark"></i> Ineligible (Age Criteria)</span>
+                  <span class="scheme-tag">Pension</span>
+                  <span class="scheme-tag">Monthly</span>
+                </div>
+              </div>
+              <button class="btn btn-outline btn-sm" onclick="window.location.href='404.html'">Apply Locked</button>
+            </div>
+          </div>
+
+          <!-- Eligibility Calculator -->
+          <div class="calc-card">
+            <h3 style="font-family:var(--font-heading); font-size:var(--fs-base); font-weight:800; margin-bottom:1rem; border-bottom: 1px solid var(--border-light); padding-bottom: 0.5rem;"><i class="fa-solid fa-calculator" style="color:var(--clr-primary);"></i> Eligibility Checker</h3>
+            <form id="eligibilityForm" onsubmit="return false;">
+              <div class="calc-grid" style="grid-template-columns: 1fr; gap: 1rem;">
+                <div class="form-group-custom">
+                  <label for="calcAge">Age (Years)</label>
+                  <input type="number" id="calcAge" placeholder="Enter age (e.g. 24)" required />
+                </div>
+                <div class="form-group-custom">
+                  <label for="calcIncome">Annual Household Income (₹)</label>
+                  <input type="number" id="calcIncome" placeholder="e.g. 350000" required />
+                </div>
+                <div class="form-group-custom">
+                  <label for="calcStudent">Are you currently a student?</label>
+                  <select id="calcStudent">
+                    <option value="yes">Yes, Student</option>
+                    <option value="no">No</option>
+                  </select>
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary btn-sm" style="width:100%; margin-top:0.5rem;" onclick="document.getElementById('eligibilityForm').reportValidity() && (window.location.href='404.html')"><i class="fa-solid fa-magnifying-glass"></i> Check Eligibility</button>
+            </form>
+            <div id="calcResults" style="display:none; margin-top:1.25rem; padding:1rem; border-radius:var(--radius-md); background:var(--bg-soft); font-size:var(--fs-xs); line-height:1.5;">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Set Current Date dynamically
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const currentDateEl = document.getElementById('currentDate');
+  if (currentDateEl) {
+    currentDateEl.textContent = new Date().toLocaleDateString('en-US', options);
+  }
+
+  // Animations on Load (Only animate sidebar on desktop to preserve mobile drawer CSS)
+  if (window.innerWidth > 992) {
+    gsap.from('.dash-sidebar', { x: -280, duration: 0.8, ease: 'power3.out' });
+  }
+  gsap.from('.dashboard-topbar', { opacity: 0, duration: 0.8, ease: 'power3.out', delay: 0.1 });
+  gsap.from('.dash-welcome-banner', { opacity: 0, scale: 0.95, duration: 0.8, ease: 'power3.out', delay: 0.2 });
+
+  // ── Mobile Sidebar Drawer Toggle ──
+  const sidebarToggle = document.getElementById('sidebarToggle');
+  const dashSidebar = document.getElementById('dashSidebar');
+  const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+  function closeMobileSidebar() {
+    if (dashSidebar) dashSidebar.classList.remove('mobile-open');
+    if (sidebarOverlay) sidebarOverlay.classList.remove('active');
+  }
+
+  const sidebarCloseBtn = document.getElementById('sidebarCloseBtn');
+
+  if (sidebarToggle) {
+    sidebarToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (dashSidebar) dashSidebar.classList.toggle('mobile-open');
+      if (sidebarOverlay) sidebarOverlay.classList.toggle('active');
+    });
+  }
+
+  if (sidebarCloseBtn) {
+    sidebarCloseBtn.addEventListener('click', closeMobileSidebar);
+  }
+
+  if (sidebarOverlay) {
+    sidebarOverlay.addEventListener('click', closeMobileSidebar);
+  }
+
+  // ── Profile Dropdown and Initial Logic ──
+  const loggedInUser = localStorage.getItem('loggedInUser') || 'Rahul Sharma';
+  let displayName = loggedInUser;
+  let displayEmail = loggedInUser;
+  
+  if (loggedInUser.includes('@')) {
+    displayName = loggedInUser.split('@')[0];
+  } else {
+    displayEmail = loggedInUser + '@example.com';
+  }
+
+  // Capitalize name
+  displayName = displayName.split(/[._-]/).map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+
+  // Update DOM elements
+  const dropdownFullNameEl = document.getElementById('dropdownFullName');
+  if (dropdownFullNameEl) dropdownFullNameEl.textContent = displayName;
+
+  const dropdownEmailEl = document.getElementById('dropdownEmail');
+  if (dropdownEmailEl) dropdownEmailEl.textContent = displayEmail;
+
+  const welcomeNameSpan = document.querySelector('.dash-welcome-banner h2 span');
+  if (welcomeNameSpan) welcomeNameSpan.textContent = displayName;
+
+  const initial = displayName.trim().charAt(0).toUpperCase();
+  const profileAvatarEl = document.getElementById('profileAvatarInitial');
+  if (profileAvatarEl) profileAvatarEl.textContent = initial;
+  const dropdownAvatarEl = document.getElementById('dropdownAvatarInitial');
+  if (dropdownAvatarEl) dropdownAvatarEl.textContent = initial;
+
+  const profileTrigger = document.getElementById('profileTrigger');
+  const profileDropdown = document.getElementById('profileDropdown');
+  const profileContainer = document.querySelector('.profile-container');
+
+  if (profileTrigger && profileDropdown) {
+    profileTrigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      profileDropdown.classList.toggle('show');
+      if (profileContainer) profileContainer.classList.toggle('active');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (profileContainer && !profileContainer.contains(e.target)) {
+        profileDropdown.classList.remove('show');
+        profileContainer.classList.remove('active');
+      }
+    });
+  }
+
+  // ── View Switching & Dynamic Page Title Logic ──
+  const sidebarLinks = document.querySelectorAll('.sidebar-link');
+  const pageTitle = document.getElementById('pageTitle');
+  const views = document.querySelectorAll('.dashboard-view');
+
+  window.switchView = function(targetId) {
+    views.forEach(view => {
+      view.classList.remove('active');
+    });
+    const targetView = document.getElementById(`view-${targetId}`);
+    if (targetView) {
+      targetView.classList.add('active');
+      gsap.fromTo(targetView, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' });
+    }
+
+    // Update active sidebar item and get title text dynamically
+    let activeTitle = '';
+    sidebarLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('data-target') === targetId) {
+        link.classList.add('active');
+        const clone = link.cloneNode(true);
+        const badge = clone.querySelector('.badge');
+        if (badge) badge.remove();
+        activeTitle = clone.textContent.trim();
+      }
+    });
+
+    // Dynamically update Header Page Title
+    if (pageTitle && activeTitle) {
+      pageTitle.textContent = activeTitle;
+    }
+
+    // Close mobile sidebar drawer after selection
+    closeMobileSidebar();
+  };
+
+  sidebarLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      const target = link.getAttribute('data-target');
+      if (target) {
+        e.preventDefault();
+        window.switchView(target);
+      }
+    });
+  });
+
+  // ── Chart.js Configurations ──
+  const ctxPie = document.getElementById('pieChart').getContext('2d');
+  new Chart(ctxPie, {
+    type: 'pie',
+    data: {
+      labels: ['Approved', 'Processing', 'Pending', 'Rejected'],
+      datasets: [{
+        data: [7, 3, 1, 1],
+        backgroundColor: [
+          '#27ae60', // Approved green
+          '#c0392b', // Red (primary)
+          '#f39c12', // Orange (warning)
+          '#d4af37'  // Gold
+        ],
+        borderWidth: 1,
+        borderColor: 'rgba(255, 255, 255, 0.4)'
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          position: 'right',
+          labels: {
+            boxWidth: 12,
+            font: { family: 'Outfit, sans-serif', size: 12 }
+          }
+        }
+      }
+    }
+  });
+
+  const ctxBar = document.getElementById('barChart').getContext('2d');
+  new Chart(ctxBar, {
+    type: 'bar',
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
+      datasets: [{
+        label: 'Applications Filed',
+        data: [2, 4, 3, 5, 8, 10, 12],
+        backgroundColor: 'rgba(192, 57, 43, 0.85)',
+        hoverBackgroundColor: '#8b0000',
+        borderRadius: 6
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        y: {
+          beginAtZero: true,
+          grid: { color: 'rgba(0, 0, 0, 0.05)' }
+        },
+        x: {
+          grid: { display: false }
+        }
+      },
+      plugins: {
+        legend: { display: false }
+      }
+    }
+  });
+
+  // ── SVG Interactive Map Logic ──
+  const pins = document.querySelectorAll('.map-pin');
+  const tooltip = document.getElementById('mapTooltip');
+  const tName = document.getElementById('tooltipName');
+  const tAddress = document.getElementById('tooltipAddress');
+  const tMeta = document.getElementById('tooltipMeta');
+
+  pins.forEach(pin => {
+    pin.addEventListener('click', () => {
+      pins.forEach(p => p.classList.remove('active'));
+      pin.classList.add('active');
+
+      const name = pin.getAttribute('data-name');
+      const address = pin.getAttribute('data-address');
+      const hours = pin.getAttribute('data-hours');
+      const phone = pin.getAttribute('data-phone');
+
+      tName.innerHTML = `<i class="fa-solid fa-building-flag" style="color: var(--clr-primary);"></i> ${name}`;
+      tAddress.textContent = address;
+      tMeta.innerHTML = `
+        <div><i class="fa-solid fa-clock"></i> Hours: ${hours}</div>
+        <div><i class="fa-solid fa-phone"></i> Contact: ${phone}</div>
+      `;
+
+      gsap.fromTo(tooltip, 
+        { opacity: 0, y: 10 },
+        { opacity: 1, y: 0, duration: 0.3 }
+      );
+    });
+  });
+
+  if (pins.length > 0) {
+    pins[0].dispatchEvent(new Event('click'));
+  }
+});
+
+// ── Application Live Tracker Logic ──
+function trackApplication(service, id, status, date) {
+  const emptyState = document.getElementById('trackerEmptyState');
+  const timeline = document.getElementById('trackerTimeline');
+  
+  if (emptyState) emptyState.style.display = 'none';
+  if (timeline) timeline.style.display = 'block';
+
+  // Update dates & titles
+  document.getElementById('trackerHeaderTitle').innerHTML = `<i class="fa-solid fa-location-crosshairs" style="color:var(--clr-primary);"></i> Tracking: ${id}`;
+  document.getElementById('trackStep1Date').textContent = date;
+
+  const dot2 = document.getElementById('trackStep2Dot');
+  const dot3 = document.getElementById('trackStep3Dot');
+  const dot4 = document.getElementById('trackStep4Dot');
+
+  const desc2 = document.getElementById('trackStep2Desc');
+  const desc3 = document.getElementById('trackStep3Desc');
+  const desc4 = document.getElementById('trackStep4Desc');
+
+  // Reset colors & helper styles
+  [dot2, dot3, dot4].forEach(d => {
+    if (d) {
+      d.style.background = 'var(--border-medium)';
+      d.style.boxShadow = 'none';
+    }
+  });
+  
+  if (status === 'approved') {
+    if (dot2) dot2.style.background = '#27ae60';
+    if (dot3) dot3.style.background = '#27ae60';
+    if (dot4) dot4.style.background = '#27ae60';
+    if (desc2) desc2.textContent = 'All documents checked and verified.';
+    if (desc3) desc3.textContent = 'Sign-off complete by Senior Reviewer.';
+    if (desc4) desc4.textContent = 'Certificate successfully generated and linked to DigiLocker.';
+  } else if (status === 'processing') {
+    if (dot2) dot2.style.background = '#27ae60';
+    if (dot3) {
+      dot3.style.background = 'var(--clr-primary)';
+      dot3.style.boxShadow = '0 0 0 4px rgba(192, 57, 43, 0.2)';
+    }
+    if (desc2) desc2.textContent = 'Aadhaar mapping verification complete.';
+    if (desc3) desc3.textContent = 'Awaiting final sign-off from Department Officer.';
+    if (desc4) desc4.textContent = 'Pending digital stamp.';
+  } else if (status === 'pending') {
+    if (dot2) {
+      dot2.style.background = 'var(--clr-primary)';
+      dot2.style.boxShadow = '0 0 0 4px rgba(192, 57, 43, 0.2)';
+    }
+    if (desc2) desc2.textContent = 'Document verification in queue.';
+    if (desc3) desc3.textContent = 'Pending officer review assignment.';
+    if (desc4) desc4.textContent = 'Pending final verification.';
+  } else if (status === 'rejected') {
+    if (dot2) dot2.style.background = '#e74c3c';
+    if (desc2) desc2.textContent = 'Verification failed: Address mismatch.';
+    if (desc3) desc3.textContent = 'Rejected on final desk.';
+    if (desc4) desc4.textContent = 'Registration terminated.';
+  }
+
+  if (timeline) {
+    gsap.fromTo(timeline, { opacity: 0, x: -10 }, { opacity: 1, x: 0, duration: 0.3 });
+  }
+}
+
+// ── Application Filtering Logic ──
+function filterAppStatus(status, btn) {
+  const tabs = document.querySelectorAll('.filter-tab-btn');
+  tabs.forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+
+  const rows = document.querySelectorAll('#allAppsTable tbody tr');
+  let visibleCount = 0;
+
+  rows.forEach(row => {
+    const rowStatus = row.getAttribute('data-status');
+    if (status === 'all' || rowStatus === status) {
+      row.style.display = '';
+      visibleCount++;
+    } else {
+      row.style.display = 'none';
+    }
+  });
+
+  const noAppsState = document.getElementById('noAppsState');
+  if (visibleCount === 0) {
+    noAppsState.style.display = 'flex';
+  } else {
+    noAppsState.style.display = 'none';
+  }
+}
+
+function filterApplications() {
+  const query = document.getElementById('searchAppsInput').value.toLowerCase();
+  const rows = document.querySelectorAll('#allAppsTable tbody tr');
+  let visibleCount = 0;
+
+  rows.forEach(row => {
+    const text = row.innerText.toLowerCase();
+    if (text.includes(query)) {
+      row.style.display = '';
+      visibleCount++;
+    } else {
+      row.style.display = 'none';
+    }
+  });
+
+  const noAppsState = document.getElementById('noAppsState');
+  if (visibleCount === 0) {
+    noAppsState.style.display = 'flex';
+  } else {
+    noAppsState.style.display = 'none';
+  }
+}
+
+// ── Services Search Filter ──
+function filterServices() {
+  const query = document.getElementById('searchServicesInput').value.toLowerCase();
+  const cards = document.querySelectorAll('.services-category-grid .category-card');
+  let matchedCategories = 0;
+
+  cards.forEach(card => {
+    const title = card.querySelector('h3').innerText.toLowerCase();
+    const items = card.querySelectorAll('.services-list a');
+    let matchedItems = 0;
+
+    items.forEach(item => {
+      const itemText = item.innerText.toLowerCase();
+      if (itemText.includes(query)) {
+        item.style.display = '';
+        matchedItems++;
+      } else {
+        item.style.display = 'none';
+      }
+    });
+
+    if (title.includes(query) || matchedItems > 0) {
+      card.style.display = '';
+      matchedCategories++;
+      if (title.includes(query) && matchedItems === 0) {
+        items.forEach(item => item.style.display = '');
+      }
+    } else {
+      card.style.display = 'none';
+    }
+  });
+
+  const noServicesState = document.getElementById('noServicesState');
+  if (matchedCategories === 0) {
+    noServicesState.style.display = 'flex';
+  } else {
+    noServicesState.style.display = 'none';
+  }
+}
+
+// ── Eligibility Calculator ──
+function calculateEligibility(e) {
+  e.preventDefault();
+  const age = parseInt(document.getElementById('calcAge').value);
+  const income = parseInt(document.getElementById('calcIncome').value);
+  const isStudent = document.getElementById('calcStudent').value === 'yes';
+  const results = document.getElementById('calcResults');
+
+  let eligibleSchemes = [];
+
+  if (isStudent && income <= 450000) {
+    eligibleSchemes.push('<strong>National Merit Scholarship Scheme</strong> (Eligible - up to ₹75,000 disbursed)');
+  }
+  if (income <= 800000) {
+    eligibleSchemes.push('<strong>Pradhan Mantri Solar Roof Subsidy</strong> (Eligible - up to 40% subsidy)');
+  }
+  if (age >= 60 && income <= 300000) {
+    eligibleSchemes.push('<strong>Senior Citizen Welfare Pension</strong> (Eligible - ₹2,500 monthly)');
+  }
+
+  results.style.display = 'block';
+  if (eligibleSchemes.length > 0) {
+    results.innerHTML = `
+      <div style="color:#27ae60; font-weight:700; margin-bottom:0.5rem;"><i class="fa-solid fa-circle-check"></i> Eligible Welfare Programs:</div>
+      <ul style="padding-left:1.25rem; margin:0; display:flex; flex-direction:column; gap:0.4rem; color: var(--txt-body);">
+        ${eligibleSchemes.map(s => `<li>${s}</li>`).join('')}
+      </ul>
+    `;
+    gsap.fromTo(results, { opacity: 0, scale: 0.95 }, { opacity: 1, scale: 1, duration: 0.3 });
+  } else {
+    results.innerHTML = `
+      <div style="color:#e74c3c; font-weight:700;"><i class="fa-solid fa-circle-xmark"></i> No schemes found matching criteria.</div>
+      <p style="margin: 0.25rem 0 0; color:var(--txt-muted)">Try adjusting income or age thresholds.</p>
+    `;
+  }
+}
+</script>
+</body>
+</html>

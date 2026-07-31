@@ -1,0 +1,94 @@
+{
+  "services": [
+    {
+      "id": 1,
+      "icon": "fa-id-card",
+      "category": "Identity",
+      "title": "Birth & Death Certificates",
+      "description": "Apply online for birth, death, and marriage certificates. Get certified copies delivered to your doorstep within 5-7 working days.",
+      "features": ["Online Application", "Track Status", "Digital Copy", "Home Delivery"],
+      "link": "services.html",
+      "tag": "Popular"
+    },
+    {
+      "id": 2,
+      "icon": "fa-house",
+      "category": "Property",
+      "title": "Property Registration",
+      "description": "Register your property with ease through our streamlined digital portal. Complete the entire process without visiting offices.",
+      "features": ["Document Upload", "Online Payment", "E-Stamp", "Instant Verification"],
+      "link": "services.html",
+      "tag": "New"
+    },
+    {
+      "id": 3,
+      "icon": "fa-shield-halved",
+      "category": "Licensing",
+      "title": "Trade & Business Licenses",
+      "description": "Obtain trade licenses, shop establishment certificates, and business permits for all commercial activities.",
+      "features": ["Fast Processing", "Renewal Alerts", "Multi-Department", "Digital License"],
+      "link": "services.html",
+      "tag": "Quick"
+    },
+    {
+      "id": 4,
+      "icon": "fa-road",
+      "category": "Infrastructure",
+      "title": "Road & Infrastructure",
+      "description": "Report infrastructure issues, apply for road work permits, and track repair statuses in real-time.",
+      "features": ["Issue Reporting", "GPS Mapping", "Real-time Track", "Photo Upload"],
+      "link": "services.html",
+      "tag": null
+    },
+    {
+      "id": 5,
+      "icon": "fa-graduation-cap",
+      "category": "Education",
+      "title": "Education Services",
+      "description": "Access scholarships, school enrollment, transfer certificates, and educational scheme applications.",
+      "features": ["Scholarship Apply", "School Finder", "TC Requests", "Result Access"],
+      "link": "services.html",
+      "tag": "Featured"
+    },
+    {
+      "id": 6,
+      "icon": "fa-heart-pulse",
+      "category": "Healthcare",
+      "title": "Health & Medical",
+      "description": "Book appointments at government hospitals, access health records, apply for medical assistance schemes.",
+      "features": ["Appointment Booking", "Health Records", "Medicine Supply", "Emergency SOS"],
+      "link": "services.html",
+      "tag": null
+    },
+    {
+      "id": 7,
+      "icon": "fa-water",
+      "category": "Utilities",
+      "title": "Water & Sewerage",
+      "description": "Apply for new water connections, pay bills, register complaints, and track maintenance requests.",
+      "features": ["New Connection", "Bill Payment", "Leak Reporting", "Quality Test"],
+      "link": "services.html",
+      "tag": null
+    },
+    {
+      "id": 8,
+      "icon": "fa-bolt",
+      "category": "Utilities",
+      "title": "Electricity Services",
+      "description": "Manage electricity connections, pay bills, apply for load enhancements, and report power outages.",
+      "features": ["Bill Payment", "Load Enhancement", "Outage Report", "Solar Subsidy"],
+      "link": "services.html",
+      "tag": "Eco"
+    },
+    {
+      "id": 9,
+      "icon": "fa-tree",
+      "category": "Environment",
+      "title": "Environmental Permits",
+      "description": "Obtain environmental clearances, tree-cutting permissions, and participate in green city initiatives.",
+      "features": ["NOC Certificate", "Tree Permission", "Pollution Check", "Green Points"],
+      "link": "services.html",
+      "tag": null
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Stackly Government Services — Access 200+ online services including certificates, licenses, property registration, healthcare, and more." />
+  <title>Services — Stackly Government Services Portal</title>
+  <link rel="icon" type="image/webp" href="assets/Logo11.webp" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/services.css" />
+</head>
+<body>
+<div id="preloader" role="status" aria-live="polite" aria-label="Loading Stackly Portal">
+  <div class="preloader-content">
+    <div class="preloader-logo-wrap">
+      <div class="preloader-logo-ring"></div>
+      <img src="assets/Logo11.webp" alt="Stackly Logo" class="preloader-logo" />
+    </div>
+    <div class="preloader-bar-wrap">
+      <div class="preloader-bar"><div class="preloader-bar-inner"></div></div>
+      <span class="preloader-text">Loading Stackly...</span>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" data-transparent="false">
+  <div class="container"><div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="assets/Logo11.webp" alt="Stackly Logo" class="nav-logo-img" /></a>
+    <ul class="nav-menu"><li class="nav-item"><a href="index.html" class="nav-link">Home</a></li><li class="nav-item"><a href="about.html" class="nav-link">About</a></li><li class="nav-item"><a href="services.html" class="nav-link active">Services</a></li><li class="nav-item"><a href="departments.html" class="nav-link">Departments</a></li><li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li></ul>
+    <div class="nav-actions"><a href="login.html" class="nav-login-btn"><i class="fa-solid fa-right-to-bracket"></i> Login</a><button class="nav-hamburger" id="hamburger"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button></div>
+  </div></div>
+</nav>
+<div class="nav-overlay" id="navOverlay"></div>
+<aside class="nav-mobile" id="navMobile"><button class="nav-mobile-close" id="navMobileClose"><i class="fa-solid fa-xmark"></i></button><div class="nav-mobile-logo"><a href="index.html" class="nav-logo"><img src="assets/Logo11.webp" alt="Stackly Logo" class="nav-logo-img" /></a></div><ul class="nav-mobile-menu"><li class="nav-mobile-item"><a href="index.html" class="nav-mobile-link">Home</a></li><li class="nav-mobile-item"><a href="about.html" class="nav-mobile-link">About</a></li><li class="nav-mobile-item"><a href="services.html" class="nav-mobile-link">Services</a></li><li class="nav-mobile-item"><a href="departments.html" class="nav-mobile-link">Departments</a></li><li class="nav-mobile-item"><a href="contact.html" class="nav-mobile-link">Contact</a></li></ul><div class="nav-mobile-footer"><a href="login.html" class="btn btn-primary">Login</a></div></aside>
+
+<!-- PAGE HERO -->
+<section class="page-hero" id="services" style="background-image: url('assets/images/hero_3.webp');">
+  <div class="container"><div class="page-hero-content" data-reveal="up">
+    <h1>Government Services</h1>
+    <nav class="breadcrumb"><a href="index.html">Home</a><span><i class="fa-solid fa-chevron-right" style="font-size:0.6rem"></i></span><span style="color:#fff">Services</span></nav>
+  </div></div>
+</section>
+
+<!-- ═══ SEARCH BAR ═══ -->
+<section style="padding:2rem 0;background:var(--bg-white);border-bottom:1px solid var(--border-light)">
+  <div class="container">
+    <div class="services-search" data-reveal="up">
+      <div class="services-search-inner">
+        <div class="services-search-field">
+          <i class="fa-solid fa-search services-search-icon"></i>
+          <input type="text" id="serviceSearch" placeholder="Search for a service..." class="services-search-input" onfocus="this.style.borderColor='var(--clr-primary)'" onblur="this.style.borderColor='var(--border-light)'" />
+        </div>
+        <button class="btn btn-primary services-search-btn" onclick="window.location.href='404.html'">Search</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SERVICE TABS ═══ -->
+<section style="background:var(--bg-light)">
+  <div class="container">
+    <div class="section-header center" data-reveal="up">
+      <div class="section-label"><i class="fa-solid fa-grid-2"></i> All Services</div>
+      <h2 class="section-heading">200+ Government <span>Services Online</span></h2>
+      <p class="section-subheading">Browse and apply for any government service from the comfort of your home. All services are available 24/7.</p>
+    </div>
+
+    <div data-tabs>
+      <nav class="tabs-nav" data-reveal="up" data-delay="0.2">
+        <button class="tab-btn active" data-tab="tab-all">All Services</button>
+        <button class="tab-btn" data-tab="tab-identity" id="identity">Identity & Docs</button>
+        <button class="tab-btn" data-tab="tab-property" id="property">Property</button>
+        <button class="tab-btn" data-tab="tab-health" id="health">Healthcare</button>
+        <button class="tab-btn" data-tab="tab-education" id="education">Education</button>
+        <button class="tab-btn" data-tab="tab-utilities">Utilities</button>
+      </nav>
+
+      <!-- All Services Tab -->
+      <div class="tab-panel active" id="tab-all">
+        <div class="services-cards-grid" data-stagger data-stagger="0.08">
+          <!-- 9 Service Cards -->
+          <div class="card services-card-item">
+            <div class="card-body"><div style="display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem"><div class="icon-box"><i class="fa-solid fa-id-card"></i></div><div><span class="badge badge-primary">Popular</span></div></div><h3 style="font-size:var(--fs-base);font-weight:700;margin-bottom:0.5rem">Birth & Death Certificates</h3><p style="font-size:var(--fs-sm);color:var(--txt-muted);margin-bottom:1rem">Apply online for birth, death, marriage certificates. Delivery in 5-7 days.</p><div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1rem"><span class="tag">Online</span><span class="tag">Home Delivery</span><span class="tag">e-Stamp</span></div><a href="404.html" class="btn btn-primary btn-sm">Apply Now</a></div>
+          </div>
+          <div class="card services-card-item">
+            <div class="card-body"><div style="display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem"><div class="icon-box"><i class="fa-solid fa-house"></i></div><div><span class="badge" style="background:rgba(39,174,96,0.1);color:#27ae60">New</span></div></div><h3 style="font-size:var(--fs-base);font-weight:700;margin-bottom:0.5rem">Property Registration</h3><p style="font-size:var(--fs-sm);color:var(--txt-muted);margin-bottom:1rem">Complete property registration digitally — e-stamp, payment, and document submission.</p><div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1rem"><span class="tag">e-Stamp</span><span class="tag">Online Payment</span></div><a href="404.html" class="btn btn-primary btn-sm">Apply Now</a></div>
+          </div>
+          <div class="card services-card-item">
+            <div class="card-body"><div style="display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem"><div class="icon-box"><i class="fa-solid fa-shield-halved"></i></div><div><span class="badge badge-warning">Quick</span></div></div><h3 style="font-size:var(--fs-base);font-weight:700;margin-bottom:0.5rem">Trade & Business Licenses</h3><p style="font-size:var(--fs-sm);color:var(--txt-muted);margin-bottom:1rem">Trade licenses, shop establishment, business permits for all activities.</p><div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1rem"><span class="tag">Fast Track</span><span class="tag">Digital License</span></div><a href="404.html" class="btn btn-primary btn-sm">Apply Now</a></div>
+          </div>
+          <div class="card services-card-item">
+            <div class="card-body"><div style="display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem"><div class="icon-box"><i class="fa-solid fa-graduation-cap"></i></div><div><span class="badge badge-info">Education</span></div></div><h3 style="font-size:var(--fs-base);font-weight:700;margin-bottom:0.5rem">Scholarship Applications</h3><p style="font-size:var(--fs-sm);color:var(--txt-muted);margin-bottom:1rem">Apply for national and state scholarships online with document upload.</p><div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1rem"><span class="tag">Scholarship</span><span class="tag">Students</span></div><a href="404.html" class="btn btn-primary btn-sm">Apply Now</a></div>
+          </div>
+          <div class="card services-card-item">
+            <div class="card-body"><div style="display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem"><div class="icon-box"><i class="fa-solid fa-heart-pulse"></i></div><div><span class="badge badge-primary">Health</span></div></div><h3 style="font-size:var(--fs-base);font-weight:700;margin-bottom:0.5rem">Hospital Appointments</h3><p style="font-size:var(--fs-sm);color:var(--txt-muted);margin-bottom:1rem">Book slots at 1,200+ government hospitals and health centres.</p><div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1rem"><span class="tag">Instant</span><span class="tag">SMS Alerts</span></div><a href="404.html" class="btn btn-primary btn-sm">Book Now</a></div>
+          </div>
+          <div class="card services-card-item">
+            <div class="card-body"><div style="display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem"><div class="icon-box"><i class="fa-solid fa-car"></i></div><div><span class="badge badge-warning">Transport</span></div></div><h3 style="font-size:var(--fs-base);font-weight:700;margin-bottom:0.5rem">Driving License & RC</h3><p style="font-size:var(--fs-sm);color:var(--txt-muted);margin-bottom:1rem">Apply for new DL, renewal, RC, and vehicle-related services.</p><div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1rem"><span class="tag">Online Slot</span><span class="tag">Digital Copy</span></div><a href="404.html" class="btn btn-primary btn-sm">Apply Now</a></div>
+          </div>
+          <div class="card services-card-item">
+            <div class="card-body"><div style="display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem"><div class="icon-box"><i class="fa-solid fa-water"></i></div><div><span class="badge badge-info">Utility</span></div></div><h3 style="font-size:var(--fs-base);font-weight:700;margin-bottom:0.5rem">Water & Sewerage</h3><p style="font-size:var(--fs-sm);color:var(--txt-muted);margin-bottom:1rem">New connections, bill payments, complaint registration, quality tests.</p><div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1rem"><span class="tag">Bill Pay</span><span class="tag">Complaints</span></div><a href="404.html" class="btn btn-primary btn-sm">Access Now</a></div>
+          </div>
+          <div class="card services-card-item">
+            <div class="card-body"><div style="display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem"><div class="icon-box"><i class="fa-solid fa-passport"></i></div><div><span class="badge badge-primary">Identity</span></div></div><h3 style="font-size:var(--fs-base);font-weight:700;margin-bottom:0.5rem">Passport Services</h3><p style="font-size:var(--fs-sm);color:var(--txt-muted);margin-bottom:1rem">Apply, renew, track passport applications and book appointment at PSK.</p><div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1rem"><span class="tag">Tatkal</span><span class="tag">Normal</span></div><a href="404.html" class="btn btn-primary btn-sm">Apply Now</a></div>
+          </div>
+          <div class="card services-card-item">
+            <div class="card-body"><div style="display:flex;align-items:flex-start;gap:1rem;margin-bottom:1rem"><div class="icon-box"><i class="fa-solid fa-leaf"></i></div><div><span class="badge" style="background:rgba(39,174,96,0.1);color:#27ae60">Green</span></div></div><h3 style="font-size:var(--fs-base);font-weight:700;margin-bottom:0.5rem">Environmental Permits</h3><p style="font-size:var(--fs-sm);color:var(--txt-muted);margin-bottom:1rem">Environmental clearances, tree permissions, and pollution NOCs.</p><div style="display:flex;flex-wrap:wrap;gap:0.35rem;margin-bottom:1rem"><span class="tag">NOC</span><span class="tag">Green Points</span></div><a href="404.html" class="btn btn-primary btn-sm">Apply Now</a></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Other tabs (simplified) -->
+      <div class="tab-panel" id="tab-identity"><div style="text-align:center;padding:3rem"><div class="icon-box icon-box-lg" style="margin:0 auto 1.5rem"><i class="fa-solid fa-fingerprint"></i></div><h3>Identity & Document Services</h3><p style="color:var(--txt-muted);margin:1rem auto 2rem;max-width:500px">Login to access Aadhaar updates, PAN card, voter ID, birth/death certificates, and all identity-related services.</p><a href="404.html" class="btn btn-primary btn-lg">Login to Apply</a></div></div>
+      <div class="tab-panel" id="tab-property"><div style="text-align:center;padding:3rem"><div class="icon-box icon-box-lg" style="margin:0 auto 1.5rem"><i class="fa-solid fa-house"></i></div><h3>Property Services</h3><p style="color:var(--txt-muted);margin:1rem auto 2rem;max-width:500px">Property registration, land records, mutation, encumbrance certificates — all available online.</p><a href="404.html" class="btn btn-primary btn-lg">Login to Apply</a></div></div>
+      <div class="tab-panel" id="tab-health"><div style="text-align:center;padding:3rem"><div class="icon-box icon-box-lg" style="margin:0 auto 1.5rem"><i class="fa-solid fa-heart-pulse"></i></div><h3>Healthcare Services</h3><p style="color:var(--txt-muted);margin:1rem auto 2rem;max-width:500px">Hospital appointments, health records, Ayushman Bharat enrolment, and medical certificates.</p><a href="404.html" class="btn btn-primary btn-lg">Login to Apply</a></div></div>
+      <div class="tab-panel" id="tab-education"><div style="text-align:center;padding:3rem"><div class="icon-box icon-box-lg" style="margin:0 auto 1.5rem"><i class="fa-solid fa-graduation-cap"></i></div><h3>Education Services</h3><p style="color:var(--txt-muted);margin:1rem auto 2rem;max-width:500px">School admissions, scholarships, transfer certificates, and educational scheme enrollments.</p><a href="404.html" class="btn btn-primary btn-lg">Login to Apply</a></div></div>
+      <div class="tab-panel" id="tab-utilities"><div style="text-align:center;padding:3rem"><div class="icon-box icon-box-lg" style="margin:0 auto 1.5rem"><i class="fa-solid fa-bolt"></i></div><h3>Utility Services</h3><p style="color:var(--txt-muted);margin:1rem auto 2rem;max-width:500px">Electricity, water, gas connections, bill payments, outage reporting, and solar subsidies.</p><a href="404.html" class="btn btn-primary btn-lg">Login to Apply</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<section aria-label="How It Works">
+  <div class="container">
+    <div class="section-header center" data-reveal="up">
+      <div class="section-label"><i class="fa-solid fa-list-ol"></i> Process</div>
+      <h2 class="section-heading">How It <span>Works</span></h2>
+      <p class="section-subheading">Apply for any service in 4 simple steps — no office visits required.</p>
+    </div>
+    <div style="position:relative">
+      <div style="position:absolute;top:60px;left:calc(12.5% + 40px);right:calc(12.5% + 40px);height:2px;background:var(--grad-primary);opacity:0.3;z-index:0" class="step-connector"></div>
+      <div class="services-steps-grid" data-stagger data-stagger="0.12">
+        <div class="card" style="text-align:center;position:relative;z-index:1">
+          <div class="card-body"><div style="width:60px;height:60px;border-radius:50%;background:var(--grad-primary);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:1.5rem;font-weight:900;margin:0 auto 1rem">1</div><h4 style="font-weight:700;margin-bottom:0.5rem">Register &amp; Login</h4><p style="font-size:var(--fs-sm);color:var(--txt-muted)">Create your free Stackly account using Aadhaar or mobile number.</p></div>
+        </div>
+        <div class="card" style="text-align:center;position:relative;z-index:1">
+          <div class="card-body"><div style="width:60px;height:60px;border-radius:50%;background:var(--grad-primary);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:1.5rem;font-weight:900;margin:0 auto 1rem">2</div><h4 style="font-weight:700;margin-bottom:0.5rem">Select Service</h4><p style="font-size:var(--fs-sm);color:var(--txt-muted)">Browse or search for the required service from our 200+ catalogue.</p></div>
+        </div>
+        <div class="card" style="text-align:center;position:relative;z-index:1">
+          <div class="card-body"><div style="width:60px;height:60px;border-radius:50%;background:var(--grad-primary);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:1.5rem;font-weight:900;margin:0 auto 1rem">3</div><h4 style="font-weight:700;margin-bottom:0.5rem">Upload &amp; Pay</h4><p style="font-size:var(--fs-sm);color:var(--txt-muted)">Fill the form, upload required documents, and pay fees online securely.</p></div>
+        </div>
+        <div class="card" style="text-align:center;position:relative;z-index:1">
+          <div class="card-body"><div style="width:60px;height:60px;border-radius:50%;background:var(--grad-primary);color:#fff;display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-size:1.5rem;font-weight:900;margin:0 auto 1rem">4</div><h4 style="font-weight:700;margin-bottom:0.5rem">Receive Certificate</h4><p style="font-size:var(--fs-sm);color:var(--txt-muted)">Get your certificate/approval digitally or by post within the stipulated time.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DOWNLOAD FORMS ═══ -->
+<section style="background:var(--bg-soft)" aria-label="Downloadable Forms">
+  <div class="container">
+    <div class="section-header center" data-reveal="up">
+      <div class="section-label"><i class="fa-solid fa-file-arrow-down"></i> Forms</div>
+      <h2 class="section-heading">Download <span>Official Forms</span></h2>
+    </div>
+    <div class="services-forms-grid" data-stagger data-stagger="0.08">
+      <a href="404.html" style="display:flex;align-items:center;gap:1rem;padding:1.25rem;background:var(--bg-white);border:1px solid var(--border-light);border-radius:var(--radius-lg);text-decoration:none;transition:var(--trans-base)" onmouseover="this.style.borderColor='var(--clr-primary)';this.style.boxShadow='var(--shadow-sm)'" onmouseout="this.style.borderColor='var(--border-light)';this.style.boxShadow='none'"><div style="width:44px;height:44px;border-radius:var(--radius-md);background:rgba(231,76,60,0.1);display:flex;align-items:center;justify-content:center;color:var(--clr-primary);font-size:1.2rem;flex-shrink:0"><i class="fa-solid fa-file-pdf"></i></div><div><div style="font-weight:700;font-size:var(--fs-sm);color:var(--txt-heading)">Birth Certificate Form</div><div style="font-size:var(--fs-xs);color:var(--txt-muted)">Form BC-01 · PDF · 240 KB</div></div><i class="fa-solid fa-download" style="margin-left:auto;color:var(--clr-primary)"></i></a>
+      <a href="404.html" style="display:flex;align-items:center;gap:1rem;padding:1.25rem;background:var(--bg-white);border:1px solid var(--border-light);border-radius:var(--radius-lg);text-decoration:none;transition:var(--trans-base)" onmouseover="this.style.borderColor='var(--clr-primary)';this.style.boxShadow='var(--shadow-sm)'" onmouseout="this.style.borderColor='var(--border-light)';this.style.boxShadow='none'"><div style="width:44px;height:44px;border-radius:var(--radius-md);background:rgba(231,76,60,0.1);display:flex;align-items:center;justify-content:center;color:var(--clr-primary);font-size:1.2rem;flex-shrink:0"><i class="fa-solid fa-file-pdf"></i></div><div><div style="font-weight:700;font-size:var(--fs-sm);color:var(--txt-heading)">Property Registration Form</div><div style="font-size:var(--fs-xs);color:var(--txt-muted)">Form PR-07 · PDF · 380 KB</div></div><i class="fa-solid fa-download" style="margin-left:auto;color:var(--clr-primary)"></i></a>
+      <a href="404.html" style="display:flex;align-items:center;gap:1rem;padding:1.25rem;background:var(--bg-white);border:1px solid var(--border-light);border-radius:var(--radius-lg);text-decoration:none;transition:var(--trans-base)" onmouseover="this.style.borderColor='var(--clr-primary)';this.style.boxShadow='var(--shadow-sm)'" onmouseout="this.style.borderColor='var(--border-light)';this.style.boxShadow='none'"><div style="width:44px;height:44px;border-radius:var(--radius-md);background:rgba(231,76,60,0.1);display:flex;align-items:center;justify-content:center;color:var(--clr-primary);font-size:1.2rem;flex-shrink:0"><i class="fa-solid fa-file-pdf"></i></div><div><div style="font-weight:700;font-size:var(--fs-sm);color:var(--txt-heading)">Trade License Application</div><div style="font-size:var(--fs-xs);color:var(--txt-muted)">Form TL-02 · PDF · 190 KB</div></div><i class="fa-solid fa-download" style="margin-left:auto;color:var(--clr-primary)"></i></a>
+      <a href="404.html" style="display:flex;align-items:center;gap:1rem;padding:1.25rem;background:var(--bg-white);border:1px solid var(--border-light);border-radius:var(--radius-lg);text-decoration:none;transition:var(--trans-base)" onmouseover="this.style.borderColor='var(--clr-primary)';this.style.boxShadow='var(--shadow-sm)'" onmouseout="this.style.borderColor='var(--border-light)';this.style.boxShadow='none'"><div style="width:44px;height:44px;border-radius:var(--radius-md);background:rgba(231,76,60,0.1);display:flex;align-items:center;justify-content:center;color:var(--clr-primary);font-size:1.2rem;flex-shrink:0"><i class="fa-solid fa-file-pdf"></i></div><div><div style="font-weight:700;font-size:var(--fs-sm);color:var(--txt-heading)">Scholarship Application</div><div style="font-size:var(--fs-xs);color:var(--txt-muted)">Form SC-11 · PDF · 210 KB</div></div><i class="fa-solid fa-download" style="margin-left:auto;color:var(--clr-primary)"></i></a>
+      <a href="404.html" style="display:flex;align-items:center;gap:1rem;padding:1.25rem;background:var(--bg-white);border:1px solid var(--border-light);border-radius:var(--radius-lg);text-decoration:none;transition:var(--trans-base)" onmouseover="this.style.borderColor='var(--clr-primary)';this.style.boxShadow='var(--shadow-sm)'" onmouseout="this.style.borderColor='var(--border-light)';this.style.boxShadow='none'"><div style="width:44px;height:44px;border-radius:var(--radius-md);background:rgba(231,76,60,0.1);display:flex;align-items:center;justify-content:center;color:var(--clr-primary);font-size:1.2rem;flex-shrink:0"><i class="fa-solid fa-file-pdf"></i></div><div><div style="font-weight:700;font-size:var(--fs-sm);color:var(--txt-heading)">Water Connection Request</div><div style="font-size:var(--fs-xs);color:var(--txt-muted)">Form WC-04 · PDF · 160 KB</div></div><i class="fa-solid fa-download" style="margin-left:auto;color:var(--clr-primary)"></i></a>
+      <a href="404.html" style="display:flex;align-items:center;gap:1rem;padding:1.25rem;background:var(--bg-white);border:1px solid var(--border-light);border-radius:var(--radius-lg);text-decoration:none;transition:var(--trans-base)" onmouseover="this.style.borderColor='var(--clr-primary)';this.style.boxShadow='var(--shadow-sm)'" onmouseout="this.style.borderColor='var(--border-light)';this.style.boxShadow='none'"><div style="width:44px;height:44px;border-radius:var(--radius-md);background:rgba(231,76,60,0.1);display:flex;align-items:center;justify-content:center;color:var(--clr-primary);font-size:1.2rem;flex-shrink:0"><i class="fa-solid fa-file-pdf"></i></div><div><div style="font-weight:700;font-size:var(--fs-sm);color:var(--txt-heading)">Environmental Clearance</div><div style="font-size:var(--fs-xs);color:var(--txt-muted)">Form EC-06 · PDF · 290 KB</div></div><i class="fa-solid fa-download" style="margin-left:auto;color:var(--clr-primary)"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section"><div class="cta-grid"></div><div class="container"><div class="cta-content" data-reveal="up"><h2 class="cta-title">Start Your Application Today</h2><p class="cta-sub">Register for free and access all 200+ government services from one unified platform.</p><div class="cta-actions"><a href="404.html" class="btn btn-white btn-lg">Register Free <i class="fa-solid fa-arrow-right btn-icon"></i></a><a href="404.html" class="btn btn-ghost btn-lg"><i class="fa-solid fa-phone"></i> Get Help</a></div></div></div></section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-blob footer-blob-1"></div><div class="footer-blob footer-blob-2"></div>
+  <div class="footer-top"><div class="container"><div class="footer-grid">
+    <div class="footer-brand"><a href="index.html" class="footer-brand-logo"><img src="assets/Logo11.webp" alt="Stackly Logo" /></a><p>India's digital government services platform empowering citizens 24/7.</p><div class="footer-social"><a href="404.html" class="social-link"><i class="fa-brands fa-facebook-f"></i></a><a href="404.html" class="social-link"><i class="fa-brands fa-x-twitter"></i></a><a href="404.html" class="social-link"><i class="fa-brands fa-instagram"></i></a><a href="404.html" class="social-link"><i class="fa-brands fa-youtube"></i></a></div></div>
+    <div><h4 class="footer-col-title">Quick Links</h4><ul class="footer-links"><li><a href="index.html"><i class="fa-solid fa-chevron-right"></i> Home</a></li><li><a href="about.html"><i class="fa-solid fa-chevron-right"></i> About</a></li><li><a href="services.html"><i class="fa-solid fa-chevron-right"></i> Services</a></li><li><a href="departments.html"><i class="fa-solid fa-chevron-right"></i> Departments</a></li><li><a href="contact.html"><i class="fa-solid fa-chevron-right"></i> Contact</a></li></ul></div>
+    <div><h4 class="footer-col-title">Government Links</h4><ul class="footer-links"><li><a href="404.html"><i class="fa-solid fa-chevron-right"></i> India.gov.in</a></li><li><a href="404.html"><i class="fa-solid fa-chevron-right"></i> DigiLocker</a></li><li><a href="404.html"><i class="fa-solid fa-chevron-right"></i> UMANG App</a></li><li><a href="404.html"><i class="fa-solid fa-chevron-right"></i> MyGov India</a></li><li><a href="404.html"><i class="fa-solid fa-chevron-right"></i> e-Courts</a></li><li><a href="404.html"><i class="fa-solid fa-chevron-right"></i> EPFO Portal</a></li><li><a href="404.html"><i class="fa-solid fa-chevron-right"></i> Income Tax Portal</a></li></ul></div>
+    <div><h4 class="footer-col-title">Contact</h4><ul class="footer-contact-list"><li class="footer-contact-item"><div class="footer-contact-icon"><i class="fa-solid fa-phone"></i></div><div class="footer-contact-info"><div class="footer-contact-label">Helpline</div><div class="footer-contact-value">1800-XXX-XXXX (Toll Free)</div></div></li><li class="footer-contact-item"><div class="footer-contact-icon"><i class="fa-solid fa-envelope"></i></div><div class="footer-contact-info"><div class="footer-contact-label">Email</div><div class="footer-contact-value">support@stackly.gov.in</div></div></li></ul></div>
+  </div></div></div>
+  <div class="footer-bottom"><div class="container"><div class="footer-bottom-inner"><p class="footer-copyright">© 2026 <a href="index.html">Stackly</a>. All Rights Reserved.</p><div class="footer-bottom-links"><a href="404.html">Privacy</a><a href="404.html">Terms</a><a href="404.html">Sitemap</a></div></div></div></div>
+</footer>
+<button id="scrollTop"><i class="fa-solid fa-chevron-up"></i></button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

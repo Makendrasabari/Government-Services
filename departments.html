@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Stackly Departments — Explore government departments, performance metrics, and apply for active welfare programs." />
+  <title>Departments — Stackly Government Portal</title>
+  <link rel="icon" type="image/webp" href="assets/Logo11.webp" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/departments.css" />
+</head>
+<body>
+<div id="preloader" role="status" aria-live="polite" aria-label="Loading Stackly Portal">
+  <div class="preloader-content">
+    <div class="preloader-logo-wrap">
+      <div class="preloader-logo-ring"></div>
+      <img src="assets/Logo11.webp" alt="Stackly Logo" class="preloader-logo" />
+    </div>
+    <div class="preloader-bar-wrap">
+      <div class="preloader-bar"><div class="preloader-bar-inner"></div></div>
+      <span class="preloader-text">Loading Stackly...</span>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar" data-transparent="false">
+  <div class="container"><div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="assets/Logo11.webp" alt="Stackly Logo" class="nav-logo-img" /></a>
+    <ul class="nav-menu">
+      <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+      <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+      <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+      <li class="nav-item"><a href="departments.html" class="nav-link active">Departments</a></li>
+      <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-actions"><a href="login.html" class="nav-login-btn"><i class="fa-solid fa-right-to-bracket"></i> Login</a><button class="nav-hamburger" id="hamburger"><span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span></button></div>
+  </div></div>
+</nav>
+<div class="nav-overlay" id="navOverlay"></div>
+<aside class="nav-mobile" id="navMobile"><button class="nav-mobile-close" id="navMobileClose"><i class="fa-solid fa-xmark"></i></button><div class="nav-mobile-logo"><a href="index.html" class="nav-logo"><img src="assets/Logo11.webp" alt="Stackly Logo" class="nav-logo-img" /></a></div><ul class="nav-mobile-menu"><li class="nav-mobile-item"><a href="index.html" class="nav-mobile-link">Home</a></li><li class="nav-mobile-item"><a href="about.html" class="nav-mobile-link">About</a></li><li class="nav-mobile-item"><a href="services.html" class="nav-mobile-link">Services</a></li><li class="nav-mobile-item"><a href="departments.html" class="nav-mobile-link">Departments</a></li><li class="nav-mobile-item"><a href="contact.html" class="nav-mobile-link">Contact</a></li></ul><div class="nav-mobile-footer"><a href="login.html" class="btn btn-primary">Login</a></div></aside>
+
+<!-- PAGE HERO -->
+<section class="page-hero" style="background-image: url('assets/images/hero_1.webp');">
+  <div class="container"><div class="page-hero-content" data-reveal="up"><h1>Departments</h1><nav class="breadcrumb"><a href="index.html">Home</a><span><i class="fa-solid fa-chevron-right" style="font-size:.6rem"></i></span><span style="color:#fff">Departments</span></nav></div></div>
+</section>
+
+<!-- SCHEME STATS banner (from schemes) -->
+<section style="background:var(--bg-soft);padding:3rem 0">
+  <div class="container">
+    <div class="dept-stats-grid" data-stagger data-stagger="0.1">
+      <div class="card"><div class="card-body"><div class="stat-number count-number" data-target="142">0</div>+<p style="font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.1em;color:var(--txt-muted);margin-top:.5rem">Active Schemes</p></div></div>
+      <div class="card"><div class="card-body"><div class="stat-number"><span class="count-number" data-target="8">0</span>Cr+</div><p style="font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.1em;color:var(--txt-muted);margin-top:.5rem">Beneficiaries</p></div></div>
+      <div class="card"><div class="card-body"><div class="stat-number">₹<span class="count-number" data-target="12000">0</span>Cr+</div><p style="font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.1em;color:var(--txt-muted);margin-top:.5rem">Benefits Disbursed</p></div></div>
+      <div class="card"><div class="card-body"><div class="stat-number count-number" data-target="28">0</div><p style="font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.1em;color:var(--txt-muted);margin-top:.5rem">States Covered</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ DEPARTMENTS BENTO GRID ═══ -->
+<section>
+  <div class="container">
+    <div class="section-header center" data-reveal="up">
+      <div class="section-label"><i class="fa-solid fa-building-columns"></i> Our Departments</div>
+      <h2 class="section-heading">45 Departments <span>Serving Citizens</span></h2>
+      <p class="section-subheading">Each department is committed to delivering transparent, efficient services to every citizen across India.</p>
+    </div>
+    <div class="dept-bento-grid" data-stagger data-stagger="0.1">
+      <!-- Dept Card 1 -->
+      <div class="card hover-spotlight tilt-card">
+        <div class="card-body">
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem">
+            <div class="icon-box"><i class="fa-solid fa-shield-halved"></i></div>
+            <div><h3 style="font-size:var(--fs-base);font-weight:700;margin-bottom:0.2rem">Dept. of Home Affairs</h3><span class="badge badge-primary">Security & Admin</span></div>
+          </div>
+          <p style="font-size:var(--fs-sm);color:var(--txt-muted);line-height:1.7;margin-bottom:1.25rem">Oversees internal security, police, civil defence, and disaster management across all states.</p>
+          <div class="dept-mini-stats">
+            <div><div style="font-weight:800;font-size:var(--fs-lg);background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">15K+</div><div style="font-size:.65rem;color:var(--txt-muted);text-transform:uppercase">Staff</div></div>
+            <div><div style="font-weight:800;font-size:var(--fs-lg);background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">128</div><div style="font-size:.65rem;color:var(--txt-muted);text-transform:uppercase">Offices</div></div>
+            <div><div style="font-weight:800;font-size:var(--fs-lg);background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">24</div><div style="font-size:.65rem;color:var(--txt-muted);text-transform:uppercase">Services</div></div>
+          </div>
+          <div style="margin-bottom:1rem"><div style="display:flex;justify-content:space-between;font-size:var(--fs-xs);margin-bottom:0.4rem"><span>Performance Rating</span><span style="font-weight:700;color:var(--clr-primary)">94%</span></div><div class="progress-bar-wrap"><div class="progress-bar-fill" data-width="94%"></div></div></div>
+          <a href="404.html" class="btn btn-outline btn-sm">View Services <i class="fa-solid fa-arrow-right btn-icon"></i></a>
+        </div>
+      </div>
+
+      <!-- Dept Card 2 -->
+      <div class="card hover-spotlight tilt-card">
+        <div class="card-body">
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem">
+            <div class="icon-box"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div><h3 style="font-size:var(--fs-base);font-weight:700;margin-bottom:0.2rem">Ministry of Education</h3><span class="badge badge-info">Education</span></div>
+          </div>
+          <p style="font-size:var(--fs-sm);color:var(--txt-muted);line-height:1.7;margin-bottom:1.25rem">Manages primary, secondary, and higher education policies, curriculum, and teacher training programs.</p>
+          <div class="dept-mini-stats">
+            <div><div style="font-weight:800;font-size:var(--fs-lg);background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">48K+</div><div style="font-size:.65rem;color:var(--txt-muted);text-transform:uppercase">Staff</div></div>
+            <div><div style="font-weight:800;font-size:var(--fs-lg);background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">342</div><div style="font-size:.65rem;color:var(--txt-muted);text-transform:uppercase">Offices</div></div>
+            <div><div style="font-weight:800;font-size:var(--fs-lg);background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">31</div><div style="font-size:.65rem;color:var(--txt-muted);text-transform:uppercase">Services</div></div>
+          </div>
+          <div style="margin-bottom:1rem"><div style="display:flex;justify-content:space-between;font-size:var(--fs-xs);margin-bottom:0.4rem"><span>Performance Rating</span><span style="font-weight:700;color:var(--clr-primary)">89%</span></div><div class="progress-bar-wrap"><div class="progress-bar-fill" data-width="89%"></div></div></div>
+          <a href="404.html" class="btn btn-outline btn-sm">View Services <i class="fa-solid fa-arrow-right btn-icon"></i></a>
+        </div>
+      </div>
+
+      <!-- Dept Card 3 -->
+      <div class="card hover-spotlight tilt-card">
+        <div class="card-body">
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem">
+            <div class="icon-box"><i class="fa-solid fa-heart-pulse"></i></div>
+            <div><h3 style="font-size:var(--fs-base);font-weight:700;margin-bottom:0.2rem">Department of Health</h3><span class="badge" style="background:rgba(231,76,60,0.1);color:var(--clr-primary)">Healthcare</span></div>
+          </div>
+          <p style="font-size:var(--fs-sm);color:var(--txt-muted);line-height:1.7;margin-bottom:1.25rem">Administers public health programs, hospital management, disease control, and community wellness.</p>
+          <div class="dept-mini-stats">
+            <div><div style="font-weight:800;font-size:var(--fs-lg);background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">62K+</div><div style="font-size:.65rem;color:var(--txt-muted);text-transform:uppercase">Staff</div></div>
+            <div><div style="font-weight:800;font-size:var(--fs-lg);background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">256</div><div style="font-size:.65rem;color:var(--txt-muted);text-transform:uppercase">Offices</div></div>
+            <div><div style="font-weight:800;font-size:var(--fs-lg);background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">42</div><div style="font-size:.65rem;color:var(--txt-muted);text-transform:uppercase">Services</div></div>
+          </div>
+          <div style="margin-bottom:1rem"><div style="display:flex;justify-content:space-between;font-size:var(--fs-xs);margin-bottom:0.4rem"><span>Performance Rating</span><span style="font-weight:700;color:var(--clr-primary)">91%</span></div><div class="progress-bar-wrap"><div class="progress-bar-fill" data-width="91%"></div></div></div>
+          <a href="404.html" class="btn btn-outline btn-sm">View Services <i class="fa-solid fa-arrow-right btn-icon"></i></a>
+        </div>
+      </div>
+
+      <!-- Dept Card 4 -->
+      <div class="card hover-spotlight tilt-card">
+        <div class="card-body">
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem">
+            <div class="icon-box"><i class="fa-solid fa-road"></i></div>
+            <div><h3 style="font-size:var(--fs-base);font-weight:700;margin-bottom:0.2rem">Public Works Dept.</h3><span class="badge badge-warning">Infrastructure</span></div>
+          </div>
+          <p style="font-size:var(--fs-sm);color:var(--txt-muted);line-height:1.7;margin-bottom:1.25rem">Plans infrastructure projects: roads, bridges, public buildings, and urban utility networks.</p>
+          <div class="dept-mini-stats">
+            <div><div style="font-weight:800;font-size:var(--fs-lg);background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">28K+</div><div style="font-size:.65rem;color:var(--txt-muted);text-transform:uppercase">Staff</div></div>
+            <div><div style="font-weight:800;font-size:var(--fs-lg);background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">184</div><div style="font-size:.65rem;color:var(--txt-muted);text-transform:uppercase">Offices</div></div>
+            <div><div style="font-weight:800;font-size:var(--fs-lg);background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">18</div><div style="font-size:.65rem;color:var(--txt-muted);text-transform:uppercase">Services</div></div>
+          </div>
+          <div style="margin-bottom:1rem"><div style="display:flex;justify-content:space-between;font-size:var(--fs-xs);margin-bottom:0.4rem"><span>Performance Rating</span><span style="font-weight:700;color:var(--clr-primary)">86%</span></div><div class="progress-bar-wrap"><div class="progress-bar-fill" data-width="86%"></div></div></div>
+          <a href="404.html" class="btn btn-outline btn-sm">View Services <i class="fa-solid fa-arrow-right btn-icon"></i></a>
+        </div>
+      </div>
+
+      <!-- Dept Card 5 -->
+      <div class="card hover-spotlight tilt-card">
+        <div class="card-body">
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem">
+            <div class="icon-box"><i class="fa-solid fa-leaf"></i></div>
+            <div><h3 style="font-size:var(--fs-base);font-weight:700;margin-bottom:0.2rem">Environment &amp; Forests</h3><span class="badge" style="background:rgba(39,174,96,0.1);color:#27ae60">Environment</span></div>
+          </div>
+          <p style="font-size:var(--fs-sm);color:var(--txt-muted);line-height:1.7;margin-bottom:1.25rem">Protects natural resources, manages national parks, enforces environmental laws and green initiatives.</p>
+          <div class="dept-mini-stats">
+            <div><div style="font-weight:800;font-size:var(--fs-lg);background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">11K+</div><div style="font-size:.65rem;color:var(--txt-muted);text-transform:uppercase">Staff</div></div>
+            <div><div style="font-weight:800;font-size:var(--fs-lg);background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">96</div><div style="font-size:.65rem;color:var(--txt-muted);text-transform:uppercase">Offices</div></div>
+            <div><div style="font-weight:800;font-size:var(--fs-lg);background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">15</div><div style="font-size:.65rem;color:var(--txt-muted);text-transform:uppercase">Services</div></div>
+          </div>
+          <div style="margin-bottom:1rem"><div style="display:flex;justify-content:space-between;font-size:var(--fs-xs);margin-bottom:0.4rem"><span>Performance Rating</span><span style="font-weight:700;color:var(--clr-primary)">88%</span></div><div class="progress-bar-wrap"><div class="progress-bar-fill" data-width="88%"></div></div></div>
+          <a href="404.html" class="btn btn-outline btn-sm">View Services <i class="fa-solid fa-arrow-right btn-icon"></i></a>
+        </div>
+      </div>
+
+      <!-- Dept Card 6 -->
+      <div class="card hover-spotlight tilt-card">
+        <div class="card-body">
+          <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.25rem">
+            <div class="icon-box"><i class="fa-solid fa-coins"></i></div>
+            <div><h3 style="font-size:var(--fs-base);font-weight:700;margin-bottom:0.2rem">Department of Finance</h3><span class="badge badge-primary">Finance</span></div>
+          </div>
+          <p style="font-size:var(--fs-sm);color:var(--txt-muted);line-height:1.7;margin-bottom:1.25rem">Manages state finances, taxation, budget allocation, fiscal policy, and financial regulations.</p>
+          <div class="dept-mini-stats">
+            <div><div style="font-weight:800;font-size:var(--fs-lg);background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">9.8K+</div><div style="font-size:.65rem;color:var(--txt-muted);text-transform:uppercase">Staff</div></div>
+            <div><div style="font-weight:800;font-size:var(--fs-lg);background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">72</div><div style="font-size:.65rem;color:var(--txt-muted);text-transform:uppercase">Offices</div></div>
+            <div><div style="font-weight:800;font-size:var(--fs-lg);background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">22</div><div style="font-size:.65rem;color:var(--txt-muted);text-transform:uppercase">Services</div></div>
+          </div>
+          <div style="margin-bottom:1rem"><div style="display:flex;justify-content:space-between;font-size:var(--fs-xs);margin-bottom:0.4rem"><span>Performance Rating</span><span style="font-weight:700;color:var(--clr-primary)">95%</span></div><div class="progress-bar-wrap"><div class="progress-bar-fill" data-width="95%"></div></div></div>
+          <a href="404.html" class="btn btn-outline btn-sm">View Services <i class="fa-solid fa-arrow-right btn-icon"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ WELFARE SCHEMES SECTION (merged from schemes) ═══ -->
+<section id="schemes" style="background:var(--bg-light)">
+  <div class="container">
+    <div class="section-header center" data-reveal="up">
+      <div class="section-label"><i class="fa-solid fa-hand-holding-heart"></i> Welfare Programs</div>
+      <h2 class="section-heading">Schemes for <span>Every Citizen</span></h2>
+      <p class="section-subheading">Explore welfare programs across education, healthcare, housing, agriculture, women empowerment, and more.</p>
+    </div>
+    
+    <div data-tabs>
+      <nav class="tabs-nav" data-reveal="up" data-delay="0.2">
+        <button class="tab-btn active" data-tab="s-all">All Schemes</button>
+        <button class="tab-btn" data-tab="s-edu">Education</button>
+        <button class="tab-btn" data-tab="s-health">Healthcare</button>
+        <button class="tab-btn" data-tab="s-housing">Housing</button>
+        <button class="tab-btn" data-tab="s-agri">Agriculture</button>
+        <button class="tab-btn" data-tab="s-women">Women</button>
+        <button class="tab-btn" data-tab="s-senior">Senior Citizens</button>
+      </nav>
+
+      <div class="tab-panel active" id="s-all">
+        <div class="dept-schemes-grid" data-stagger data-stagger="0.08">
+          <div class="card tilt-card"><div class="card-body"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem"><span class="badge badge-info">Education</span><div class="icon-box"><i class="fa-solid fa-graduation-cap"></i></div></div><h3 style="font-weight:700;font-size:var(--fs-base);margin-bottom:.6rem">National Merit Scholarship</h3><p style="font-size:var(--fs-sm);color:var(--txt-muted);line-height:1.7;margin-bottom:1rem">Financial assistance for meritorious students from EWS to pursue higher education at premier institutions.</p><div style="display:flex;justify-content:space-between;align-items:center;padding:.75rem;background:var(--bg-soft);border-radius:var(--radius-md);margin-bottom:1rem"><div><div style="font-size:var(--fs-xs);color:var(--txt-muted)">Annual Benefit</div><div style="font-weight:800;font-size:var(--fs-lg);background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">₹75,000</div></div><div style="text-align:right"><div style="font-size:var(--fs-xs);color:var(--txt-muted)">Status</div><span class="badge badge-success">Active</span></div></div><div style="font-size:var(--fs-xs);color:var(--txt-muted);margin-bottom:1rem"><i class="fa-solid fa-calendar" style="color:var(--clr-primary)"></i> Deadline: Dec 31, 2025 &nbsp;|&nbsp; <i class="fa-solid fa-users" style="color:var(--clr-primary)"></i> 142K Applicants</div><a href="404.html" class="btn btn-primary btn-sm" style="width:100%;justify-content:center">Apply Now <i class="fa-solid fa-arrow-right btn-icon"></i></a></div></div>
+          <div class="card tilt-card"><div class="card-body"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem"><span class="badge" style="background:rgba(231,76,60,0.1);color:var(--clr-primary)">Healthcare</span><div class="icon-box"><i class="fa-solid fa-heart-pulse"></i></div></div><h3 style="font-weight:700;font-size:var(--fs-base);margin-bottom:.6rem">Pradhan Swasthya Yojana</h3><p style="font-size:var(--fs-sm);color:var(--txt-muted);line-height:1.7;margin-bottom:1rem">Comprehensive health coverage providing cashless treatment at empanelled hospitals for BPL families.</p><div style="display:flex;justify-content:space-between;align-items:center;padding:.75rem;background:var(--bg-soft);border-radius:var(--radius-md);margin-bottom:1rem"><div><div style="font-size:var(--fs-xs);color:var(--txt-muted)">Coverage</div><div style="font-weight:800;font-size:var(--fs-lg);background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">₹5 Lakh</div></div><div style="text-align:right"><div style="font-size:var(--fs-xs);color:var(--txt-muted)">Status</div><span class="badge badge-success">Active</span></div></div><div style="font-size:var(--fs-xs);color:var(--txt-muted);margin-bottom:1rem"><i class="fa-solid fa-calendar" style="color:var(--clr-primary)"></i> Rolling Enrollment &nbsp;|&nbsp; <i class="fa-solid fa-users" style="color:var(--clr-primary)"></i> 890K Applicants</div><a href="404.html" class="btn btn-primary btn-sm" style="width:100%;justify-content:center">Apply Now <i class="fa-solid fa-arrow-right btn-icon"></i></a></div></div>
+          <div class="card tilt-card"><div class="card-body"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem"><span class="badge badge-warning">Housing</span><div class="icon-box"><i class="fa-solid fa-house"></i></div></div><h3 style="font-weight:700;font-size:var(--fs-base);margin-bottom:.6rem">Grih Laxmi Housing Scheme</h3><p style="font-size:var(--fs-sm);color:var(--txt-muted);line-height:1.7;margin-bottom:1rem">Subsidized home loans for low-income families. 6.5% interest subsidy on first home purchase.</p><div style="display:flex;justify-content:space-between;align-items:center;padding:.75rem;background:var(--bg-soft);border-radius:var(--radius-md);margin-bottom:1rem"><div><div style="font-size:var(--fs-xs);color:var(--txt-muted)">Subsidy</div><div style="font-weight:800;font-size:var(--fs-lg);background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">6.5%</div></div><div style="text-align:right"><div style="font-size:var(--fs-xs);color:var(--txt-muted)">Status</div><span class="badge badge-success">Active</span></div></div><div style="font-size:var(--fs-xs);color:var(--txt-muted);margin-bottom:1rem"><i class="fa-solid fa-calendar" style="color:var(--clr-primary)"></i> June 30, 2026 &nbsp;|&nbsp; <i class="fa-solid fa-users" style="color:var(--clr-primary)"></i> 215K Applicants</div><a href="404.html" class="btn btn-primary btn-sm" style="width:100%;justify-content:center">Apply Now <i class="fa-solid fa-arrow-right btn-icon"></i></a></div></div>
+          <div class="card tilt-card"><div class="card-body"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem"><span class="badge" style="background:rgba(39,174,96,0.1);color:#27ae60">Agriculture</span><div class="icon-box"><i class="fa-solid fa-wheat-awn"></i></div></div><h3 style="font-weight:700;font-size:var(--fs-base);margin-bottom:.6rem">Kisan Samridhi Scheme</h3><p style="font-size:var(--fs-sm);color:var(--txt-muted);line-height:1.7;margin-bottom:1rem">Direct income support and crop insurance for small and marginal farmers across India.</p><div style="display:flex;justify-content:space-between;align-items:center;padding:.75rem;background:var(--bg-soft);border-radius:var(--radius-md);margin-bottom:1rem"><div><div style="font-size:var(--fs-xs);color:var(--txt-muted)">Annual Support</div><div style="font-weight:800;font-size:var(--fs-lg);background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">₹6,000</div></div><div style="text-align:right"><div style="font-size:var(--fs-xs);color:var(--txt-muted)">Status</div><span class="badge badge-success">Active</span></div></div><div style="font-size:var(--fs-xs);color:var(--txt-muted);margin-bottom:1rem"><i class="fa-solid fa-calendar" style="color:var(--clr-primary)"></i> March 31, 2026 &nbsp;|&nbsp; <i class="fa-solid fa-users" style="color:var(--clr-primary)"></i> 520K Applicants</div><a href="404.html" class="btn btn-primary btn-sm" style="width:100%;justify-content:center">Apply Now <i class="fa-solid fa-arrow-right btn-icon"></i></a></div></div>
+          <div class="card tilt-card"><div class="card-body"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem"><span class="badge badge-primary">Women</span><div class="icon-box"><i class="fa-solid fa-venus"></i></div></div><h3 style="font-weight:700;font-size:var(--fs-base);margin-bottom:.6rem">Nari Shakti Udyog Yojana</h3><p style="font-size:var(--fs-sm);color:var(--txt-muted);line-height:1.7;margin-bottom:1rem">Financial support and mentorship for women entrepreneurs to start and scale their businesses.</p><div style="display:flex;justify-content:space-between;align-items:center;padding:.75rem;background:var(--bg-soft);border-radius:var(--radius-md);margin-bottom:1rem"><div><div style="font-size:var(--fs-xs);color:var(--txt-muted)">Seed Fund</div><div style="font-weight:800;font-size:var(--fs-lg);background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">₹2 Lakh</div></div><div style="text-align:right"><div style="font-size:var(--fs-xs);color:var(--txt-muted)">Status</div><span class="badge badge-success">Active</span></div></div><div style="font-size:var(--fs-xs);color:var(--txt-muted);margin-bottom:1rem"><i class="fa-solid fa-calendar" style="color:var(--clr-primary)"></i> Sep 15, 2025 &nbsp;|&nbsp; <i class="fa-solid fa-users" style="color:var(--clr-primary)"></i> 68K Applicants</div><a href="404.html" class="btn btn-primary btn-sm" style="width:100%;justify-content:center">Apply Now <i class="fa-solid fa-arrow-right btn-icon"></i></a></div></div>
+          <div class="card tilt-card"><div class="card-body"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem"><span class="badge badge-info">Senior Citizens</span><div class="icon-box"><i class="fa-solid fa-person-cane"></i></div></div><h3 style="font-weight:700;font-size:var(--fs-base);margin-bottom:.6rem">Vayo Vandana Pension</h3><p style="font-size:var(--fs-sm);color:var(--txt-muted);line-height:1.7;margin-bottom:1rem">Monthly pension providing financial security to senior citizens above 60 years of age.</p><div style="display:flex;justify-content:space-between;align-items:center;padding:.75rem;background:var(--bg-soft);border-radius:var(--radius-md);margin-bottom:1rem"><div><div style="font-size:var(--fs-xs);color:var(--txt-muted)">Monthly</div><div style="font-weight:800;font-size:var(--fs-lg);background:var(--grad-primary);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">₹3,000</div></div><div style="text-align:right"><div style="font-size:var(--fs-xs);color:var(--txt-muted)">Status</div><span class="badge badge-success">Active</span></div></div><div style="font-size:var(--fs-xs);color:var(--txt-muted);margin-bottom:1rem"><i class="fa-solid fa-calendar" style="color:var(--clr-primary)"></i> Ongoing &nbsp;|&nbsp; <i class="fa-solid fa-users" style="color:var(--clr-primary)"></i> 340K Beneficiaries</div><a href="404.html" class="btn btn-primary btn-sm" style="width:100%;justify-content:center">Apply Now <i class="fa-solid fa-arrow-right btn-icon"></i></a></div></div>
+        </div>
+      </div>
+      <div class="tab-panel" id="s-edu"><div style="text-align:center;padding:3rem"><div class="icon-box icon-box-lg" style="margin:0 auto 1.5rem"><i class="fa-solid fa-graduation-cap"></i></div><h3>Education Schemes</h3><p style="color:var(--txt-muted);margin:1rem auto 2rem;max-width:500px">National Merit Scholarship, Pre-Matric, Post-Matric scholarships, and more. Login to check eligibility and apply.</p><a href="404.html" class="btn btn-primary btn-lg">Login &amp; Apply</a></div></div>
+      <div class="tab-panel" id="s-health"><div style="text-align:center;padding:3rem"><div class="icon-box icon-box-lg" style="margin:0 auto 1.5rem"><i class="fa-solid fa-heart-pulse"></i></div><h3>Healthcare Schemes</h3><p style="color:var(--txt-muted);margin:1rem auto 2rem;max-width:500px">Ayushman Bharat, Pradhan Swasthya Yojana, Janani Suraksha Yojana. Login to check eligibility.</p><a href="404.html" class="btn btn-primary btn-lg">Login &amp; Apply</a></div></div>
+      <div class="tab-panel" id="s-housing"><div style="text-align:center;padding:3rem"><div class="icon-box icon-box-lg" style="margin:0 auto 1.5rem"><i class="fa-solid fa-house"></i></div><h3>Housing Schemes</h3><p style="color:var(--txt-muted);margin:1rem auto 2rem;max-width:500px">PMAY Urban &amp; Rural, Grih Laxmi Housing Scheme. Check eligibility and apply for subsidized homes.</p><a href="404.html" class="btn btn-primary btn-lg">Login &amp; Apply</a></div></div>
+      <div class="tab-panel" id="s-agri"><div style="text-align:center;padding:3rem"><div class="icon-box icon-box-lg" style="margin:0 auto 1.5rem"><i class="fa-solid fa-wheat-awn"></i></div><h3>Agricultural Schemes</h3><p style="color:var(--txt-muted);margin:1rem auto 2rem;max-width:500px">Kisan Samridhi, PM Kisan, Crop Insurance, Soil Health Card, and more farmer welfare programs.</p><a href="404.html" class="btn btn-primary btn-lg">Login &amp; Apply</a></div></div>
+      <div class="tab-panel" id="s-women"><div style="text-align:center;padding:3rem"><div class="icon-box icon-box-lg" style="margin:0 auto 1.5rem"><i class="fa-solid fa-venus"></i></div><h3>Women Empowerment Schemes</h3><p style="color:var(--txt-muted);margin:1rem auto 2rem;max-width:500px">Nari Shakti, Beti Bachao Beti Padhao, Mahila Samman Savings, and skill development programs for women.</p><a href="404.html" class="btn btn-primary btn-lg">Login &amp; Apply</a></div></div>
+      <div class="tab-panel" id="s-senior"><div style="text-align:center;padding:3rem"><div class="icon-box icon-box-lg" style="margin:0 auto 1.5rem"><i class="fa-solid fa-person-cane"></i></div><h3>Senior Citizen Schemes</h3><p style="color:var(--txt-muted);margin:1rem auto 2rem;max-width:500px">Vayo Vandana Pension, Indira Gandhi National Old Age Pension, and senior healthcare coverage programs.</p><a href="404.html" class="btn btn-primary btn-lg">Login &amp; Apply</a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ELIGIBILITY CHECKER (merged from schemes) -->
+<section style="background:var(--bg-soft)">
+  <div class="container">
+    <div class="dept-two-col">
+      <div data-reveal="left">
+        <div class="section-label"><i class="fa-solid fa-check-circle"></i> Quick Check</div>
+        <h2 class="section-heading">Check Your <span>Scheme Eligibility</span></h2>
+        <p style="color:var(--txt-muted);line-height:1.8;margin-bottom:2rem">Answer a few quick questions to discover which government schemes you are eligible for and start your application.</p>
+        <form style="display:flex;flex-direction:column;gap:1.2rem;width:100%" onsubmit="event.preventDefault();window.location.href='login.html'">
+          <div class="dept-form-grid">
+            <div><label style="display:block;font-weight:600;font-size:var(--fs-sm);margin-bottom:.4rem">Age</label><input type="number" placeholder="Your age" style="width:100%;box-sizing:border-box;padding:.875rem 1.25rem;border:1.5px solid var(--border-light);border-radius:var(--radius-full);font-size:var(--fs-base);outline:none;background:#fff;transition:var(--trans-base)" onfocus="this.style.borderColor='var(--clr-primary)'" onblur="this.style.borderColor='var(--border-light)'" /></div>
+            <div><label style="display:block;font-weight:600;font-size:var(--fs-sm);margin-bottom:.4rem">Annual Income</label><input type="text" placeholder="₹ Annual income" style="width:100%;box-sizing:border-box;padding:.875rem 1.25rem;border:1.5px solid var(--border-light);border-radius:var(--radius-full);font-size:var(--fs-base);outline:none;background:#fff;transition:var(--trans-base)" onfocus="this.style.borderColor='var(--clr-primary)'" onblur="this.style.borderColor='var(--border-light)'" /></div>
+          </div>
+          <div><label style="display:block;font-weight:600;font-size:var(--fs-sm);margin-bottom:.4rem">Category</label><select style="width:100%;box-sizing:border-box;padding:.875rem 1.25rem;border:1.5px solid var(--border-light);border-radius:var(--radius-full);font-size:var(--fs-base);outline:none;background:#fff;transition:var(--trans-base);appearance:none;-webkit-appearance:none;background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23666%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><polyline points=%226 9 12 15 18 9%22></polyline></svg>');background-repeat:no-repeat;background-position:right 1.25rem center" onfocus="this.style.borderColor='var(--clr-primary)'" onblur="this.style.borderColor='var(--border-light)'"><option>General</option><option>OBC</option><option>SC/ST</option><option>EWS</option><option>Minority</option></select></div>
+          <div><label style="display:block;font-weight:600;font-size:var(--fs-sm);margin-bottom:.4rem">State</label><select style="width:100%;box-sizing:border-box;padding:.875rem 1.25rem;border:1.5px solid var(--border-light);border-radius:var(--radius-full);font-size:var(--fs-base);outline:none;background:#fff;transition:var(--trans-base);appearance:none;-webkit-appearance:none;background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23666%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><polyline points=%226 9 12 15 18 9%22></polyline></svg>');background-repeat:no-repeat;background-position:right 1.25rem center" onfocus="this.style.borderColor='var(--clr-primary)'" onblur="this.style.borderColor='var(--border-light)'"><option>Maharashtra</option><option>Uttar Pradesh</option><option>Tamil Nadu</option><option>Karnataka</option><option>Gujarat</option><option>Rajasthan</option><option>West Bengal</option></select></div>
+          <button type="button" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;margin-top:0.5rem">Check Eligibility" onclick="window.location.href='404.html'" <i class="fa-solid fa-arrow-right btn-icon"></i></button>
+        </form>
+      </div>
+      <div data-reveal="right">
+        <img src="assets/images/citizen_portal.webp" alt="Citizen Using Portal" style="width:100%;border-radius:var(--radius-xl);box-shadow:var(--shadow-xl)" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ OVERALL PERFORMANCE ═══ -->
+<section style="background:var(--bg-white)">
+  <div class="container">
+    <div class="section-header center" data-reveal="up">
+      <div class="section-label"><i class="fa-solid fa-chart-bar"></i> Performance</div>
+      <h2 class="section-heading">Departmental <span>Performance Metrics</span></h2>
+    </div>
+    <div class="dept-two-col">
+      <div data-reveal="left">
+        <img src="assets/images/gov_performance.webp" alt="Government Performance" style="width:100%;border-radius:var(--radius-xl);box-shadow:var(--shadow-xl)" loading="lazy" />
+      </div>
+      <div data-reveal="right">
+        <p style="color:var(--txt-muted);margin-bottom:2rem;line-height:1.8">Overall performance metrics across all government departments show consistent improvement in citizen satisfaction, service delivery speed, and digital adoption rates.</p>
+        <div style="display:flex;flex-direction:column;gap:1.5rem">
+          <div><div style="display:flex;justify-content:space-between;margin-bottom:0.5rem"><span style="font-weight:600">Citizen Satisfaction</span><span style="font-weight:800;color:var(--clr-primary)">92%</span></div><div class="progress-bar-wrap"><div class="progress-bar-fill" data-width="92%"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;margin-bottom:0.5rem"><span style="font-weight:600">Digital Service Adoption</span><span style="font-weight:800;color:var(--clr-primary)">87%</span></div><div class="progress-bar-wrap"><div class="progress-bar-fill" data-width="87%"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;margin-bottom:0.5rem"><span style="font-weight:600">On-Time Processing Rate</span><span style="font-weight:800;color:var(--clr-primary)">96%</span></div><div class="progress-bar-wrap"><div class="progress-bar-fill" data-width="96%"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;margin-bottom:0.5rem"><span style="font-weight:600">Grievance Resolution</span><span style="font-weight:800;color:var(--clr-primary)">89%</span></div><div class="progress-bar-wrap"><div class="progress-bar-fill" data-width="89%"></div></div></div>
+          <div><div style="display:flex;justify-content:space-between;margin-bottom:0.5rem"><span style="font-weight:600">Transparency Index</span><span style="font-weight:800;color:var(--clr-primary)">94%</span></div><div class="progress-bar-wrap"><div class="progress-bar-fill" data-width="94%"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section"><div class="cta-grid"></div><div class="container"><div class="cta-content" data-reveal="up"><h2 class="cta-title">Connect With Government Departments</h2><p class="cta-sub">Login to access department-specific services, submit applications, and track your case status in real-time.</p><div class="cta-actions"><a href="404.html" class="btn btn-white btn-lg">Access Portal <i class="fa-solid fa-arrow-right btn-icon"></i></a><a href="404.html" class="btn btn-ghost btn-lg"><i class="fa-solid fa-phone"></i> Contact Us</a></div></div></div></section>
+
+<!-- FOOTER -->
+<footer class="footer"><div class="footer-blob footer-blob-1"></div><div class="footer-blob footer-blob-2"></div>
+  <div class="footer-top"><div class="container"><div class="footer-grid">
+    <div class="footer-brand"><a href="index.html" class="footer-brand-logo"><img src="assets/Logo11.webp" alt="Stackly Logo" /></a><p>India's digital government services platform.</p><div class="footer-social"><a href="404.html" class="social-link"><i class="fa-brands fa-facebook-f"></i></a><a href="404.html" class="social-link"><i class="fa-brands fa-x-twitter"></i></a><a href="404.html" class="social-link"><i class="fa-brands fa-instagram"></i></a><a href="404.html" class="social-link"><i class="fa-brands fa-youtube"></i></a></div></div>
+    <div><h4 class="footer-col-title">Quick Links</h4><ul class="footer-links"><li><a href="index.html"><i class="fa-solid fa-chevron-right"></i> Home</a></li><li><a href="about.html"><i class="fa-solid fa-chevron-right"></i> About</a></li><li><a href="services.html"><i class="fa-solid fa-chevron-right"></i> Services</a></li><li><a href="departments.html"><i class="fa-solid fa-chevron-right"></i> Departments</a></li><li><a href="contact.html"><i class="fa-solid fa-chevron-right"></i> Contact</a></li></ul></div>
+    <div><h4 class="footer-col-title">Government Links</h4><ul class="footer-links"><li><a href="404.html"><i class="fa-solid fa-chevron-right"></i> India.gov.in</a></li><li><a href="404.html"><i class="fa-solid fa-chevron-right"></i> DigiLocker</a></li><li><a href="404.html"><i class="fa-solid fa-chevron-right"></i> UMANG App</a></li><li><a href="404.html"><i class="fa-solid fa-chevron-right"></i> MyGov India</a></li><li><a href="404.html"><i class="fa-solid fa-chevron-right"></i> e-Courts</a></li><li><a href="404.html"><i class="fa-solid fa-chevron-right"></i> EPFO Portal</a></li><li><a href="404.html"><i class="fa-solid fa-chevron-right"></i> Income Tax Portal</a></li></ul></div>
+    <div><h4 class="footer-col-title">Contact</h4><ul class="footer-contact-list"><li class="footer-contact-item"><div class="footer-contact-icon"><i class="fa-solid fa-phone"></i></div><div class="footer-contact-info"><div class="footer-contact-label">Helpline</div><div class="footer-contact-value">1800-XXX-XXXX</div></div></li><li class="footer-contact-item"><div class="footer-contact-icon"><i class="fa-solid fa-envelope"></i></div><div class="footer-contact-info"><div class="footer-contact-label">Email</div><div class="footer-contact-value">support@stackly.gov.in</div></div></li></ul></div>
+  </div></div></div>
+  <div class="footer-bottom"><div class="container"><div class="footer-bottom-inner"><p class="footer-copyright">© 2026 <a href="index.html">Stackly</a>. All Rights Reserved.</p><div class="footer-bottom-links"><a href="404.html">Privacy</a><a href="404.html">Terms</a><a href="404.html">Sitemap</a></div></div></div></div>
+</footer>
+<button id="scrollTop"><i class="fa-solid fa-chevron-up"></i></button>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+/* contact.css — Contact page responsive styles */
+
+/* Contact info cards grid */
+.contact-info-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+/* Contact form + map grid */
+.contact-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+.contact-name-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.contact-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+  .contact-info-grid  { grid-template-columns: repeat(2, 1fr); }
+  .contact-form-grid  { grid-template-columns: 1fr; gap: 2.5rem; }
+  .contact-two-col    { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+@media (max-width: 768px) {
+  .contact-info-grid  { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .contact-name-grid  { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 480px) {
+  .contact-info-grid  { grid-template-columns: 1fr; }
+}

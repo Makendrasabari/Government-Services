@@ -1,0 +1,527 @@
+/* ============================================================
+   animations.css — GSAP Helpers & Keyframe Animations
+   Government Services Portal
+   ============================================================ */
+
+/* ── Reveal States (GSAP initial states) ─────────────────── */
+[data-reveal] { opacity: 0; }
+
+[data-reveal="up"]    { transform: translateY(60px); }
+[data-reveal="down"]  { transform: translateY(-40px); }
+[data-reveal="left"]  { transform: translateX(-60px); }
+[data-reveal="right"] { transform: translateX(60px); }
+[data-reveal="scale"] { transform: scale(0.85); }
+[data-reveal="zoom"]  { transform: scale(0.7); }
+[data-reveal="fade"]  { }
+
+/* ── Stagger Children Base ───────────────────────────────── */
+[data-stagger] > * {
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+/* ── Image Clip Reveal ───────────────────────────────────── */
+.clip-reveal {
+  overflow: hidden;
+}
+
+.clip-reveal img,
+.clip-reveal .clip-inner {
+  transform: scale(1.1);
+  transform-origin: center center;
+}
+
+/* ── Floating Animation ──────────────────────────────────── */
+.float-1 { animation: float1 4s ease-in-out infinite; }
+.float-2 { animation: float2 5s ease-in-out infinite 0.5s; }
+.float-3 { animation: float3 4.5s ease-in-out infinite 1s; }
+
+@keyframes float1 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%       { transform: translateY(-15px) rotate(2deg); }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50%       { transform: translateY(-10px) rotate(-1.5deg); }
+}
+
+@keyframes float3 {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50%       { transform: translateY(-8px) translateX(6px); }
+}
+
+/* ── Blob Animations ─────────────────────────────────────── */
+.blob-animate {
+  animation: blobMorph 8s ease-in-out infinite;
+}
+
+@keyframes blobMorph {
+  0%   { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50%  { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+}
+
+/* ── Pulse Ring ──────────────────────────────────────────── */
+.pulse-ring {
+  position: relative;
+}
+
+.pulse-ring::after {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: inherit;
+  border: 2px solid var(--clr-primary);
+  opacity: 0.4;
+  animation: pulseRing 2.5s ease-in-out infinite;
+}
+
+@keyframes pulseRing {
+  0%   { transform: scale(1); opacity: 0.4; }
+  50%  { transform: scale(1.08); opacity: 0; }
+  100% { transform: scale(1); opacity: 0; }
+}
+
+/* ── Shine Effect ────────────────────────────────────────── */
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  animation: shine 3s ease-in-out infinite 2s;
+  z-index: 1;
+}
+
+@keyframes shine {
+  0%   { left: -100%; }
+  100% { left: 200%; }
+}
+
+/* ── Gradient Text Animate ───────────────────────────────── */
+.text-gradient-animate {
+  background: linear-gradient(
+    90deg,
+    #c0392b 0%,
+    #e74c3c 30%,
+    #f39c12 60%,
+    #c0392b 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientShift 4s linear infinite;
+}
+
+@keyframes gradientShift {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ── Typewriter Cursor ───────────────────────────────────── */
+.typewriter-cursor::after {
+  content: '|';
+  animation: blink 0.8s step-end infinite;
+  color: var(--clr-primary);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ── Number Roll ─────────────────────────────────────────── */
+.count-number {
+  display: inline-block;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Loading Skeleton ────────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, #f0e0e0 25%, #ffe0e0 50%, #f0e0e0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Hover Spotlight ─────────────────────────────────────── */
+.hover-spotlight {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-spotlight::after {
+  content: '';
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, rgba(255,255,255,0.12) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.3s ease;
+}
+
+.hover-spotlight:hover::after { opacity: 1; }
+
+/* ── Flip Card ───────────────────────────────────────────── */
+.flip-card {
+  perspective: 1000px;
+  height: 280px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  background: var(--grad-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
+  text-align: center;
+  color: #fff;
+}
+
+/* ── Hover Reveal Card ───────────────────────────────────── */
+.hover-reveal {
+  position: relative;
+  overflow: hidden;
+}
+
+.hover-reveal-overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--grad-primary);
+  transform: translateY(100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1.5rem;
+  color: #fff;
+  text-align: center;
+}
+
+.hover-reveal:hover .hover-reveal-overlay { transform: translateY(0); }
+
+/* ── Tilt Effect ─────────────────────────────────────────── */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease;
+}
+
+/* ── Bento Grid ──────────────────────────────────────────── */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: minmax(60px, auto);
+  gap: 1rem;
+}
+
+.bento-cell {
+  background: var(--bg-white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+  transition: var(--trans-slow);
+}
+
+.bento-cell:hover {
+  border-color: var(--border-medium);
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+}
+
+/* ── Progress Ring ───────────────────────────────────────── */
+.progress-ring {
+  position: relative;
+  width: 100px;
+  height: 100px;
+}
+
+.progress-ring svg {
+  transform: rotate(-90deg);
+}
+
+.progress-ring circle {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
+}
+
+.progress-ring .track {
+  stroke: var(--border-light);
+}
+
+.progress-ring .fill {
+  stroke: url(#gradient);
+  stroke-dasharray: 283;
+  stroke-dashoffset: 283;
+  transition: stroke-dashoffset 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ── Timeline ────────────────────────────────────────────── */
+.timeline {
+  position: relative;
+  padding: 1rem 0;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--clr-primary), var(--clr-accent));
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 56px;
+  margin-bottom: 2rem;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 10px;
+  top: 4px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--grad-primary);
+  border: 3px solid var(--bg-white);
+  box-shadow: 0 0 0 2px var(--clr-primary);
+  z-index: 1;
+}
+
+.timeline-date {
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  color: var(--clr-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.4rem;
+}
+
+.timeline-content h4 {
+  font-size: var(--fs-base);
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.timeline-content p {
+  font-size: var(--fs-sm);
+  color: var(--txt-muted);
+}
+
+/* ── Testimonial Card ────────────────────────────────────── */
+.testimonial-card {
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  padding: 2rem;
+  transition: var(--trans-slow);
+  box-shadow: var(--shadow-card);
+}
+
+.testimonial-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-5px);
+  border-color: var(--border-medium);
+}
+
+.testimonial-stars {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1rem;
+}
+
+.testimonial-stars i { color: var(--clr-accent); font-size: 0.9rem; }
+
+.testimonial-text {
+  color: var(--txt-body);
+  font-size: var(--fs-sm);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--border-medium);
+}
+
+.testimonial-name {
+  font-weight: 700;
+  font-size: var(--fs-sm);
+  color: var(--txt-heading);
+}
+
+.testimonial-role {
+  font-size: var(--fs-xs);
+  color: var(--txt-muted);
+}
+
+/* ── Video Play Button ───────────────────────────────────── */
+.play-btn {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--grad-primary);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: var(--shadow-lg);
+  transition: var(--trans-spring);
+  position: relative;
+}
+
+.play-btn::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border-radius: 50%;
+  border: 2px solid rgba(192,57,43,0.3);
+  animation: pulseRing 2s ease-in-out infinite;
+}
+
+.play-btn:hover { transform: scale(1.1); box-shadow: var(--shadow-xl); }
+
+/* ── Info Box ────────────────────────────────────────────── */
+.info-box {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--bg-soft);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-light);
+}
+
+.info-box-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--grad-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+/* ── Smooth Slider ───────────────────────────────────────── */
+.slider-container { position: relative; overflow: hidden; }
+
+.slider-track {
+  display: flex;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.slider-nav {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  justify-content: center;
+}
+
+.slider-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--border-medium);
+  cursor: pointer;
+  transition: var(--trans-base);
+}
+
+.slider-dot.active {
+  width: 24px;
+  border-radius: var(--radius-full);
+  background: var(--grad-primary);
+}
+
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--clr-primary);
+  cursor: pointer;
+  transition: var(--trans-spring);
+  z-index: 10;
+}
+
+.slider-arrow:hover {
+  background: var(--grad-primary);
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.slider-arrow.prev { left: -22px; }
+.slider-arrow.next { right: -22px; }
+
+/* ── Page transition overlay ─────────────────────────────── */
+.page-transition-overlay {
+  display: none !important;
+}
+
+/* ── Mobile: Replace horizontal reveals with vertical to prevent overflow ── */
+@media (max-width: 768px) {
+  [data-reveal="left"]  { transform: translateY(40px); }
+  [data-reveal="right"] { transform: translateY(40px); }
+}

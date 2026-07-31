@@ -1,0 +1,70 @@
+{
+  "news": [
+    {
+      "id": 1,
+      "category": "Digital India",
+      "tag": "Featured",
+      "title": "Government Launches AI-Powered Citizen Service Platform",
+      "excerpt": "The new integrated platform leverages artificial intelligence to provide 247 citizen support, reducing average service time from 15 days to just 3 days.",
+      "date": "July 25, 2026",
+      "author": "Ministry of Electronics",
+      "image": "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800&q=80",
+      "readTime": "5 min read"
+    },
+    {
+      "id": 2,
+      "category": "Infrastructure",
+      "tag": "Breaking",
+      "title": "₹50,000 Crore Smart City Initiative Approved for 100 Cities",
+      "excerpt": "The cabinet has approved an ambitious smart city transformation program covering 100 tier-2 and tier-3 cities with IoT infrastructure.",
+      "date": "July 22, 2026",
+      "author": "Ministry of Urban Affairs",
+      "image": "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80",
+      "readTime": "4 min read"
+    },
+    {
+      "id": 3,
+      "category": "Healthcare",
+      "tag": "Announcement",
+      "title": "Universal Health Coverage Expanded to Rural Districts",
+      "excerpt": "Health ministry announces expansion of Ayushman Bharat coverage to 1,200 additional rural districts, benefiting over 8 crore new families.",
+      "date": "July 18, 2026",
+      "author": "Ministry of Health",
+      "image": "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=800&q=80",
+      "readTime": "3 min read"
+    },
+    {
+      "id": 4,
+      "category": "Education",
+      "tag": "Policy",
+      "title": "New Education Policy Brings Digital Learning to 50,000 Schools",
+      "excerpt": "Implementation of NEP 2025 gains momentum with smart classroom infrastructure deployment across 50,000 government schools nationwide.",
+      "date": "July 14, 2026",
+      "author": "Ministry of Education",
+      "image": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80",
+      "readTime": "6 min read"
+    },
+    {
+      "id": 5,
+      "category": "Agriculture",
+      "tag": "Update",
+      "title": "Drone Technology Transforms Agricultural Monitoring",
+      "excerpt": "Over 25,000 agricultural drones deployed across 15 states for crop monitoring, pest control, and precision farming assistance.",
+      "date": "July 10, 2026",
+      "author": "Ministry of Agriculture",
+      "image": "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=80",
+      "readTime": "4 min read"
+    },
+    {
+      "id": 6,
+      "category": "Environment",
+      "tag": "Green",
+      "title": "India Achieves 500 GW Renewable Energy Milestone",
+      "excerpt": "A historic achievement as India crosses the 500 GW installed renewable energy capacity, setting a global benchmark in clean energy transition.",
+      "date": "July 5, 2026",
+      "author": "Ministry of Energy",
+      "image": "https://images.unsplash.com/photo-1466611653911-95081537e5b7?w=800&q=80",
+      "readTime": "5 min read"
+    }
+  ]
+}

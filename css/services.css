@@ -1,0 +1,82 @@
+/* services.css */
+.services-card-item { transition: var(--trans-slow); }
+.services-card-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); border-color: var(--border-medium); }
+.step-connector { display: block; }
+
+/* ── Services Card Grid ──────────────────────────────────── */
+.services-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+/* ── Services Steps Grid (How It Works) ──────────────────── */
+.services-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+/* ── Download Forms Grid ─────────────────────────────────── */
+.services-forms-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+/* ── Search Bar ──────────────────────────────────────────── */
+.services-search-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.services-search-field {
+  position: relative;
+  flex: 1;
+}
+
+.services-search-icon {
+  position: absolute;
+  left: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--txt-muted);
+  pointer-events: none;
+}
+
+.services-search-input {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem;
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-base);
+  outline: none;
+  transition: var(--trans-base);
+}
+
+.services-search-btn {
+  flex-shrink: 0;
+  padding: 0.875rem 2rem;
+  white-space: nowrap;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .step-connector       { display: none; }
+  .services-cards-grid  { grid-template-columns: 1fr; }
+  .services-steps-grid  { grid-template-columns: repeat(2, 1fr); }
+  .services-forms-grid  { grid-template-columns: 1fr; }
+
+  .services-search-inner { flex-direction: column; align-items: stretch; }
+  .services-search-btn   { width: 100%; }
+
+  .tabs-nav { gap: 0.4rem; }
+  .tab-btn  { font-size: 0.75rem; padding: 0.5rem 0.875rem; }
+}
+
+@media (max-width: 480px) {
+  .services-steps-grid { grid-template-columns: 1fr; }
+}

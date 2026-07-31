@@ -1,0 +1,76 @@
+{
+  "schemes": [
+    {
+      "id": 1,
+      "category": "Education",
+      "icon": "fa-graduation-cap",
+      "name": "National Merit Scholarship",
+      "description": "Financial assistance for meritorious students from economically weaker sections to pursue higher education at premier institutions.",
+      "benefit": "₹75,000/year",
+      "eligibility": "Students scoring 80%+ in Class 12 with family income below ₹6 LPA",
+      "deadline": "December 31, 2025",
+      "applicants": 142000,
+      "status": "Active"
+    },
+    {
+      "id": 2,
+      "category": "Healthcare",
+      "icon": "fa-heart-pulse",
+      "name": "Pradhan Swasthya Yojana",
+      "description": "Comprehensive health coverage providing cashless treatment at empanelled hospitals for all government scheme beneficiaries.",
+      "benefit": "₹5 Lakh coverage",
+      "eligibility": "BPL families and low-income households across all states",
+      "deadline": "Rolling Enrollment",
+      "applicants": 890000,
+      "status": "Active"
+    },
+    {
+      "id": 3,
+      "category": "Agriculture",
+      "icon": "fa-wheat-awn",
+      "name": "Kisan Samridhi Scheme",
+      "description": "Direct income support and crop insurance for small and marginal farmers to ensure agricultural sustainability.",
+      "benefit": "₹6,000/year + Insurance",
+      "eligibility": "Farmers with agricultural land upto 2 hectares",
+      "deadline": "March 31, 2026",
+      "applicants": 520000,
+      "status": "Active"
+    },
+    {
+      "id": 4,
+      "category": "Housing",
+      "icon": "fa-house",
+      "name": "Grih Laxmi Housing Scheme",
+      "description": "Subsidized home loans and construction assistance for low-income families to own their first residential property.",
+      "benefit": "6.5% subsidy on loan",
+      "eligibility": "First-time home buyers with income below ₹12 LPA",
+      "deadline": "June 30, 2026",
+      "applicants": 215000,
+      "status": "Active"
+    },
+    {
+      "id": 5,
+      "category": "Women Empowerment",
+      "icon": "fa-female",
+      "name": "Nari Shakti Udyog Yojana",
+      "description": "Financial support, training, and mentorship for women entrepreneurs to start and scale their small businesses.",
+      "benefit": "₹2 Lakh seed fund",
+      "eligibility": "Women aged 18-55 with a viable business plan",
+      "deadline": "September 15, 2025",
+      "applicants": 68000,
+      "status": "Active"
+    },
+    {
+      "id": 6,
+      "category": "Senior Citizens",
+      "icon": "fa-person-cane",
+      "name": "Vayo Vandana Pension",
+      "description": "Monthly pension scheme providing financial security and healthcare benefits to senior citizens above 60 years.",
+      "benefit": "₹3,000/month",
+      "eligibility": "Citizens aged 60+ with no other pension source",
+      "deadline": "Ongoing",
+      "applicants": 340000,
+      "status": "Active"
+    }
+  ]
+}

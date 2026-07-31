@@ -1,0 +1,70 @@
+{
+  "departments": [
+    {
+      "id": 1,
+      "icon": "fa-shield-halved",
+      "name": "Department of Home Affairs",
+      "head": "Dr. Rajesh Sharma",
+      "description": "Oversees internal security, police, civil defence, disaster management, and border security coordination.",
+      "employees": 15420,
+      "offices": 128,
+      "services": 24,
+      "performance": 94
+    },
+    {
+      "id": 2,
+      "icon": "fa-graduation-cap",
+      "name": "Ministry of Education",
+      "head": "Prof. Anita Verma",
+      "description": "Manages primary, secondary, and higher education policies, curriculum development, and teacher training programs.",
+      "employees": 48600,
+      "offices": 342,
+      "services": 31,
+      "performance": 89
+    },
+    {
+      "id": 3,
+      "icon": "fa-heart-pulse",
+      "name": "Department of Health",
+      "head": "Dr. Priya Nair",
+      "description": "Administers public health programs, hospital management, disease control, and community wellness initiatives.",
+      "employees": 62300,
+      "offices": 256,
+      "services": 42,
+      "performance": 91
+    },
+    {
+      "id": 4,
+      "icon": "fa-road",
+      "name": "Public Works Department",
+      "head": "Eng. Suresh Kumar",
+      "description": "Plans and executes infrastructure projects including roads, bridges, public buildings, and utility networks.",
+      "employees": 28750,
+      "offices": 184,
+      "services": 18,
+      "performance": 86
+    },
+    {
+      "id": 5,
+      "icon": "fa-leaf",
+      "name": "Environment & Forests",
+      "head": "Ms. Kavitha Reddy",
+      "description": "Protects natural resources, manages national parks, enforces environmental laws, and leads green initiatives.",
+      "employees": 11200,
+      "offices": 96,
+      "services": 15,
+      "performance": 88
+    },
+    {
+      "id": 6,
+      "icon": "fa-coins",
+      "name": "Department of Finance",
+      "head": "Mr. Arun Mehta",
+      "description": "Manages state finances, taxation, budget allocation, fiscal policy, and financial regulations.",
+      "employees": 9840,
+      "offices": 72,
+      "services": 22,
+      "performance": 95
+    }
+  ]
+}
