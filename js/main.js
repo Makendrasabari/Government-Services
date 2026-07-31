@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initGlobalReveal();
   initHeroCarousel();
+  initCustomDropdowns();
 });
 
 /* ============================================================
@@ -557,4 +558,125 @@ function initHeroCarousel() {
       }, 800);
     }
   }, 1500);
+}
+
+// ── Custom Dropdown Component Parser ─────────────────────────
+function initCustomDropdowns() {
+  const selects = document.querySelectorAll('select:not(.custom-select-hidden)');
+  
+  selects.forEach(select => {
+    select.classList.add('custom-select-hidden');
+    
+    const wrapper = document.createElement('div');
+    wrapper.classList.add('custom-select-wrapper');
+    if (select.classList.contains('form-control-pill')) {
+      wrapper.classList.add('pill');
+    }
+    
+    if (select.id) {
+      wrapper.setAttribute('data-select-id', select.id);
+    }
+    
+    const trigger = document.createElement('div');
+    trigger.classList.add('custom-select-trigger');
+    
+    const triggerText = document.createElement('span');
+    const selectedOption = select.options[select.selectedIndex];
+    triggerText.textContent = selectedOption ? selectedOption.textContent : 'Select...';
+    
+    const arrow = document.createElement('i');
+    arrow.classList.add('fa-solid', 'fa-chevron-down', 'custom-select-arrow');
+    
+    trigger.appendChild(triggerText);
+    trigger.appendChild(arrow);
+    wrapper.appendChild(trigger);
+    
+    const optionsContainer = document.createElement('div');
+    optionsContainer.classList.add('custom-select-options');
+    
+    Array.from(select.options).forEach((opt, idx) => {
+      const optionEl = document.createElement('div');
+      optionEl.classList.add('custom-select-option');
+      optionEl.textContent = opt.textContent;
+      optionEl.setAttribute('data-value', opt.value);
+      optionEl.setAttribute('data-index', idx);
+      optionEl.setAttribute('tabindex', '-1'); // enable programmatic focus
+      
+      if (idx === select.selectedIndex) {
+        optionEl.classList.add('selected');
+      }
+      
+      optionEl.addEventListener('click', (e) => {
+        e.stopPropagation();
+        select.selectedIndex = idx;
+        triggerText.textContent = opt.textContent;
+        
+        optionsContainer.querySelectorAll('.custom-select-option').forEach(o => o.classList.remove('selected'));
+        optionEl.classList.add('selected');
+        
+        wrapper.classList.remove('open');
+        
+        select.dispatchEvent(new Event('change', { bubbles: true }));
+        select.dispatchEvent(new Event('input', { bubbles: true }));
+      });
+      
+      optionsContainer.appendChild(optionEl);
+    });
+    
+    wrapper.appendChild(optionsContainer);
+    select.parentNode.insertBefore(wrapper, select.nextSibling);
+    select.style.display = 'none';
+    
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      document.querySelectorAll('.custom-select-wrapper').forEach(w => {
+        if (w !== wrapper) w.classList.remove('open');
+      });
+      wrapper.classList.toggle('open');
+    });
+    
+    trigger.setAttribute('tabindex', '0');
+    let activeOptionIndex = select.selectedIndex;
+    
+    wrapper.addEventListener('keydown', (e) => {
+      const isOpen = wrapper.classList.contains('open');
+      const options = Array.from(optionsContainer.querySelectorAll('.custom-select-option'));
+      
+      if (!isOpen) {
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
+          e.preventDefault();
+          wrapper.classList.add('open');
+          activeOptionIndex = select.selectedIndex;
+          setTimeout(() => {
+            options[activeOptionIndex]?.focus();
+          }, 50);
+        }
+        return;
+      }
+      
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        wrapper.classList.remove('open');
+        trigger.focus();
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        activeOptionIndex = (activeOptionIndex + 1) % options.length;
+        options[activeOptionIndex].focus();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        activeOptionIndex = (activeOptionIndex - 1 + options.length) % options.length;
+        options[activeOptionIndex].focus();
+      } else if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        options[activeOptionIndex].click();
+        trigger.focus();
+      }
+    });
+  });
+  
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.custom-select-wrapper').forEach(w => {
+      w.classList.remove('open');
+    });
+  });
 }
