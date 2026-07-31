@@ -53,10 +53,10 @@
 <section style="background:var(--bg-soft);padding:3rem 0">
   <div class="container">
     <div class="dept-stats-grid" data-stagger data-stagger="0.1">
-      <div class="card"><div class="card-body"><div class="stat-number count-number" data-target="142">0</div>+<p style="font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.1em;color:var(--txt-muted);margin-top:.5rem">Active Schemes</p></div></div>
-      <div class="card"><div class="card-body"><div class="stat-number"><span class="count-number" data-target="8">0</span>Cr+</div><p style="font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.1em;color:var(--txt-muted);margin-top:.5rem">Beneficiaries</p></div></div>
-      <div class="card"><div class="card-body"><div class="stat-number">₹<span class="count-number" data-target="12000">0</span>Cr+</div><p style="font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.1em;color:var(--txt-muted);margin-top:.5rem">Benefits Disbursed</p></div></div>
-      <div class="card"><div class="card-body"><div class="stat-number count-number" data-target="28">0</div><p style="font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.1em;color:var(--txt-muted);margin-top:.5rem">States Covered</p></div></div>
+      <div class="card"><div class="card-body"><div class="stat-number"><span class="count-number" data-target="142">0</span>+</div><p class="stat-label">Active Schemes</p></div></div>
+      <div class="card"><div class="card-body"><div class="stat-number"><span class="count-number" data-target="8">0</span> Cr+</div><p class="stat-label">Beneficiaries</p></div></div>
+      <div class="card"><div class="card-body"><div class="stat-number">₹<span class="count-number" data-target="12000">0</span> Cr+</div><p class="stat-label">Benefits Disbursed</p></div></div>
+      <div class="card"><div class="card-body"><div class="stat-number"><span class="count-number" data-target="28">0</span></div><p class="stat-label">States Covered</p></div></div>
     </div>
   </div>
 </section>
@@ -192,13 +192,13 @@
     
     <div data-tabs>
       <nav class="tabs-nav" data-reveal="up" data-delay="0.2">
-        <button class="tab-btn active" data-tab="s-all">All Schemes</button>
-        <button class="tab-btn" data-tab="s-edu">Education</button>
-        <button class="tab-btn" data-tab="s-health">Healthcare</button>
-        <button class="tab-btn" data-tab="s-housing">Housing</button>
-        <button class="tab-btn" data-tab="s-agri">Agriculture</button>
-        <button class="tab-btn" data-tab="s-women">Women</button>
-        <button class="tab-btn" data-tab="s-senior">Senior Citizens</button>
+        <button class="tab-btn active" data-tab="s-all"><i class="fa-solid fa-border-all"></i> All Schemes</button>
+        <button class="tab-btn" data-tab="s-edu"><i class="fa-solid fa-graduation-cap"></i> Education</button>
+        <button class="tab-btn" data-tab="s-health"><i class="fa-solid fa-heart-pulse"></i> Healthcare</button>
+        <button class="tab-btn" data-tab="s-housing"><i class="fa-solid fa-house"></i> Housing</button>
+        <button class="tab-btn" data-tab="s-agri"><i class="fa-solid fa-wheat-awn"></i> Agriculture</button>
+        <button class="tab-btn" data-tab="s-women"><i class="fa-solid fa-venus"></i> Women</button>
+        <button class="tab-btn" data-tab="s-senior"><i class="fa-solid fa-person-cane"></i> Senior Citizens</button>
       </nav>
 
       <div class="tab-panel active" id="s-all">
@@ -229,14 +229,40 @@
         <div class="section-label"><i class="fa-solid fa-check-circle"></i> Quick Check</div>
         <h2 class="section-heading">Check Your <span>Scheme Eligibility</span></h2>
         <p style="color:var(--txt-muted);line-height:1.8;margin-bottom:2rem">Answer a few quick questions to discover which government schemes you are eligible for and start your application.</p>
-        <form style="display:flex;flex-direction:column;gap:1.2rem;width:100%" onsubmit="event.preventDefault();window.location.href='login.html'">
-          <div class="dept-form-grid">
-            <div><label style="display:block;font-weight:600;font-size:var(--fs-sm);margin-bottom:.4rem">Age</label><input type="number" placeholder="Your age" style="width:100%;box-sizing:border-box;padding:.875rem 1.25rem;border:1.5px solid var(--border-light);border-radius:var(--radius-full);font-size:var(--fs-base);outline:none;background:#fff;transition:var(--trans-base)" onfocus="this.style.borderColor='var(--clr-primary)'" onblur="this.style.borderColor='var(--border-light)'" /></div>
-            <div><label style="display:block;font-weight:600;font-size:var(--fs-sm);margin-bottom:.4rem">Annual Income</label><input type="text" placeholder="₹ Annual income" style="width:100%;box-sizing:border-box;padding:.875rem 1.25rem;border:1.5px solid var(--border-light);border-radius:var(--radius-full);font-size:var(--fs-base);outline:none;background:#fff;transition:var(--trans-base)" onfocus="this.style.borderColor='var(--clr-primary)'" onblur="this.style.borderColor='var(--border-light)'" /></div>
+        <form style="width:100%" onsubmit="event.preventDefault();window.location.href='login.html'">
+          <div class="dept-form-grid" style="margin-bottom: 1.25rem;">
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label">Age</label>
+              <input type="number" placeholder="Your age" class="form-control form-control-pill" />
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label">Annual Income</label>
+              <input type="text" placeholder="₹ Annual income" class="form-control form-control-pill" />
+            </div>
           </div>
-          <div><label style="display:block;font-weight:600;font-size:var(--fs-sm);margin-bottom:.4rem">Category</label><select style="width:100%;box-sizing:border-box;padding:.875rem 1.25rem;border:1.5px solid var(--border-light);border-radius:var(--radius-full);font-size:var(--fs-base);outline:none;background:#fff;transition:var(--trans-base);appearance:none;-webkit-appearance:none;background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23666%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><polyline points=%226 9 12 15 18 9%22></polyline></svg>');background-repeat:no-repeat;background-position:right 1.25rem center" onfocus="this.style.borderColor='var(--clr-primary)'" onblur="this.style.borderColor='var(--border-light)'"><option>General</option><option>OBC</option><option>SC/ST</option><option>EWS</option><option>Minority</option></select></div>
-          <div><label style="display:block;font-weight:600;font-size:var(--fs-sm);margin-bottom:.4rem">State</label><select style="width:100%;box-sizing:border-box;padding:.875rem 1.25rem;border:1.5px solid var(--border-light);border-radius:var(--radius-full);font-size:var(--fs-base);outline:none;background:#fff;transition:var(--trans-base);appearance:none;-webkit-appearance:none;background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23666%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><polyline points=%226 9 12 15 18 9%22></polyline></svg>');background-repeat:no-repeat;background-position:right 1.25rem center" onfocus="this.style.borderColor='var(--clr-primary)'" onblur="this.style.borderColor='var(--border-light)'"><option>Maharashtra</option><option>Uttar Pradesh</option><option>Tamil Nadu</option><option>Karnataka</option><option>Gujarat</option><option>Rajasthan</option><option>West Bengal</option></select></div>
-          <button type="button" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;margin-top:0.5rem">Check Eligibility" onclick="window.location.href='404.html'" <i class="fa-solid fa-arrow-right btn-icon"></i></button>
+          <div class="form-group">
+            <label class="form-label">Category</label>
+            <select class="form-control form-control-pill" style="appearance:none;-webkit-appearance:none;background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23666%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><polyline points=%226 9 12 15 18 9%22></polyline></svg>');background-repeat:no-repeat;background-position:right 1.25rem center">
+              <option>General</option>
+              <option>OBC</option>
+              <option>SC/ST</option>
+              <option>EWS</option>
+              <option>Minority</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">State</label>
+            <select class="form-control form-control-pill" style="appearance:none;-webkit-appearance:none;background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23666%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><polyline points=%226 9 12 15 18 9%22></polyline></svg>');background-repeat:no-repeat;background-position:right 1.25rem center">
+              <option>Maharashtra</option>
+              <option>Uttar Pradesh</option>
+              <option>Tamil Nadu</option>
+              <option>Karnataka</option>
+              <option>Gujarat</option>
+              <option>Rajasthan</option>
+              <option>West Bengal</option>
+            </select>
+          </div>
+          <button type="button" onclick="window.location.href='404.html'" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;margin-top:0.75rem">Check Eligibility <i class="fa-solid fa-arrow-right btn-icon"></i></button>
         </form>
       </div>
       <div data-reveal="right">

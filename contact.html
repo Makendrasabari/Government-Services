@@ -62,26 +62,59 @@
         <div class="section-label"><i class="fa-solid fa-paper-plane"></i> Get In Touch</div>
         <h2 class="section-heading">Send Us a <span>Message</span></h2>
         <p style="color:var(--txt-muted);margin-bottom:2rem;line-height:1.8">Have a question, grievance, or feedback about our services? Fill in the form and our team will respond within 24 business hours.</p>
-        <form id="contactForm" onsubmit="return false;" style="display:flex;flex-direction:column;gap:1.25rem">
-          <div class="contact-name-grid">
-            <div><label style="display:block;font-weight:600;font-size:var(--fs-sm);margin-bottom:.4rem">First Name *</label><input type="text" required placeholder="John" style="width:100%;padding:.875rem 1rem;border:1.5px solid var(--border-light);border-radius:var(--radius-md);font-size:var(--fs-base);outline:none;transition:var(--trans-base)" onfocus="this.style.borderColor='var(--clr-primary)'" onblur="this.style.borderColor='var(--border-light)'" /></div>
-            <div><label style="display:block;font-weight:600;font-size:var(--fs-sm);margin-bottom:.4rem">Last Name *</label><input type="text" required placeholder="Doe" style="width:100%;padding:.875rem 1rem;border:1.5px solid var(--border-light);border-radius:var(--radius-md);font-size:var(--fs-base);outline:none;transition:var(--trans-base)" onfocus="this.style.borderColor='var(--clr-primary)'" onblur="this.style.borderColor='var(--border-light)'" /></div>
+        <form id="contactForm" onsubmit="return false;">
+          <div class="contact-name-grid" style="margin-bottom: 1.25rem;">
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label">First Name *</label>
+              <input type="text" required placeholder="John" class="form-control" />
+            </div>
+            <div class="form-group" style="margin-bottom: 0;">
+              <label class="form-label">Last Name *</label>
+              <input type="text" required placeholder="Doe" class="form-control" />
+            </div>
           </div>
-          <div><label style="display:block;font-weight:600;font-size:var(--fs-sm);margin-bottom:.4rem">Email Address *</label><input type="email" required placeholder="your@email.com" style="width:100%;padding:.875rem 1rem;border:1.5px solid var(--border-light);border-radius:var(--radius-md);font-size:var(--fs-base);outline:none;transition:var(--trans-base)" onfocus="this.style.borderColor='var(--clr-primary)'" onblur="this.style.borderColor='var(--border-light)'" /></div>
-          <div><label style="display:block;font-weight:600;font-size:var(--fs-sm);margin-bottom:.4rem">Phone Number</label><input type="tel" placeholder="+91 9876 543 210" style="width:100%;padding:.875rem 1rem;border:1.5px solid var(--border-light);border-radius:var(--radius-md);font-size:var(--fs-base);outline:none;transition:var(--trans-base)" onfocus="this.style.borderColor='var(--clr-primary)'" onblur="this.style.borderColor='var(--border-light)'" /></div>
-          <div><label style="display:block;font-weight:600;font-size:var(--fs-sm);margin-bottom:.4rem">Subject *</label><select required style="width:100%;padding:.875rem 1rem;border:1.5px solid var(--border-light);border-radius:var(--radius-md);font-size:var(--fs-base);outline:none;background:#fff;transition:var(--trans-base)" onfocus="this.style.borderColor='var(--clr-primary)'" onblur="this.style.borderColor='var(--border-light)'"><option value="">Select a subject</option><option>General Inquiry</option><option>Application Status</option><option>Technical Support</option><option>Grievance / Complaint</option><option>Scheme Assistance</option><option>Document Issue</option><option>Payment Problem</option><option>Feedback &amp; Suggestions</option></select></div>
-          <div><label style="display:block;font-weight:600;font-size:var(--fs-sm);margin-bottom:.4rem">Message *</label><textarea required rows="5" placeholder="Describe your issue or question in detail..." style="width:100%;padding:.875rem 1rem;border:1.5px solid var(--border-light);border-radius:var(--radius-md);font-size:var(--fs-base);outline:none;resize:vertical;font-family:var(--font-body);transition:var(--trans-base)" onfocus="this.style.borderColor='var(--clr-primary)'" onblur="this.style.borderColor='var(--border-light)'"></textarea></div>
-          <div style="display:flex;align-items:center;gap:.5rem"><input type="checkbox" id="consent" required style="accent-color:var(--clr-primary)" /><label for="consent" style="font-size:var(--fs-sm);color:var(--txt-muted)">I agree to the <a href="404.html" style="color:var(--clr-primary)">Privacy Policy</a> and consent to data processing.</label></div>
-          <button type="button" id="contactSubmitBtn" class="btn btn-primary btn-lg" onclick="document.getElementById('contactForm').reportValidity() && (window.location.href='404.html')">Send Message <i class="fa-solid fa-paper-plane btn-icon"></i></button>
+          <div class="form-group">
+            <label class="form-label">Email Address *</label>
+            <input type="email" required placeholder="your@email.com" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone Number</label>
+            <input type="tel" placeholder="+91 9876 543 210" class="form-control" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Subject *</label>
+            <select required class="form-control" style="appearance:none;-webkit-appearance:none;background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%2216%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23666%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><polyline points=%226 9 12 15 18 9%22></polyline></svg>');background-repeat:no-repeat;background-position:right 1.25rem center">
+              <option value="">Select a subject</option>
+              <option>General Inquiry</option>
+              <option>Application Status</option>
+              <option>Technical Support</option>
+              <option>Grievance / Complaint</option>
+              <option>Scheme Assistance</option>
+              <option>Document Issue</option>
+              <option>Payment Problem</option>
+              <option>Feedback &amp; Suggestions</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Message *</label>
+            <textarea required rows="5" placeholder="Describe your issue or question in detail..." class="form-control" style="resize:vertical;font-family:var(--font-body)"></textarea>
+          </div>
+          <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:1.5rem">
+            <input type="checkbox" id="consent" required style="accent-color:var(--clr-primary)" />
+            <label for="consent" style="font-size:var(--fs-sm);color:var(--txt-muted)">I agree to the <a href="404.html" style="color:var(--clr-primary)">Privacy Policy</a> and consent to data processing.</label>
+          </div>
+          <button type="button" id="contactSubmitBtn" class="btn btn-primary btn-lg" style="width: 100%; justify-content: center;" onclick="document.getElementById('contactForm').reportValidity() && (window.location.href='404.html')">Send Message <i class="fa-solid fa-paper-plane btn-icon"></i></button>
         </form>
       </div>
 
       <!-- Map + Info -->
       <div data-reveal="right">
-        <div style="background:var(--bg-soft);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-lg);margin-bottom:2rem">
+        <div style="background:var(--bg-soft);border-radius:var(--radius-xl);overflow:hidden;box-shadow:var(--shadow-lg);margin-bottom:2rem;position:relative;">
+          <!-- Clickable map overlay -->
+          <a href="https://maps.google.com/?q=CGO+Complex,+New+Delhi,+Delhi" target="_blank" rel="noopener noreferrer" style="position:absolute;top:0;left:0;width:100%;height:320px;z-index:10;cursor:pointer;display:block;" title="Open in Google Maps"></a>
           <!-- Stackly Google Maps Embed -->
           <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.491295286596!2d77.23238627627447!3d28.58498877569106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce2f4e9185a17%3A0xb30e7ef0ea3c2ebc!2sCGO%20Complex%2C%20Pragati%20Vihar%2C%20New%20Delhi%2C%20Delhi%20110003!5e0!3m2!1sen!2sin!4f13.1!3m4!1s0x390ce2f4e9185a17%3A0xb30e7ef0ea3c2ebc!4f13.1" 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.469599602598!2d77.22853257608298!3d28.58782007569114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd16f9f9570d%3A0x1d582f6f595f543e!2sCGO%20Complex%2C%20New%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1722416800000!5m2!1sen!2sin" 
             width="100%" 
             height="320" 
             style="border:0; width:100%; height:320px; display:block;" 
@@ -141,8 +174,10 @@
 
       <!-- Large Interactive Map Frame -->
       <div style="position:relative; width:100%; height:450px;">
+        <!-- Clickable map overlay -->
+        <a href="https://maps.google.com/?q=CGO+Complex,+New+Delhi,+Delhi" target="_blank" rel="noopener noreferrer" style="position:absolute;top:0;left:0;width:100%;height:450px;z-index:10;cursor:pointer;display:block;" title="Open in Google Maps"></a>
         <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.491295286596!2d77.23238627627447!3d28.58498877569106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce2f4e9185a17%3A0xb30e7ef0ea3c2ebc!2sCGO%20Complex%2C%20Pragati%20Vihar%2C%20New%20Delhi%2C%20Delhi%20110003!5e0!3m2!1sen!2sin!4f13.1!3m4!1s0x390ce2f4e9185a17%3A0xb30e7ef0ea3c2ebc!4f13.1" 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.469599602598!2d77.22853257608298!3d28.58782007569114!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd16f9f9570d%3A0x1d582f6f595f543e!2sCGO%20Complex%2C%20New%20Delhi%2C%20Delhi!5e0!3m2!1sen!2sin!4v1722416800000!5m2!1sen!2sin" 
           width="100%" 
           height="450" 
           style="border:0; width:100%; height:450px; display:block;" 

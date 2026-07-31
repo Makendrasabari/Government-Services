@@ -1667,8 +1667,8 @@
   }
 
   .dashboard-content {
-    margin-top: 70px !important;
-    padding: 1.5rem 1.5rem !important;
+    margin-top: 0 !important;
+    padding: 94px 1.5rem 1.5rem !important; /* 70px topbar + 24px (1.5rem) gap */
     gap: 1.5rem !important;
     width: 100% !important;
     max-width: 100vw !important;
@@ -1786,7 +1786,8 @@
     padding: 0 1.25rem !important;
   }
   .dashboard-content {
-    padding: 1.25rem 1.25rem !important;
+    margin-top: 0 !important;
+    padding: 90px 1.25rem 1.25rem !important; /* 70px topbar + 20px (1.25rem) gap */
   }
   .topbar-sub {
     display: none;

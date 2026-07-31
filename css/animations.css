@@ -520,8 +520,10 @@
   display: none !important;
 }
 
-/* ── Mobile: Replace horizontal reveals with vertical to prevent overflow ── */
-@media (max-width: 768px) {
-  [data-reveal="left"]  { transform: translateY(40px); }
-  [data-reveal="right"] { transform: translateY(40px); }
+/* ── Mobile & Tablet: Replace horizontal reveals with vertical to prevent overflow ── */
+@media (max-width: 1200px) {
+  [data-reveal="left"]  { transform: translateY(30px) !important; }
+  [data-reveal="right"] { transform: translateY(30px) !important; }
 }
+
+

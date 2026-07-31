@@ -6,6 +6,65 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 1.5rem;
   text-align: center;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.dept-stats-grid .card {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  background: var(--bg-white);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-sm);
+  transition: var(--trans-base);
+}
+
+.dept-stats-grid .card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.dept-stats-grid .card-body {
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.dept-stats-grid .stat-number {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  font-weight: 900;
+  background: var(--grad-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+}
+
+.dept-stats-grid .stat-label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--txt-muted);
+  margin-top: 0.4rem;
+  line-height: 1.4;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  max-width: 100%;
 }
 
 /* ── Bento / Main Grid ───────────────────────────────────── */
@@ -57,6 +116,7 @@
 
 @media (max-width: 768px) {
   .dept-stats-grid    { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .dept-stats-grid .card-body { padding: 1.25rem 0.75rem; }
   .dept-bento-grid    { grid-template-columns: 1fr; }
   .dept-schemes-grid  { grid-template-columns: 1fr; }
   .dept-form-grid     { grid-template-columns: 1fr; }
@@ -64,5 +124,7 @@
 
 @media (max-width: 480px) {
   .dept-stats-grid    { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+  .dept-stats-grid .card-body { padding: 1rem 0.5rem; }
+  .dept-stats-grid .stat-number { font-size: 1.35rem; }
   .dept-mini-stats    { padding: 0.5rem 0.25rem; }
 }

@@ -292,12 +292,12 @@ function initGlobalReveal() {
     const duration  = parseFloat(el.dataset.duration || 0.8);
 
     const fromVars = { opacity: 0 };
-    const isMobile = window.innerWidth <= 768;
+    const isMobile = window.innerWidth <= 1200;
 
     if (direction === 'up')    fromVars.y =  60;
     if (direction === 'down')  fromVars.y = -40;
-    if (direction === 'left')  { isMobile ? (fromVars.y = 40) : (fromVars.x = -60); }
-    if (direction === 'right') { isMobile ? (fromVars.y = 40) : (fromVars.x =  60); }
+    if (direction === 'left')  { isMobile ? (fromVars.y = 30) : (fromVars.x = -60); }
+    if (direction === 'right') { isMobile ? (fromVars.y = 30) : (fromVars.x =  60); }
     if (direction === 'scale') { fromVars.scale = 0.85; }
     if (direction === 'zoom')  { fromVars.scale = 0.7; }
 
